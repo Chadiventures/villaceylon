@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZURI Boutique Hotel — Thalpe, Sri Lanka</title>
+<title>Ceylon Boutique Hotel — Ahangama, Sri Lanka</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --petal:#F5EEF0;
-  --blush:#D9AABB;
-  --rose:#9B6070;
-  --wine:#3D1F2B;
-  --jade:#4A7870;
-  --basalt:#2D3D38;
-  --rattan:#C8AA72;
+  --petal:#F4F4F4;
+  --blush:#EDDBCD;
+  --rose:#5A6458;
+  --wine:#192231;
+  --jade:#404A42;
+  --basalt:#2F3833;
+  --rattan:#C0B283;
   --font-serif:'Cormorant Garamond',Georgia,serif;
   --font-body:'Jost',sans-serif;
 }
@@ -25,7 +25,7 @@ body{font-family:var(--font-body);background:var(--petal);color:var(--wine);line
 /* NAV */
 nav{background:var(--wine);display:flex;align-items:center;justify-content:space-between;padding:16px 48px;position:sticky;top:0;z-index:100;}
 .nav-toggle{display:none;background:none;border:none;color:var(--petal);font-size:26px;cursor:pointer;padding:6px;line-height:1;}
-.logo{font-family:var(--font-serif);font-size:26px;font-weight:300;color:var(--petal);letter-spacing:0.14em;text-decoration:none;}
+.logo{font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--petal);letter-spacing:0.1em;text-decoration:none;}
 .logo span{color:var(--rattan);}
 .nav-links{display:flex;gap:28px;align-items:center;}
 .nav-links a{font-size:12px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--blush);text-decoration:none;opacity:0.8;transition:opacity 0.2s;}
@@ -36,7 +36,7 @@ nav{background:var(--wine);display:flex;align-items:center;justify-content:space
 /* HERO */
 .hero{background:var(--basalt);min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 48px 60px;position:relative;overflow:hidden;}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(45,61,56,0.45),rgba(45,61,56,0.65));z-index:0;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(25,34,49,0.48),rgba(64,74,66,0.68));z-index:0;}
 .hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--rattan);margin-bottom:20px;display:flex;align-items:center;gap:10px;position:relative;z-index:1;}
 .hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;max-width:50px;height:0.5px;background:var(--rattan);opacity:0.6;}
 .hero-title{font-family:var(--font-serif);font-size:76px;font-weight:300;color:var(--petal);line-height:1.05;margin-bottom:16px;letter-spacing:0.01em;position:relative;z-index:1;}
@@ -45,7 +45,7 @@ nav{background:var(--wine);display:flex;align-items:center;justify-content:space
 .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
 .btn-primary{background:var(--rattan);color:var(--wine);font-family:var(--font-body);font-size:13px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:15px 36px;border:none;cursor:pointer;transition:all 0.2s;}
 .btn-primary:hover{background:var(--blush);}
-.btn-ghost{background:transparent;color:var(--petal);font-family:var(--font-body);font-size:13px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;padding:14px 36px;border:1px solid rgba(217,170,187,0.35);cursor:pointer;transition:all 0.2s;}
+.btn-ghost{background:transparent;color:var(--petal);font-family:var(--font-body);font-size:13px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;padding:14px 36px;border:1px solid rgba(237,219,205,0.45);cursor:pointer;transition:all 0.2s;}
 .btn-ghost:hover{border-color:var(--blush);color:var(--blush);}
 
 /* TRUST STRIP */
@@ -61,7 +61,7 @@ nav{background:var(--wine);display:flex;align-items:center;justify-content:space
 .booking-fields{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;align-items:end;}
 .fg{display:flex;flex-direction:column;gap:5px;}
 .fg label{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--blush);}
-.fg input,.fg select{background:rgba(245,238,240,0.08);border:1px solid rgba(217,170,187,0.3);color:var(--petal);font-family:var(--font-body);font-size:14px;padding:12px 16px;outline:none;transition:border 0.2s;width:100%;}
+.fg input,.fg select{background:rgba(244,244,244,0.08);border:1px solid rgba(237,219,205,0.35);color:var(--petal);font-family:var(--font-body);font-size:14px;padding:12px 16px;outline:none;transition:border 0.2s;width:100%;}
 .fg input:focus,.fg select:focus{border-color:var(--blush);}
 .fg select option{background:var(--wine);color:var(--petal);}
 .fg input::placeholder{color:var(--blush);opacity:0.5;}
@@ -78,13 +78,16 @@ nav{background:var(--wine);display:flex;align-items:center;justify-content:space
 
 /* ROOMS */
 .rooms-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
-.room-card{background:#fff;border:1px solid var(--blush);overflow:hidden;cursor:pointer;transition:border-color 0.25s,transform 0.25s;}
+.room-card{background:var(--petal);border:1px solid var(--blush);overflow:hidden;cursor:pointer;transition:border-color 0.25s,transform 0.25s;}
 .room-card:hover{border-color:var(--rose);transform:translateY(-3px);}
 .room-img{height:220px;display:flex;align-items:center;justify-content:center;position:relative;background-size:cover;background-position:center;}
 .ri1{background-image:url('rum1.jpg');}
 .ri2{background-image:url('rum 2.jpg');}
 .ri3{background-image:url('rum 3.jpg');}
 .ri4{background-image:url('rum 4.jpg');}
+.ri5{background-image:url('rum1.jpg');}
+.ri6{background-image:url('rum 2.jpg');}
+.ri7{background-image:url('rum 3.jpg');}
 .room-badge{position:absolute;bottom:14px;right:16px;background:var(--wine);color:var(--rattan);font-size:11px;font-weight:500;letter-spacing:0.1em;padding:4px 12px;}
 .room-body{padding:22px 24px;}
 .room-name{font-family:var(--font-serif);font-size:24px;font-weight:400;color:var(--wine);margin-bottom:6px;}
@@ -99,14 +102,14 @@ nav{background:var(--wine);display:flex;align-items:center;justify-content:space
 
 /* EXPERIENCES */
 .exp-section{position:relative;background:var(--wine) url('beach1.jpg') center/cover no-repeat;overflow:hidden;}
-.exp-section::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(61,31,43,0.78),rgba(45,61,56,0.85));z-index:0;}
+.exp-section::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(25,34,49,0.78),rgba(64,74,66,0.86));z-index:0;}
 .exp-section .section{position:relative;z-index:1;}
 .exp-section .sec-title{text-shadow:0 2px 18px rgba(0,0,0,0.55);}
 .exp-section .sec-sub{text-shadow:0 1px 12px rgba(0,0,0,0.45);opacity:0.95;}
 .exp-section .eyebrow{text-shadow:0 1px 8px rgba(0,0,0,0.4);}
 .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px;}
-.exp-card{border:1px solid rgba(217,170,187,0.4);padding:32px 26px;transition:background 0.2s,border-color 0.2s;cursor:pointer;background:rgba(61,31,43,0.84);backdrop-filter:blur(8px);}
-.exp-card:hover{background:rgba(61,31,43,0.92);border-color:rgba(217,170,187,0.6);}
+.exp-card{border:1px solid rgba(192,178,131,0.45);padding:32px 26px;transition:background 0.2s,border-color 0.2s;cursor:pointer;background:rgba(25,34,49,0.84);backdrop-filter:blur(8px);}
+.exp-card:hover{background:rgba(25,34,49,0.92);border-color:rgba(192,178,131,0.65);}
 .exp-icon{font-size:30px;color:var(--rattan);margin-bottom:18px;}
 .exp-name{font-family:var(--font-serif);font-size:24px;font-weight:300;color:var(--petal);margin-bottom:10px;text-shadow:0 1px 8px rgba(0,0,0,0.25);}
 .exp-text{font-size:14px;color:var(--petal);opacity:0.95;line-height:1.7;margin-bottom:16px;}
@@ -117,7 +120,7 @@ nav{background:var(--wine);display:flex;align-items:center;justify-content:space
 /* REVIEWS */
 .reviews-section{background:var(--blush);}
 .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px;}
-.review-card{background:var(--petal);border:1px solid rgba(155,96,112,0.2);padding:26px;transition:transform 0.2s;}
+.review-card{background:var(--petal);border:1px solid rgba(64,74,66,0.22);padding:26px;transition:transform 0.2s;}
 .review-card:hover{transform:translateY(-2px);}
 .stars{color:var(--rattan);font-size:14px;letter-spacing:3px;margin-bottom:14px;}
 .review-quote{font-family:var(--font-serif);font-size:18px;font-weight:300;font-style:italic;color:var(--wine);line-height:1.65;margin-bottom:14px;}
@@ -138,15 +141,15 @@ nav{background:var(--wine);display:flex;align-items:center;justify-content:space
 
 /* CTA BANNER */
 .cta-section{position:relative;padding:80px 48px;text-align:center;background:var(--jade) url('couple.jpg') center/cover no-repeat;overflow:hidden;}
-.cta-section::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(45,61,56,0.62),rgba(61,31,43,0.78));z-index:0;}
+.cta-section::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(64,74,66,0.65),rgba(25,34,49,0.8));z-index:0;}
 .cta-section > *{position:relative;z-index:1;}
 .cta-section h2{font-family:var(--font-serif);font-size:52px;font-weight:300;color:var(--petal);margin-bottom:12px;line-height:1.1;text-shadow:0 2px 16px rgba(0,0,0,0.35);}
 .cta-section p{font-size:15px;color:var(--petal);opacity:0.92;margin-bottom:34px;text-shadow:0 1px 10px rgba(0,0,0,0.3);}
 .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
 .btn-cta-main{background:var(--rattan);color:var(--wine);font-family:var(--font-body);font-size:14px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:17px 42px;border:none;cursor:pointer;transition:all 0.2s;box-shadow:0 6px 24px rgba(0,0,0,0.35);}
 .btn-cta-main:hover{background:var(--blush);box-shadow:0 8px 28px rgba(0,0,0,0.4);}
-.btn-cta-ghost{background:rgba(61,31,43,0.35);color:var(--petal);font-family:var(--font-body);font-size:14px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;padding:16px 42px;border:1px solid rgba(245,238,240,0.65);cursor:pointer;transition:all 0.2s;backdrop-filter:blur(2px);}
-.btn-cta-ghost:hover{border-color:var(--petal);background:rgba(61,31,43,0.5);}
+.btn-cta-ghost{background:rgba(25,34,49,0.38);color:var(--petal);font-family:var(--font-body);font-size:14px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;padding:16px 42px;border:1px solid rgba(244,244,244,0.65);cursor:pointer;transition:all 0.2s;backdrop-filter:blur(2px);}
+.btn-cta-ghost:hover{border-color:var(--petal);background:rgba(25,34,49,0.52);}
 
 /* CHATBOT */
 .chatbot-container{padding:0 48px 60px;}
@@ -162,15 +165,15 @@ nav{background:var(--wine);display:flex;align-items:center;justify-content:space
 .bubble-bot{background:var(--blush);color:var(--wine);align-self:flex-start;border-radius:0 12px 12px 12px;}
 .bubble-user{background:var(--wine);color:var(--petal);align-self:flex-end;border-radius:12px 12px 0 12px;}
 .chat-inp-row{display:flex;border-top:1px solid var(--blush);}
-.chat-inp-row input{flex:1;background:#fff;border:none;padding:14px 18px;font-family:var(--font-body);font-size:14px;color:var(--wine);outline:none;}
+.chat-inp-row input{flex:1;background:var(--petal);border:none;padding:14px 18px;font-family:var(--font-body);font-size:14px;color:var(--wine);outline:none;}
 .chat-inp-row input::placeholder{color:var(--rose);opacity:0.5;}
 .chat-send-btn{background:var(--jade);border:none;padding:0 22px;color:#fff;cursor:pointer;font-size:18px;transition:background 0.2s;}
 .chat-send-btn:hover{background:var(--basalt);}
 
 /* FOOTER */
 footer{background:var(--wine);padding:56px 48px 28px;}
-.ft{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:56px;padding-bottom:36px;border-bottom:0.5px solid rgba(217,170,187,0.2);}
-.ft-logo{font-family:var(--font-serif);font-size:30px;font-weight:300;color:var(--petal);margin-bottom:12px;letter-spacing:0.14em;display:block;text-decoration:none;}
+.ft{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:56px;padding-bottom:36px;border-bottom:0.5px solid rgba(192,178,131,0.25);}
+.ft-logo{font-family:var(--font-serif);font-size:26px;font-weight:300;color:var(--petal);margin-bottom:12px;letter-spacing:0.1em;display:block;text-decoration:none;}
 .ft-logo span{color:var(--rattan);}
 .ft-tag{font-size:13px;color:var(--blush);opacity:0.6;line-height:1.9;}
 .ft-h{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--rattan);margin-bottom:16px;}
@@ -195,11 +198,11 @@ footer{background:var(--wine);padding:56px 48px 28px;}
   body{overflow-x:hidden;}
   nav{position:sticky;padding:14px 20px;}
   .nav-toggle{display:flex;align-items:center;justify-content:center;}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--wine);flex-direction:column;align-items:stretch;padding:12px 20px 20px;gap:4px;border-top:1px solid rgba(217,170,187,0.15);box-shadow:0 12px 24px rgba(0,0,0,0.2);}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--wine);flex-direction:column;align-items:stretch;padding:12px 20px 20px;gap:4px;border-top:1px solid rgba(237,219,205,0.2);box-shadow:0 12px 24px rgba(0,0,0,0.2);}
   .nav-links.open{display:flex;}
   .nav-links a{display:block;text-align:center;padding:12px 0;font-size:13px;}
   .nav-cta{width:100%;margin-top:8px;padding:14px 22px;}
-  .logo{font-size:22px;}
+  .logo{font-size:17px;letter-spacing:0.08em;}
   .hero{min-height:85svh;padding:48px 20px 40px;}
   .hero-title{font-size:38px;}
   .hero-sub{font-size:13px;line-height:1.75;margin-bottom:32px;padding:0 4px;}
@@ -254,13 +257,13 @@ footer{background:var(--wine);padding:56px 48px 28px;}
 
 <!-- NAVIGATION -->
 <nav>
-  <a href="#" class="logo">Z U R <span>I</span></a>
+  <a href="#" class="logo">CEYLON <span>BOUTIQUE</span></a>
   <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks" onclick="toggleNav()">
     <i class="ti ti-menu-2"></i>
   </button>
   <div class="nav-links" id="navLinks">
     <a href="#rooms">Rooms</a>
-    <a href="#experiences">Restaurant & Pool</a>
+    <a href="#experiences">Pool & Wellness</a>
     <a href="#location">Location</a>
     <a href="#contact">Contact</a>
     <button class="nav-cta" onclick="document.getElementById('checkin').focus()">
@@ -277,10 +280,10 @@ footer{background:var(--wine);padding:56px 48px 28px;}
   <div class="hero-overlay" aria-hidden="true"></div>
   <p class="hero-eyebrow">
     <i class="ti ti-map-pin" style="font-size:13px;vertical-align:-2px;margin-right:4px;"></i>
-    Thalpe, Sri Lanka
+    Ahangama, Sri Lanka
   </p>
   <h1 class="hero-title">A sanctuary<br>of <em>quiet luxury</em></h1>
-  <p class="hero-sub">4 handcrafted rooms &nbsp;·&nbsp; Botanical pool &nbsp;·&nbsp; Farm-to-table dining</p>
+  <p class="hero-sub">7 handcrafted rooms &nbsp;·&nbsp; Botanical pool &nbsp;·&nbsp; South-coast surf &amp; beach</p>
   <div class="hero-btns">
     <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
       <i class="ti ti-calendar" style="font-size:14px;vertical-align:-2px;margin-right:8px;"></i>Reserve your room
@@ -303,7 +306,7 @@ footer{background:var(--wine);padding:56px 48px 28px;}
 <div class="booking-bar" id="booking">
   <div class="booking-inner">
     <p class="booking-eyebrow">Check availability</p>
-    <p class="booking-title">Only 4 rooms — book early to secure your dates</p>
+    <p class="booking-title">Only 7 rooms — book early to secure your dates</p>
     <div class="booking-fields">
       <div class="fg">
         <label for="checkin">Check-in</label>
@@ -320,6 +323,8 @@ footer{background:var(--wine);padding:56px 48px 28px;}
           <option selected>2 guests</option>
           <option>3 guests</option>
           <option>4 guests</option>
+          <option>5 guests</option>
+          <option>6 guests</option>
         </select>
       </div>
       <button class="search-btn" onclick="handleSearch()">
@@ -333,8 +338,8 @@ footer{background:var(--wine);padding:56px 48px 28px;}
 <section id="rooms">
   <div class="section">
     <p class="eyebrow">Accommodation</p>
-    <h2 class="sec-title">Four rooms,<br>each entirely unique</h2>
-    <p class="sec-sub">Locally sourced basalt stone, handwoven linen and private garden terraces. No two stays are ever the same.</p>
+    <h2 class="sec-title">Seven rooms,<br>each entirely unique</h2>
+    <p class="sec-sub">Steps from Ahangama’s surf and palm beaches. Handwoven linen, teak accents and garden terraces — a calm base on Sri Lanka’s south coast.</p>
     <div class="rooms-grid">
       <div class="room-card">
         <div class="room-img ri1">
@@ -345,7 +350,7 @@ footer{background:var(--wine);padding:56px 48px 28px;}
           <div class="amenities">
             <span class="am">AC</span><span class="am">King bed</span><span class="am">Garden terrace</span><span class="am">Wifi</span>
           </div>
-          <p class="room-desc">Soft petal-pink walls meet hand-carved lotus motifs. Open-air bathroom in raw stone — designed for slow mornings.</p>
+          <p class="room-desc">Warm sand-toned walls and hand-carved lotus motifs. Open-air bathroom in raw stone — designed for slow Ahangama mornings.</p>
           <div class="room-foot">
             <div class="price">$185 <span>/ night</span></div>
             <button class="book-btn" onclick="bookRoom('The Lotus Room')">Book room</button>
@@ -377,7 +382,7 @@ footer{background:var(--wine);padding:56px 48px 28px;}
           <div class="amenities">
             <span class="am">AC</span><span class="am">Queen bed</span><span class="am">Rooftop terrace</span><span class="am">Herb garden</span>
           </div>
-          <p class="room-desc">Upper-floor room with a private terrace overlooking the spice garden and distant ocean haze.</p>
+          <p class="room-desc">Upper-floor room with a private terrace overlooking the garden and the Indian Ocean haze beyond the palm line.</p>
           <div class="room-foot">
             <div class="price">$215 <span>/ night</span></div>
             <button class="book-btn" onclick="bookRoom('The Mist Loft')">Book room</button>
@@ -389,14 +394,62 @@ footer{background:var(--wine);padding:56px 48px 28px;}
           <span class="room-badge">Signature villa</span>
         </div>
         <div class="room-body">
-          <h3 class="room-name">The Thalpe Villa</h3>
+          <h3 class="room-name">The Ahangama Villa</h3>
           <div class="amenities">
             <span class="am">AC</span><span class="am">King bed</span><span class="am">Private pool</span><span class="am">Butler</span>
           </div>
-          <p class="room-desc">Our flagship. A private plunge pool, dedicated butler and a separate living lounge cloaked in botanical dusk.</p>
+          <p class="room-desc">Our flagship. A private plunge pool, dedicated butler and a separate living lounge — minutes from Coconut Point surf.</p>
           <div class="room-foot">
             <div class="price">$385 <span>/ night</span></div>
-            <button class="book-btn" onclick="bookRoom('The Thalpe Villa')">Book room</button>
+            <button class="book-btn" onclick="bookRoom('The Ahangama Villa')">Book room</button>
+          </div>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-img ri5">
+          <span class="room-badge">Ocean breeze</span>
+        </div>
+        <div class="room-body">
+          <h3 class="room-name">The Palm Room</h3>
+          <div class="amenities">
+            <span class="am">AC</span><span class="am">King bed</span><span class="am">Garden view</span><span class="am">Wifi</span>
+          </div>
+          <p class="room-desc">Ground-floor calm under coconut palms. Soft light, rattan details and the scent of frangipani from the courtyard.</p>
+          <div class="room-foot">
+            <div class="price">$195 <span>/ night</span></div>
+            <button class="book-btn" onclick="bookRoom('The Palm Room')">Book room</button>
+          </div>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-img ri6">
+          <span class="room-badge">Surf nearby</span>
+        </div>
+        <div class="room-body">
+          <h3 class="room-name">The Reef Suite</h3>
+          <div class="amenities">
+            <span class="am">AC</span><span class="am">Queen bed</span><span class="am">Terrace</span><span class="am">Pool access</span>
+          </div>
+          <p class="room-desc">A short stroll to Ahangama Beach. Store boards by the gate and rinse off at the pool after dawn sessions.</p>
+          <div class="room-foot">
+            <div class="price">$225 <span>/ night</span></div>
+            <button class="book-btn" onclick="bookRoom('The Reef Suite')">Book room</button>
+          </div>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-img ri7">
+          <span class="room-badge">Pool path</span>
+        </div>
+        <div class="room-body">
+          <h3 class="room-name">The Coastal Pavilion</h3>
+          <div class="amenities">
+            <span class="am">AC</span><span class="am">King bed</span><span class="am">Lounging deck</span><span class="am">Wifi</span>
+          </div>
+          <p class="room-desc">Open-plan pavilion with direct path to the botanical pool. Ideal for longer stays and slow south-coast days.</p>
+          <div class="room-foot">
+            <div class="price">$265 <span>/ night</span></div>
+            <button class="book-btn" onclick="bookRoom('The Coastal Pavilion')">Book room</button>
           </div>
         </div>
       </div>
@@ -409,28 +462,28 @@ footer{background:var(--wine);padding:56px 48px 28px;}
   <div class="section">
     <p class="eyebrow" style="color:var(--rattan);">Experiences</p>
     <h2 class="sec-title" style="color:var(--petal);">Not just a hotel —<br>a way of being</h2>
-    <p class="sec-sub" style="color:var(--blush);opacity:0.92;">Open to all — hotel guests and outside visitors alike.</p>
+    <p class="sec-sub" style="color:var(--blush);opacity:0.92;">Pool for hotel guests and day visitors. We do not serve meals on site — Ahangama’s cafés and beach spots are a short walk away.</p>
     <div class="exp-grid">
-      <div class="exp-card">
-        <div class="exp-icon"><i class="ti ti-tools-kitchen-2"></i></div>
-        <h3 class="exp-name">The Restaurant</h3>
-        <p class="exp-text">Breakfast, lunch and candlelit dinner. Every dish crafted from our garden and Thalpe's fishermen. Open daily to all visitors.</p>
-        <span class="open-badge">Open to the public</span><br><br>
-        <a href="mailto:hello@zurihotel.lk" class="exp-link">Reserve a table <i class="ti ti-arrow-right"></i></a>
-      </div>
       <div class="exp-card">
         <div class="exp-icon"><i class="ti ti-swimming"></i></div>
         <h3 class="exp-name">The Botanical Pool</h3>
-        <p class="exp-text">Our jade-green pool wrapped in lotus flowers and trailing vines. Day passes available — pool bar serves all afternoon.</p>
+        <p class="exp-text">Our jade-green pool wrapped in lotus flowers and trailing vines. Day passes available for outside visitors — sun loungers and quiet swimming all day.</p>
         <span class="open-badge">Day passes available</span><br><br>
-        <a href="mailto:hello@zurihotel.lk?subject=Pool Day Pass" class="exp-link">Get a day pass <i class="ti ti-arrow-right"></i></a>
+        <a href="mailto:hello@ceylonboutique.lk?subject=Pool Day Pass" class="exp-link">Get a day pass <i class="ti ti-arrow-right"></i></a>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon"><i class="ti ti-surfboard"></i></div>
+        <h3 class="exp-name">Surf &amp; South Coast</h3>
+        <p class="exp-text">Ahangama sits on one of Sri Lanka’s best surf stretches — Coconut Point, Midigama and Weligama breaks within minutes. Board storage and local guides on request.</p>
+        <span class="open-badge">Guest favourite</span><br><br>
+        <a href="mailto:hello@ceylonboutique.lk?subject=Surf Enquiry" class="exp-link">Ask about surf <i class="ti ti-arrow-right"></i></a>
       </div>
       <div class="exp-card">
         <div class="exp-icon"><i class="ti ti-wave-sine"></i></div>
         <h3 class="exp-name">Wellness & Ritual</h3>
-        <p class="exp-text">Dawn yoga overlooking the ocean, Ayurvedic oil treatments and guided surf lessons along the southern coast.</p>
+        <p class="exp-text">Sunrise yoga, Ayurvedic treatments and guided surf lessons along the Ahangama coast. We can recommend trusted therapists and teachers in the village.</p>
         <span class="open-badge">On request</span><br><br>
-        <a href="mailto:hello@zurihotel.lk?subject=Wellness Enquiry" class="exp-link">Learn more <i class="ti ti-arrow-right"></i></a>
+        <a href="mailto:hello@ceylonboutique.lk?subject=Wellness Enquiry" class="exp-link">Learn more <i class="ti ti-arrow-right"></i></a>
       </div>
     </div>
   </div>
@@ -444,17 +497,17 @@ footer{background:var(--wine);padding:56px 48px 28px;}
     <div class="reviews-grid">
       <div class="review-card">
         <div class="stars">★★★★★</div>
-        <p class="review-quote">"ZURI is what Sri Lanka was always supposed to feel like. We flew home and rebooked immediately."</p>
+        <p class="review-quote">"Ceylon Boutique is what the Ahangama coast should feel like — calm, beautiful and unhurried. We rebooked before we left."</p>
         <p class="reviewer">— Sofia & Marcus, Stockholm</p>
       </div>
       <div class="review-card">
         <div class="stars">★★★★★</div>
-        <p class="review-quote">"The restaurant alone is worth the flight. Best breakfast we've had anywhere in Asia."</p>
+        <p class="review-quote">"The pool at golden hour, surf in the morning, village cafés at night. Exactly the rhythm we wanted in Sri Lanka."</p>
         <p class="reviewer">— James T., London</p>
       </div>
       <div class="review-card">
         <div class="stars">★★★★★</div>
-        <p class="review-quote">"Four rooms, endlessly personal service. You feel like the only guest in the world."</p>
+        <p class="review-quote">"Seven rooms but it still feels intimate. Attentive team, and the beach is never more than a few minutes away."</p>
         <p class="reviewer">— Priya K., Mumbai</p>
       </div>
     </div>
@@ -465,30 +518,30 @@ footer{background:var(--wine);padding:56px 48px 28px;}
 <section id="location">
   <div class="section">
     <p class="eyebrow">Find us</p>
-    <h2 class="sec-title">Thalpe, Sri Lanka</h2>
-    <p class="sec-sub">10 minutes south of Galle Fort. Close to everything, yet completely apart.</p>
+    <h2 class="sec-title">Ahangama, Sri Lanka</h2>
+    <p class="sec-sub">A laid-back surf village on the south coast, between Galle and Mirissa. Palm beaches, reef breaks and easy tuk-tuk rides to temples and tea country day trips.</p>
     <div class="loc-grid">
       <div class="map-placeholder">
         <i class="ti ti-map-pin map-pin-icon"></i>
-        <p class="map-name">ZURI Boutique Hotel</p>
-        <p class="map-loc">Thalpe, Southern Province, Sri Lanka</p>
+        <p class="map-name">Ceylon Boutique Hotel</p>
+        <p class="map-loc">Ahangama, Southern Province, Sri Lanka</p>
       </div>
       <div class="loc-list">
         <div class="loc-row">
           <i class="ti ti-plane loc-icon-wrap"></i>
-          <div><p class="loc-lbl">Nearest airport</p><p class="loc-val">Mattala Rajapaksa (HRI) — 40 min. We arrange private transfer on request.</p></div>
+          <div><p class="loc-lbl">Nearest airports</p><p class="loc-val">Mattala Rajapaksa (HRI) — about 1 hr 20 min. Bandaranaike, Colombo (CMB) — about 2 hr 30 min. Private transfers arranged on request.</p></div>
         </div>
         <div class="loc-row">
           <i class="ti ti-building-arch loc-icon-wrap"></i>
-          <div><p class="loc-lbl">Galle Fort</p><p class="loc-val">10 minutes by car. UNESCO-listed colonial fort with boutique shopping and galleries.</p></div>
+          <div><p class="loc-lbl">Galle Fort</p><p class="loc-val">Roughly 20 minutes by car. UNESCO-listed fort, cafés, galleries and sunset walks on the ramparts.</p></div>
         </div>
         <div class="loc-row">
           <i class="ti ti-wave-sine loc-icon-wrap"></i>
-          <div><p class="loc-lbl">The ocean</p><p class="loc-val">300 metres to the nearest beach. Snorkelling and surf breaks right outside.</p></div>
+          <div><p class="loc-lbl">Beach &amp; surf</p><p class="loc-val">Ahangama Beach and Coconut Point within walking distance. Weligama and Midigama breaks a short tuk-tuk ride away.</p></div>
         </div>
         <div class="loc-row" id="contact">
           <i class="ti ti-phone loc-icon-wrap"></i>
-          <div><p class="loc-lbl">Contact</p><p class="loc-val">hello@zurihotel.lk &nbsp;·&nbsp; +94 77 123 4567</p></div>
+          <div><p class="loc-lbl">Contact</p><p class="loc-val">hello@ceylonboutique.lk &nbsp;·&nbsp; +94 77 123 4567</p></div>
         </div>
       </div>
     </div>
@@ -498,12 +551,12 @@ footer{background:var(--wine);padding:56px 48px 28px;}
 <!-- CTA BANNER -->
 <section class="cta-section">
   <h2>Ready to disappear<br>into paradise?</h2>
-  <p>Only 4 rooms. Dates fill fast — especially in season.</p>
+  <p>Only 7 rooms. Dates fill fast — especially in surf season (Nov–Apr).</p>
   <div class="cta-btns">
     <button class="btn-cta-main" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
       <i class="ti ti-calendar" style="font-size:15px;vertical-align:-2px;margin-right:8px;"></i>Reserve your room now
     </button>
-    <a href="mailto:hello@zurihotel.lk" class="btn-cta-ghost" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
+    <a href="mailto:hello@ceylonboutique.lk" class="btn-cta-ghost" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
       <i class="ti ti-mail" style="font-size:15px;vertical-align:-2px;"></i>Ask us anything
     </a>
   </div>
@@ -516,12 +569,12 @@ footer{background:var(--wine);padding:56px 48px 28px;}
     <div class="chat-hd">
       <div class="chat-av"><i class="ti ti-message-chatbot"></i></div>
       <div style="flex:1;">
-        <p class="chat-hd-name">ZURI Concierge</p>
+        <p class="chat-hd-name">Ceylon Boutique Concierge</p>
         <p class="chat-hd-status"><span class="dot"></span>Online now — replies in seconds</p>
       </div>
     </div>
     <div class="chat-body" id="chatBody">
-      <div class="bubble bubble-bot">Welcome to ZURI. I can help with room bookings, pool day passes, restaurant reservations or any question about your stay. How can I help?</div>
+      <div class="bubble bubble-bot">Welcome to Ceylon Boutique in Ahangama. I can help with room bookings, pool day passes, surf tips or any question about your stay. We do not serve meals on site. How can I help?</div>
     </div>
     <div class="chat-inp-row">
       <input type="text" id="chatInput" placeholder="Type your question here..." onkeydown="if(event.key==='Enter')sendChat()">
@@ -536,15 +589,15 @@ footer{background:var(--wine);padding:56px 48px 28px;}
 <footer>
   <div class="ft">
     <div>
-      <a href="#" class="ft-logo">Z U R <span>I</span></a>
-      <p class="ft-tag">A small jewel in Thalpe.<br>Four rooms. Endless memories.<br>Southern Province, Sri Lanka.</p>
+      <a href="#" class="ft-logo">CEYLON <span>BOUTIQUE</span></a>
+      <p class="ft-tag">A calm address in Ahangama.<br>Seven rooms. Pool &amp; south-coast living.<br>Southern Province, Sri Lanka.</p>
     </div>
     <div>
       <p class="ft-h">The hotel</p>
       <div class="ft-links">
         <a href="#rooms">Rooms & suites</a>
-        <a href="#experiences">The restaurant</a>
-        <a href="#experiences">Pool & day pass</a>
+        <a href="#experiences">Botanical pool</a>
+        <a href="#experiences">Pool day pass</a>
         <a href="#experiences">Yoga & wellness</a>
         <a href="#location">Local experiences</a>
       </div>
@@ -561,8 +614,8 @@ footer{background:var(--wine);padding:56px 48px 28px;}
     </div>
   </div>
   <div class="ft-bottom">
-    <span>© 2025 ZURI Boutique Hotel, Thalpe, Sri Lanka</span>
-    <span>hello@zurihotel.lk</span>
+    <span>© 2025 Ceylon Boutique Hotel, Ahangama, Sri Lanka</span>
+    <span>hello@ceylonboutique.lk</span>
   </div>
 </footer>
 
@@ -596,17 +649,18 @@ function handleSearch(){
 }
 
 function bookRoom(name){
-  const msg='You selected: '+name+'. To complete your booking, please email hello@zurihotel.lk or call +94 77 123 4567. We respond within 2 hours.';
+  const msg='You selected: '+name+'. To complete your booking, please email hello@ceylonboutique.lk or call +94 77 123 4567. We respond within 2 hours.';
   alert(msg);
 }
 
 const replies={
-  pool:'Our botanical pool is open 08:00–20:00. Day passes are $25 including a welcome drink. Hotel guests have unlimited access throughout their stay.',
-  restaurant:'The restaurant serves breakfast 07:30–10:30, lunch 12:00–15:00, and dinner 18:30–22:00. Evening reservations recommended — email hello@zurihotel.lk.',
-  price:'Rooms from $185 per night. The Thalpe Villa from $385 per night. Contact us for seasonal packages or extended stays.',
-  book:'You can check availability using the form at the top of the page, or email hello@zurihotel.lk. We respond within 2 hours and hold rooms for 24 hours on request.',
-  wellness:'We offer sunrise yoga daily, Ayurvedic massage treatments and guided surf sessions. All bookable in advance — just ask when you reserve your room.',
+  pool:'Our botanical pool is open 08:00–20:00. Day passes are $25 for outside visitors. Hotel guests have unlimited access throughout their stay. We do not serve food or drinks on site.',
+  food:'We do not have a restaurant. Ahangama has excellent beach cafés, roti shops and small restaurants within a short walk — our team can share current favourites.',
+  price:'Rooms from $185 per night. The Ahangama Villa from $385 per night. Seven rooms total — contact us for seasonal packages or extended stays.',
+  book:'You can check availability using the form at the top of the page, or email hello@ceylonboutique.lk. We respond within 2 hours and hold rooms for 24 hours on request.',
+  wellness:'We offer sunrise yoga, Ayurvedic massage referrals and guided surf sessions around Ahangama. All bookable in advance — ask when you reserve your room.',
   transfer:'We arrange private airport transfers from Mattala Rajapaksa (HRI) or Colombo (CMB). Email us your flight details and we handle the rest.',
+  surf:'Ahangama is known for consistent south-coast surf. Coconut Point is nearby; Weligama and Midigama are a short ride away. We offer board storage and can connect you with local instructors.',
 };
 
 function sendChat(){
@@ -623,12 +677,13 @@ function sendChat(){
     const bb=document.createElement('div');
     bb.className='bubble bubble-bot';
     const v=val.toLowerCase();
-    let r='Thank you for your question. For anything specific, please email hello@zurihotel.lk or call +94 77 123 4567 and we\'ll take care of you.';
+    let r='Thank you for your question. For anything specific, please email hello@ceylonboutique.lk or call +94 77 123 4567 and we\'ll take care of you.';
     if(v.includes('pool')||v.includes('swim'))r=replies.pool;
-    else if(v.includes('restaur')||v.includes('food')||v.includes('dinner')||v.includes('breakfast')||v.includes('lunch'))r=replies.restaurant;
+    else if(v.includes('restaur')||v.includes('food')||v.includes('dinner')||v.includes('breakfast')||v.includes('lunch')||v.includes('eat'))r=replies.food;
     else if(v.includes('price')||v.includes('cost')||v.includes('$')||v.includes('rate')||v.includes('how much'))r=replies.price;
     else if(v.includes('book')||v.includes('reserv')||v.includes('availab')||v.includes('room'))r=replies.book;
-    else if(v.includes('yoga')||v.includes('wellness')||v.includes('surf')||v.includes('massage')||v.includes('spa'))r=replies.wellness;
+    else if(v.includes('surf')||v.includes('board')||v.includes('wave'))r=replies.surf;
+    else if(v.includes('yoga')||v.includes('wellness')||v.includes('massage')||v.includes('spa'))r=replies.wellness;
     else if(v.includes('transfer')||v.includes('airport')||v.includes('taxi')||v.includes('pickup'))r=replies.transfer;
     bb.textContent=r;
     body.appendChild(bb);
