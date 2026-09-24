@@ -1,4 +1,4 @@
-"""Build script for The Papaya Tree website.
+﻿"""Build script for The Papaya Tree website.
 
 Outputs:
   dist/            multi-page static site (deploy as-is on Coolify / any static host)
@@ -13,7 +13,7 @@ DIST = os.path.join(ROOT, "dist")
 
 SITE = {
     "name": "The Papaya Tree",
-    "tagline": "Boutique stay · Ahangama, Sri Lanka",
+    "tagline": "Boutique stay Â· Ahangama, Sri Lanka",
     "email": "hello@thepapayatree.lk",          # TODO confirm with Christian
     "phone": "+94 77 123 4567",                  # TODO real number
     "whatsapp": "94771234567",                   # TODO digits only, no +
@@ -99,8 +99,8 @@ BREAKS = [
 EAT = [
     ("Brunch & coffee", [
         ("Nuga House", "Israeli-style brunch plates and some of the best toast in town."),
-        ("Wild", "Garden café with good coffee, plus the Ember & Ice sauna and ice baths next door."),
-        ("Café Ceylon", "Relaxed café and garden. Twice a month on Saturdays it turns into a pop-up market."),
+        ("Wild", "Garden cafÃ© with good coffee, plus the Ember & Ice sauna and ice baths next door."),
+        ("CafÃ© Ceylon", "Relaxed cafÃ© and garden. Twice a month on Saturdays it turns into a pop-up market."),
     ]),
     ("Lunch & dinner", [
         ("Trax", "Asian fusion set in old jungle ruins. Book ahead in high season."),
@@ -109,7 +109,7 @@ EAT = [
         ("Hakuna Matata", "Beach shack classics: jackfruit burgers, wraps and fresh juices."),
     ]),
     ("Local rice & curry", [
-        ("Baboo Café", "All-you-can-eat rice and curry with seven or more dishes, for a few hundred rupees."),
+        ("Baboo CafÃ©", "All-you-can-eat rice and curry with seven or more dishes, for a few hundred rupees."),
         ("Roadside hopper stalls", "Egg hoppers and kottu in the evening along the main road. Follow the queues."),
     ]),
     ("Sunset & nights out", [
@@ -136,13 +136,13 @@ DO = [
 ]
 
 TRIPS = [
-    ("Galle Fort", "30 min", "Half day", "A 17th-century fort town with ramparts, a lighthouse, galleries and cafés inside UNESCO-listed walls. Walk the walls at sunset.", "Combine with Dalawella turtles on the way back."),
+    ("Galle Fort", "30 min", "Half day", "A 17th-century fort town with ramparts, a lighthouse, galleries and cafÃ©s inside UNESCO-listed walls. Walk the walls at sunset.", "Combine with Dalawella turtles on the way back."),
     ("Unawatuna & Jungle Beach", "20 min", "Half day", "A sheltered bay for swimming and snorkelling, the white Japanese Peace Pagoda on Rumassala hill and a short walk down to Jungle Beach.", "Dive shops here run reef and wreck dives for all levels."),
     ("Handunugoda Tea Estate", "15 min", "2 hours", "A working estate close to the coast, known for its hand-rolled white tea. Free tours and tastings.", "Morning visits are cooler and quieter."),
     ("Whale watching, Mirissa", "30 min", "Morning", "Blue whales, sperm whales and spinner dolphins off the south coast. Boats leave around dawn.", "Season is roughly November to April. Pick an operator that keeps its distance."),
     ("Udawalawe safari", "2 h 30", "Full day", "Sri Lanka's elephant park: herds with calves nearly guaranteed, plus crocodiles, buffalo and birdlife.", "Leave at 4 am for the morning drive. We book the jeep and driver."),
     ("Yala safari", "3 h", "Full day or overnight", "The country's most famous park and your best chance of seeing a leopard. Busier than Udawalawe.", "Stay one night nearby to do sunrise and sunset drives."),
-    ("Hiriketiya", "1 h 15", "Day", "A horseshoe bay with a surf break on one side and calm swimming on the other. Great cafés on the hill above.", "Go on a weekday to avoid crowds."),
+    ("Hiriketiya", "1 h 15", "Day", "A horseshoe bay with a surf break on one side and calm swimming on the other. Great cafÃ©s on the hill above.", "Go on a weekday to avoid crowds."),
     ("Coastal train", "From Ahangama station", "Half day", "The coast line runs along the ocean between Matara and Colombo. Ride a few stops for the views with open doors and windows.", "Buy a second-class ticket at the station, no booking needed."),
 ]
 
@@ -159,7 +159,7 @@ FAQ = [
     ]),
     ("Your stay", [
         ("What time is check-in and check-out?", "Check-in from {checkin}, check-out by {checkout}. If your flight lands early or leaves late, tell us and we'll do our best. You can always leave bags with us."),
-        ("Do you serve meals?", "No, and that's on purpose. Ahangama has one of the best café scenes in Sri Lanka within a short walk or tuk-tuk ride. We'll give you our own shortlist."),
+        ("Do you serve meals?", "No, and that's on purpose. Ahangama has one of the best cafÃ© scenes in Sri Lanka within a short walk or tuk-tuk ride. We'll give you our own shortlist."),
         ("Is there wifi and air conditioning?", "Every room has air conditioning and wifi. The Coastal Pavilion has a proper work corner for longer stays."),
         ("Can I bring my surfboard?", "Of course. There's board storage by the gate and outdoor rinse showers. We can arrange board rental and lessons too."),
         ("Is it suitable for children?", "Our rooms suit couples and small families. Most rooms take two guests, the Ahangama Villa takes three. Ask us about a cot."),
@@ -184,7 +184,7 @@ def photo(label, tone="a", ratio="4/3", img=None, cls=""):
     style = f"aspect-ratio:{ratio};"
     if img:
         style += f"--img:url('{img}');"
-    return f'<div class="ph ph-{tone} {cls}" style="{style}" role="img" aria-label="{e(label)}"><span class="ph-tag">Photo · {e(label)}</span></div>'
+    return f'<div class="ph ph-{tone} {cls}" style="{style}" role="img" aria-label="{e(label)}"><span class="ph-tag">Photo Â· {e(label)}</span></div>'
 
 # ---------------------------------------------------------------- chrome
 NAV = [
@@ -241,7 +241,7 @@ def footer():
     <div class="foot-col"><h4>Ahangama</h4><a href="{href('ahangama')}">Area guide</a><a href="{href('surf')}">Surf guide</a><a href="{href('things-to-do')}">Things to do</a><a href="{href('eat-drink')}">Eat & drink</a><a href="{href('day-trips')}">Day trips</a><a href="{href('getting-here')}">Getting here</a></div>
     <div class="foot-col"><h4>Contact</h4><span class="sel">{e(SITE['email'])}</span><span class="sel">{e(SITE['phone'])}</span><a href="https://wa.me/{SITE['whatsapp']}" target="_blank" rel="noopener">WhatsApp</a><a href="{SITE['instagram']}" target="_blank" rel="noopener">Instagram</a><span>{e(SITE['address'])}</span></div>
   </div>
-  <div class="foot-base"><span>© 2026 The Papaya Tree, Ahangama</span><span class="mono">5.97° N · 80.37° E</span></div>
+  <div class="foot-base"><span>Â© 2026 The Papaya Tree, Ahangama</span><span class="mono">5.97Â° N Â· 80.37Â° E</span></div>
 </footer>
 <a class="wa-float" href="https://wa.me/{SITE['whatsapp']}" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>Ask us anything</span></a>'''
 
@@ -250,7 +250,7 @@ def page_head(title, desc):
 <title>{e(title)}</title><meta name="description" content="{e(desc)}">
 <meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..900,0..100,0..1&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">'''
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Source+Sans+3:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap">'''
 
 def sec_head(eyebrow, title, lead=None, cls=""):
     l = f'<p class="lead">{lead}</p>' if lead else ""
@@ -342,9 +342,9 @@ def p_home():
 <section class="hero">
   <div class="hero-media ph ph-hero" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata" src="hero.mp4"></video></div>
   <div class="hero-in">
-    <p class="eyebrow eyebrow-light">Ahangama · Sri Lanka's south coast</p>
+    <p class="eyebrow eyebrow-light">Ahangama Â· Sri Lanka's south coast</p>
     <h1>Seven rooms under<br>the <em>papaya trees</em>.</h1>
-    <p class="hero-lead">A small boutique house in a tropical garden, a few minutes from the surf at Kabalana and the cafés of Ahangama.</p>
+    <p class="hero-lead">A small boutique house in a tropical garden, a few minutes from the surf at Kabalana and the cafÃ©s of Ahangama.</p>
     {book_bar()}
   </div>
 </section>
@@ -353,7 +353,7 @@ def p_home():
   <div><span class="big">7</span><span>rooms and suites,<br>each one different</span></div>
   <div><span class="big">5<small>min</small></span><span>by tuk-tuk to the surf<br>at Kabalana Beach</span></div>
   <div><span class="big">30<small>min</small></span><span>to the ramparts<br>of Galle Fort</span></div>
-  <div><span class="big">Nov<small>–Apr</small></span><span>surf season on<br>the south coast</span></div>
+  <div><span class="big">Nov<small>â€“Apr</small></span><span>surf season on<br>the south coast</span></div>
 </section>
 
 <section class="sec">
@@ -385,7 +385,7 @@ def p_home():
       <h2>Between Galle and Mirissa, on the quiet stretch of coast.</h2>
       <p>Ahangama is a long, low-key surf village strung along the coast road. Behind the beach are rice paddies, palm gardens and small lanes. That's where you'll find us.</p>
       {dist_table(6)}
-      <p><a class="link" href="{href('getting-here')}">Getting here from the airport →</a></p>
+      <p><a class="link" href="{href('getting-here')}">Getting here from the airport â†’</a></p>
     </div>
     {coast_map()}
   </div>
@@ -407,7 +407,7 @@ def p_rooms():
   <div class="room-info">
     <span class="chip">{e(r['tag'])}</span>
     <h2>{e(r['name'])}</h2>
-    <p class="specs mono">{e(r['bed'])} · up to {r['guests']} guests</p>
+    <p class="specs mono">{e(r['bed'])} Â· up to {r['guests']} guests</p>
     <p>{e(r['text'])}</p>
     <ul class="ticks">{feats}</ul>
     <div class="room-foot"><span class="mono price-lg">from ${r['price']}<small> / night</small></span><a class="btn btn-papaya" href="{href('booking')}?room={r['slug']}" data-room="{r['slug']}">Book this room</a></div>
@@ -426,7 +426,7 @@ def p_house():
   <div class="split-text">
     <p class="eyebrow">Our idea</p>
     <h2>Small on purpose.</h2>
-    <p>With only seven rooms the house stays quiet, and we get to know everyone who stays. There's no restaurant and no buffet. You wake up, walk to a café that locals love, surf, sleep in the afternoon heat and head out again at sunset.</p>
+    <p>With only seven rooms the house stays quiet, and we get to know everyone who stays. There's no restaurant and no buffet. You wake up, walk to a cafÃ© that locals love, surf, sleep in the afternoon heat and head out again at sunset.</p>
     <p>What we do offer is everything that makes that rhythm easy: somewhere safe for your board, a rinse shower by the gate, a driver when you want to go further, and honest advice on where to go.</p>
   </div>
   {photo("Terrace in the afternoon", "c", "4/5")}
@@ -446,19 +446,19 @@ def p_house():
   {sec_head("Gentle on the place", "How we try to look after Ahangama", None)}
   <div class="svc-grid three">
     <div><h3>No plastic bottles</h3><p>Filtered water refill stations for every room.</p></div>
-    <div><h3>Local first</h3><p>Local builders, craftspeople, drivers and instructors, and cafés run by people from the village.</p></div>
+    <div><h3>Local first</h3><p>Local builders, craftspeople, drivers and instructors, and cafÃ©s run by people from the village.</p></div>
     <div><h3>A living garden</h3><p>Papaya, banana and native plants, kept without pesticides. Expect birds, squirrels and the odd monitor lizard.</p></div>
   </div>
 </section>
 ''' + cta_band()
 
 def p_ahangama():
-    return page_hero("Area guide", "Ahangama, <em>the way locals see it</em>", "A laid-back surf village on Sri Lanka's south coast, about five kilometres long, between Galle and Weligama. Reef breaks, palm-lined beaches, rice paddies behind the coast road and one of the best café scenes on the island.", "d", "Kabalana Beach at sunset") + f'''
+    return page_hero("Area guide", "Ahangama, <em>the way locals see it</em>", "A laid-back surf village on Sri Lanka's south coast, about five kilometres long, between Galle and Weligama. Reef breaks, palm-lined beaches, rice paddies behind the coast road and one of the best cafÃ© scenes on the island.", "d", "Kabalana Beach at sunset") + f'''
 <section class="sec">
   <div class="guide-index">
     <a href="{href('surf')}"><span class="mono">Surf</span><b>Eight breaks within 15 minutes</b></a>
     <a href="{href('things-to-do')}"><span class="mono">Do</span><b>Twelve things we love</b></a>
-    <a href="{href('eat-drink')}"><span class="mono">Eat</span><b>Our café and dinner shortlist</b></a>
+    <a href="{href('eat-drink')}"><span class="mono">Eat</span><b>Our cafÃ© and dinner shortlist</b></a>
     <a href="{href('day-trips')}"><span class="mono">Go</span><b>Eight day trips worth the drive</b></a>
     <a href="{href('getting-here')}"><span class="mono">Arrive</span><b>Airports, transfers, trains</b></a>
   </div>
@@ -469,7 +469,7 @@ def p_ahangama():
     <h2>Four parts of one village</h2>
     <dl class="areas">
       <dt>Kabalana</dt><dd>The wide golden beach at the western end, with The Rock surf break, beach bars and the best sunsets.</dd>
-      <dt>Ahangama town</dt><dd>The centre along the coast road: cafés, shops, the station, and the small beach bar strip.</dd>
+      <dt>Ahangama town</dt><dd>The centre along the coast road: cafÃ©s, shops, the station, and the small beach bar strip.</dd>
       <dt>Sion</dt><dd>The quiet eastern end facing Devil's Rock, with a rooftop bar and a mellow reef break.</dd>
       <dt>Inland</dt><dd>Rice paddies, palm gardens and jungle lanes, two minutes from the coast and a world away from the traffic.</dd>
     </dl>
@@ -492,7 +492,7 @@ def p_ahangama():
 <section class="sec sec-green">
   {sec_head("Good to know", "Practical Ahangama", None, cls="light")}
   <div class="svc-grid light">
-    <div><h3>Money</h3><p>Sri Lankan rupees (LKR). ATMs in town and cards in most cafés, but carry cash for tuk-tuks and small shops.</p></div>
+    <div><h3>Money</h3><p>Sri Lankan rupees (LKR). ATMs in town and cards in most cafÃ©s, but carry cash for tuk-tuks and small shops.</p></div>
     <div><h3>Tuk-tuks</h3><p>Agree the price before you get in, or use the PickMe app for fixed fares. We can call a driver we know.</p></div>
     <div><h3>Sim cards</h3><p>Dialog and Mobitel tourist SIMs are cheap and fast. Buy one at the airport or in town.</p></div>
     <div><h3>Dress</h3><p>Beachwear on the beach. Cover shoulders and knees at temples, and take shoes off before you enter.</p></div>
@@ -538,7 +538,7 @@ def p_do():
   {sec_head("A perfect slow day", "How our guests like to spend a day", None)}
   <ol class="day">
     <li><span class="mono">06:00</span><div><b>Dawn surf or beach walk</b><p>The best waves and the softest light, before the heat.</p></div></li>
-    <li><span class="mono">09:00</span><div><b>Long brunch</b><p>Smoothie bowls, hoppers or eggs at one of the cafés on our list.</p></div></li>
+    <li><span class="mono">09:00</span><div><b>Long brunch</b><p>Smoothie bowls, hoppers or eggs at one of the cafÃ©s on our list.</p></div></li>
     <li><span class="mono">12:00</span><div><b>Garden and siesta</b><p>The midday sun is strong. Back to your terrace, a book and a nap.</p></div></li>
     <li><span class="mono">15:30</span><div><b>Explore</b><p>Turtles at Dalawella, a massage, a boutique crawl or the sauna at Wild.</p></div></li>
     <li><span class="mono">17:45</span><div><b>Sunset at Kabalana</b><p>King coconut in hand, surfers in silhouette.</p></div></li>
@@ -645,12 +645,12 @@ def p_booking():
     <label for="bf-msg">Anything we should know? <span class="muted">(optional)</span><textarea id="bf-msg" name="msg" rows="3" placeholder="Arrival time, airport transfer, surf lessons..."></textarea></label>
     <p class="bf-err" data-err hidden></p>
     <button class="btn btn-papaya btn-wide" type="submit">Check availability</button>
-    <p class="muted small">Secure card payment through PayHere · Calendar synced with Airbnb and Booking.com</p>
+    <p class="muted small">Secure card payment through PayHere Â· Calendar synced with Airbnb and Booking.com</p>
   </form>
   <aside class="book-side">
     <div class="summary" data-summary>
       <h3>Your stay</h3>
-      <dl><dt>Room</dt><dd data-s-room>Any available room</dd><dt>Dates</dt><dd data-s-dates>Choose dates</dd><dt>Nights</dt><dd data-s-nights class="mono">0</dd><dt>Estimate</dt><dd data-s-total class="mono">–</dd></dl>
+      <dl><dt>Room</dt><dd data-s-room>Any available room</dd><dt>Dates</dt><dd data-s-dates>Choose dates</dd><dt>Nights</dt><dd data-s-nights class="mono">0</dd><dt>Estimate</dt><dd data-s-total class="mono">â€“</dd></dl>
       <p class="muted small">Final price and availability are confirmed in the next step.</p>
     </div>
     <div class="book-done" data-done hidden>
@@ -664,17 +664,17 @@ def p_booking():
 </section>'''
 
 PAGES = [
-    ("home", "The Papaya Tree · Boutique stay in Ahangama, Sri Lanka", "Seven-room boutique house in a tropical garden in Ahangama, minutes from the surf at Kabalana. Book direct for the best rate.", p_home),
-    ("rooms", "Rooms & suites · The Papaya Tree, Ahangama", "Seven rooms and suites, each with a private terrace, courtyard or deck, air conditioning and wifi.", p_rooms),
-    ("house", "The House · The Papaya Tree, Ahangama", "A small boutique house in a garden of papaya and palms. Transfers, surf lessons, drivers and massage arranged for you.", p_house),
-    ("ahangama", "Ahangama area guide · The Papaya Tree", "Everything about Ahangama: areas, seasons, distances and practical tips from locals.", p_ahangama),
-    ("surf", "Surf guide Ahangama · The Papaya Tree", "The surf breaks of Ahangama, Midigama and Weligama by level, plus lessons, boards and the surf season.", p_surf),
-    ("things-to-do", "Things to do in Ahangama · The Papaya Tree", "Turtles, stilt fishermen, Devil's Rock, sauna and ice baths, river cruises and more in Ahangama.", p_do),
-    ("eat-drink", "Where to eat in Ahangama · The Papaya Tree", "Our shortlist of cafés, restaurants, local rice and curry and sunset bars in Ahangama.", p_eat),
-    ("day-trips", "Day trips from Ahangama · The Papaya Tree", "Galle Fort, tea estates, whale watching, Udawalawe and Yala safaris from Ahangama.", p_trips),
-    ("getting-here", "Getting here · The Papaya Tree, Ahangama", "How to get to Ahangama from Colombo and Mattala airports, by car, train or bus.", p_getting),
-    ("faq", "FAQ & policies · The Papaya Tree", "Booking, payment, cancellation, check-in and practical questions answered.", p_faq),
-    ("booking", "Book direct · The Papaya Tree, Ahangama", "Book your room at The Papaya Tree directly for the best rate.", p_booking),
+    ("home", "The Papaya Tree Â· Boutique stay in Ahangama, Sri Lanka", "Seven-room boutique house in a tropical garden in Ahangama, minutes from the surf at Kabalana. Book direct for the best rate.", p_home),
+    ("rooms", "Rooms & suites Â· The Papaya Tree, Ahangama", "Seven rooms and suites, each with a private terrace, courtyard or deck, air conditioning and wifi.", p_rooms),
+    ("house", "The House Â· The Papaya Tree, Ahangama", "A small boutique house in a garden of papaya and palms. Transfers, surf lessons, drivers and massage arranged for you.", p_house),
+    ("ahangama", "Ahangama area guide Â· The Papaya Tree", "Everything about Ahangama: areas, seasons, distances and practical tips from locals.", p_ahangama),
+    ("surf", "Surf guide Ahangama Â· The Papaya Tree", "The surf breaks of Ahangama, Midigama and Weligama by level, plus lessons, boards and the surf season.", p_surf),
+    ("things-to-do", "Things to do in Ahangama Â· The Papaya Tree", "Turtles, stilt fishermen, Devil's Rock, sauna and ice baths, river cruises and more in Ahangama.", p_do),
+    ("eat-drink", "Where to eat in Ahangama Â· The Papaya Tree", "Our shortlist of cafÃ©s, restaurants, local rice and curry and sunset bars in Ahangama.", p_eat),
+    ("day-trips", "Day trips from Ahangama Â· The Papaya Tree", "Galle Fort, tea estates, whale watching, Udawalawe and Yala safaris from Ahangama.", p_trips),
+    ("getting-here", "Getting here Â· The Papaya Tree, Ahangama", "How to get to Ahangama from Colombo and Mattala airports, by car, train or bus.", p_getting),
+    ("faq", "FAQ & policies Â· The Papaya Tree", "Booking, payment, cancellation, check-in and practical questions answered.", p_faq),
+    ("booking", "Book direct Â· The Papaya Tree, Ahangama", "Book your room at The Papaya Tree directly for the best rate.", p_booking),
 ]
 
 def schema():
@@ -759,7 +759,7 @@ def build():
     secs = "".join(f'<div class="pv-page" data-pv="{s}"{"" if s=="home" else " hidden"}>{rewrite(b)}</div>' for s, b in sections)
     pv_head = f'''<title>The Papaya Tree</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..900,0..100,0..1&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Source+Sans+3:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap">
 <style>{css}</style>'''
     with open(os.path.join(ROOT, "preview.html"), "w") as f:
         f.write(pv_head + "\n<div class=\"pv-root\">" + secs + rewrite(footer()) + "</div>\n<script>" + cfg + rooms_js + "window.PAPAYA_PREVIEW=true;\n" + js + "</script>")
