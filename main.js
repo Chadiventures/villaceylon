@@ -1,4 +1,6 @@
-﻿(function () {
+window.PAPAYA={"whatsapp": "94771234567", "email": "hello@thepapayatree.lk", "beds24_propid": "", "currency": "USD"};
+window.PAPAYA_ROOMS={"lotus": {"name": "The Lotus Room", "price": 185}, "jade": {"name": "The Jade Suite", "price": 245}, "mist": {"name": "The Mist Loft", "price": 215}, "villa": {"name": "The Ahangama Villa", "price": 385}, "palm": {"name": "The Palm Room", "price": 195}, "reef": {"name": "The Reef Suite", "price": 225}, "pavilion": {"name": "The Coastal Pavilion", "price": 265}};
+(function () {
   var P = window.PAPAYA || {}, ROOMS = window.PAPAYA_ROOMS || {}, PREVIEW = !!window.PAPAYA_PREVIEW;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
@@ -61,7 +63,7 @@
     $("[data-s-room]").textContent = r ? r.name : "Any available room";
     $("[data-s-dates]").textContent = n > 0 ? form.in.value + " to " + form.out.value : "Choose dates";
     $("[data-s-nights]").textContent = n > 0 ? n : 0;
-    $("[data-s-total]").textContent = r && n > 0 ? "$" + (r.price * n).toLocaleString("en-US") : "â€“";
+    $("[data-s-total]").textContent = r && n > 0 ? "$" + (r.price * n).toLocaleString("en-US") : "–";
   }
   if (form) {
     initDates(form.in, form.out);

@@ -1,738 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ceylon Boutique Hotel, Ahangama, Sri Lanka</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --petal:#F0EFED;
-  --blush:#F9F8F3;
-  --rose:#6A665F;
-  --wine:#4C4643;
-  --jade:#A5A78F;
-  --basalt:#1D1D1D;
-  --rattan:#B8B6A4;
-  --gold:#C9A962;
-  --gold-hover:#D4B978;
-  --ink:#000000;
-  --font-serif:'Cormorant Garamond',Georgia,serif;
-  --font-body:'Inter',system-ui,sans-serif;
-  --max:1180px;
-  --pad:clamp(16px,3vw,40px);
-  --section-y:clamp(40px,5vw,64px);
-}
-html{scroll-behavior:smooth;}
-body{font-family:var(--font-body);background:var(--petal);color:var(--wine);line-height:1.65;-webkit-font-smoothing:antialiased;}
-
-/* NAV */
-nav{background:var(--basalt);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(165,167,143,0.2);}
-.nav-inner{max-width:var(--max);margin:0 auto;padding:14px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:20px;}
-.nav-toggle{display:none;background:none;border:none;color:var(--petal);font-size:26px;cursor:pointer;padding:6px;line-height:1;}
-.logo{font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--petal);letter-spacing:0.1em;text-decoration:none;}
-.logo span{color:var(--jade);}
-.nav-links{display:flex;gap:28px;align-items:center;}
-.nav-links a{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--blush);text-decoration:none;opacity:0.85;transition:opacity 0.2s,color 0.2s;}
-.nav-links a:hover{opacity:1;color:var(--petal);}
-.nav-cta{background:linear-gradient(180deg,var(--gold-hover) 0%,var(--gold) 100%);color:var(--basalt);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:12px 24px;border:1px solid rgba(255,255,255,0.15);cursor:pointer;transition:all 0.2s;box-shadow:0 4px 18px rgba(201,169,98,0.35);}
-.nav-cta:hover{background:linear-gradient(180deg,#E0C989 0%,var(--gold-hover) 100%);box-shadow:0 6px 22px rgba(201,169,98,0.45);transform:translateY(-1px);}
-
-/* HERO */
-.hero{background:var(--basalt);min-height:min(82vh,780px);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:96px var(--pad) 88px;}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
-.hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(29,29,29,0.35) 0%,rgba(29,29,29,0.72) 68%),linear-gradient(to bottom,rgba(29,29,29,0.25),rgba(29,29,29,0.65));z-index:0;}
-.hero-inner{position:relative;z-index:1;width:100%;max-width:820px;margin:0 auto;display:flex;justify-content:center;}
-.hero-copy{text-align:center;width:100%;}
-.hero-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:inline-flex;align-items:center;justify-content:center;gap:8px;}
-.hero-eyebrow::before,.hero-eyebrow::after{display:none;}
-.hero-title{font-family:var(--font-serif);font-size:clamp(38px,6vw,72px);font-weight:400;color:var(--blush);line-height:1.06;margin:0 auto 18px;letter-spacing:0.02em;max-width:14ch;}
-.hero-title em{color:var(--jade);font-style:italic;}
-.hero-sub{font-size:15px;color:var(--petal);opacity:0.94;line-height:1.7;margin:0 auto 28px;max-width:46ch;font-weight:300;}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
-.hero .btn-primary{background:linear-gradient(180deg,var(--gold-hover) 0%,var(--gold) 100%);color:var(--basalt);box-shadow:0 8px 28px rgba(201,169,98,0.35);}
-.hero .btn-primary:hover{background:linear-gradient(180deg,#E0C989 0%,var(--gold-hover) 100%);transform:translateY(-1px);}
-.btn-primary{background:var(--jade);color:var(--basalt);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:13px 22px;border:none;cursor:pointer;transition:all 0.2s;}
-.btn-primary:hover{background:var(--blush);}
-.btn-ghost{background:transparent;color:var(--blush);font-family:var(--font-body);font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:12px 22px;border:1px solid rgba(249,248,243,0.45);cursor:pointer;transition:all 0.2s;}
-.btn-ghost:hover{border-color:var(--jade);color:var(--jade);}
-
-/* TRUST STRIP */
-.trust-strip{background:var(--basalt);display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:1px solid rgba(165,167,143,0.25);}
-.trust-item{display:flex;align-items:center;justify-content:center;gap:8px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--petal);padding:14px 12px;border-right:1px solid rgba(165,167,143,0.2);}
-.trust-item:last-child{border-right:none;}
-.trust-item i{font-size:15px;color:var(--jade);}
-
-/* BOOKING BAR */
-.booking-shell{width:100%;position:relative;z-index:2;background:var(--blush);border-top:1px solid rgba(165,167,143,0.35);border-bottom:1px solid rgba(165,167,143,0.35);}
-.booking-bar{padding:18px var(--pad);}
-.booking-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;}
-.booking-head{min-width:200px;}
-.booking-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--jade);margin-bottom:4px;}
-.booking-title{font-family:var(--font-serif);font-size:22px;font-weight:400;color:var(--basalt);line-height:1.15;}
-.booking-fields{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end;}
-.fg{display:flex;flex-direction:column;gap:5px;}
-.fg label{font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--rose);}
-.fg input,.fg select{background:var(--petal);border:1px solid rgba(165,167,143,0.45);color:var(--basalt);font-family:var(--font-body);font-size:13px;padding:11px 12px;outline:none;transition:border 0.2s;width:100%;}
-.fg input:focus,.fg select:focus{border-color:var(--jade);box-shadow:0 0 0 3px rgba(165,167,143,0.25);}
-.fg select option{background:var(--basalt);color:var(--blush);}
-.fg input::placeholder{color:var(--rose);opacity:0.55;}
-.search-btn{background:var(--basalt);color:var(--blush);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:11px 20px;border:none;cursor:pointer;white-space:nowrap;transition:background 0.2s;}
-.search-btn:hover{background:var(--wine);}
-
-/* SECTIONS */
-.section{padding:var(--section-y) var(--pad);max-width:var(--max);margin:0 auto;}
-.section-full{padding:var(--section-y) var(--pad);}
-.section-full > .section{padding:0;max-width:var(--max);}
-.section-head{margin-bottom:28px;max-width:680px;}
-.section-head .sec-sub{margin-bottom:0;}
-.eyebrow{font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--jade);margin-bottom:8px;}
-.sec-title{font-family:var(--font-serif);font-size:clamp(28px,3.5vw,40px);font-weight:400;color:var(--basalt);line-height:1.12;margin-bottom:10px;}
-.sec-sub{font-size:14px;color:var(--rose);opacity:0.92;margin-bottom:0;line-height:1.7;max-width:62ch;}
-
-/* ROOMS */
-#rooms{background:var(--blush);padding-top:var(--section-y);padding-bottom:var(--section-y);}
-#rooms .section{padding-top:0;padding-bottom:0;}
-.rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-.room-card:first-child{grid-column:1/-1;display:grid;grid-template-columns:1.15fr 0.85fr;min-height:300px;}
-.room-card:first-child .room-img{height:100%;min-height:280px;}
-.room-card:first-child .room-body{padding:28px 32px;display:flex;flex-direction:column;justify-content:center;}
-.room-card:first-child .room-name{font-size:28px;}
-.room-card:first-child .room-desc{display:block;-webkit-line-clamp:unset;overflow:visible;}
-.room-card{background:var(--petal);border:1px solid rgba(165,167,143,0.32);overflow:hidden;cursor:pointer;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;}
-.room-card:hover{border-color:var(--jade);transform:translateY(-2px);box-shadow:0 12px 32px rgba(29,29,29,0.08);}
-.room-img{height:200px;display:flex;align-items:center;justify-content:center;position:relative;background-size:cover;background-position:center;}
-.ri1{background-image:url('rum1.jpg');}
-.ri2{background-image:url('rum 2.jpg');}
-.ri3{background-image:url('rum 3.jpg');}
-.ri4{background-image:url('rum 4.jpg');}
-.ri5{background-image:url('rum1.jpg');}
-.ri6{background-image:url('rum 2.jpg');}
-.ri7{background-image:url('rum 3.jpg');}
-.room-badge{position:absolute;bottom:14px;right:16px;background:rgba(29,29,29,0.88);color:var(--blush);font-size:11px;font-weight:500;letter-spacing:0.12em;padding:5px 12px;backdrop-filter:blur(4px);}
-.room-body{padding:18px 18px 20px;}
-.room-name{font-family:var(--font-serif);font-size:22px;font-weight:400;color:var(--wine);margin-bottom:8px;}
-.amenities{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px;}
-.am{font-size:11px;color:var(--wine);background:var(--petal);padding:3px 10px;border:0.5px solid rgba(165,167,143,0.45);letter-spacing:0.04em;}
-.room-desc{font-size:13px;color:var(--rose);opacity:0.9;line-height:1.55;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
-.room-foot{display:flex;align-items:center;justify-content:space-between;}
-.price{font-family:var(--font-serif);font-size:26px;color:var(--wine);}
-.price span{font-size:14px;font-family:var(--font-body);color:var(--rose);}
-.book-btn{background:var(--basalt);color:var(--blush);font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:11px 22px;border:none;cursor:pointer;transition:background 0.25s cubic-bezier(0.4,0,0.2,1);}
-.book-btn:hover{background:var(--wine);}
-
-/* EXPERIENCES */
-.exp-section{position:relative;background:var(--wine) url('beach1.jpg') center/cover no-repeat;overflow:hidden;}
-.exp-section::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(29,29,29,0.72),rgba(76,70,67,0.88));z-index:0;}
-.exp-section .section{position:relative;z-index:1;}
-.exp-section .sec-title{text-shadow:0 2px 18px rgba(0,0,0,0.55);}
-.exp-section .sec-sub{text-shadow:0 1px 12px rgba(0,0,0,0.45);opacity:0.95;}
-.exp-section .eyebrow{text-shadow:0 1px 8px rgba(0,0,0,0.4);}
-.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:0;align-items:stretch;}
-.exp-card{border:1px solid rgba(165,167,143,0.4);padding:22px 20px;height:100%;display:flex;flex-direction:column;gap:0;transition:background 0.2s,border-color 0.2s;cursor:pointer;background:rgba(29,29,29,0.82);}
-.exp-card:hover{background:rgba(29,29,29,0.92);border-color:rgba(249,248,243,0.35);}
-.exp-icon{height:36px;display:flex;align-items:center;font-size:28px;color:var(--jade);margin-bottom:14px;}
-.exp-icon svg{width:28px;height:28px;stroke:currentColor;fill:none;flex-shrink:0;display:block;}
-.exp-name{font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--petal);margin-bottom:10px;text-shadow:0 1px 8px rgba(0,0,0,0.25);min-height:2.6em;line-height:1.2;}
-.exp-text{font-size:14px;color:var(--petal);opacity:0.95;line-height:1.65;margin-bottom:0;flex:1;}
-.exp-foot{margin-top:auto;padding-top:18px;display:flex;flex-direction:column;align-items:flex-start;gap:14px;}
-.open-badge{display:inline-block;background:var(--jade);color:var(--basalt);font-size:11px;font-weight:500;letter-spacing:0.1em;padding:5px 14px;margin-bottom:0;}
-.exp-link{font-size:12px;color:var(--blush);font-weight:500;letter-spacing:0.1em;background:none;border:none;font-family:var(--font-body);cursor:pointer;display:inline-flex;align-items:center;gap:7px;text-decoration:none;transition:opacity 0.2s;}
-.exp-link:hover{opacity:0.7;}
-
-/* REVIEWS */
-.reviews-section{background:var(--petal);}
-.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:0;}
-.review-card{background:var(--blush);border:1px solid rgba(165,167,143,0.32);padding:20px;}
-.stars{color:var(--jade);font-size:14px;letter-spacing:3px;margin-bottom:14px;}
-.review-quote{font-family:var(--font-serif);font-size:18px;font-weight:300;font-style:italic;color:var(--basalt);line-height:1.65;margin-bottom:14px;}
-.reviewer{font-size:11px;color:var(--rose);font-weight:500;letter-spacing:0.08em;text-transform:uppercase;}
-
-/* LOCATION */
-.loc-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:16px;align-items:stretch;margin-top:0;}
-.map-placeholder{background:var(--basalt);min-height:300px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(165,167,143,0.35);}
-.map-pin-icon{font-size:42px;color:var(--jade);}
-.map-name{font-family:var(--font-serif);font-size:22px;color:var(--petal);margin-top:12px;}
-.map-loc{font-size:13px;color:var(--blush);opacity:0.8;margin-top:5px;}
-.loc-list{display:flex;flex-direction:column;}
-.loc-row{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:0.5px solid var(--blush);}
-.loc-row:last-child{border-bottom:none;}
-.loc-icon-wrap{font-size:22px;color:var(--jade);min-width:28px;margin-top:2px;}
-.loc-lbl{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--rose);margin-bottom:4px;}
-.loc-val{font-size:14px;color:var(--wine);line-height:1.6;}
-
-/* CTA BANNER */
-.cta-section{position:relative;padding:56px var(--pad);text-align:left;background:var(--jade) url('couple.jpg') center/cover no-repeat;overflow:hidden;}
-.cta-section::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(165,167,143,0.55),rgba(29,29,29,0.82));z-index:0;}
-.cta-wrap{max-width:var(--max);margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;}
-.cta-section h2{font-family:var(--font-serif);font-size:clamp(28px,4vw,44px);font-weight:400;color:var(--blush);margin-bottom:8px;line-height:1.08;text-shadow:0 2px 16px rgba(0,0,0,0.35);max-width:16ch;}
-.cta-section p{font-size:14px;color:var(--petal);opacity:0.92;margin-bottom:0;text-shadow:0 1px 10px rgba(0,0,0,0.3);max-width:42ch;}
-.cta-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
-.btn-cta-main{background:var(--blush);color:var(--basalt);font-family:var(--font-body);font-size:14px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:17px 42px;border:none;cursor:pointer;transition:all 0.25s cubic-bezier(0.4,0,0.2,1);box-shadow:0 8px 32px rgba(29,29,29,0.25);}
-.btn-cta-main:hover{background:var(--jade);box-shadow:0 12px 36px rgba(29,29,29,0.3);}
-.btn-cta-ghost{background:rgba(29,29,29,0.35);color:var(--blush);font-family:var(--font-body);font-size:14px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;padding:16px 42px;border:1px solid rgba(249,248,243,0.55);cursor:pointer;transition:all 0.25s;backdrop-filter:blur(6px);}
-.btn-cta-ghost:hover{border-color:var(--jade);background:rgba(29,29,29,0.48);}
-
-/* CHATBOT */
-.chatbot-container{padding:var(--section-y) var(--pad);max-width:var(--max);margin:0 auto;}
-.chatbot{border:1px solid rgba(165,167,143,0.4);overflow:hidden;background:var(--blush);width:100%;max-width:100%;}
-.chat-label{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);margin-bottom:12px;}
-.chat-hd{background:var(--basalt);display:flex;align-items:center;gap:14px;padding:16px 20px;}
-.chat-av{width:40px;height:40px;border-radius:50%;background:var(--jade);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--petal);flex-shrink:0;}
-.chat-hd-name{font-size:15px;font-weight:500;color:var(--petal);}
-.chat-hd-status{font-size:11px;color:var(--jade);display:flex;align-items:center;gap:6px;margin-top:2px;}
-.dot{width:7px;height:7px;background:var(--jade);border-radius:50%;}
-.chat-body{padding:18px 20px;display:flex;flex-direction:column;gap:14px;min-height:180px;max-height:300px;overflow-y:auto;}
-.bubble{max-width:82%;padding:12px 16px;font-size:14px;line-height:1.55;}
-.bubble-bot{background:var(--blush);color:var(--wine);align-self:flex-start;border-radius:0 12px 12px 12px;}
-.bubble-user{background:var(--basalt);color:var(--blush);align-self:flex-end;border-radius:12px 12px 0 12px;}
-.chat-inp-row{display:flex;border-top:1px solid var(--blush);}
-.chat-inp-row input{flex:1;background:var(--petal);border:none;padding:14px 18px;font-family:var(--font-body);font-size:14px;color:var(--wine);outline:none;}
-.chat-inp-row input::placeholder{color:var(--rose);opacity:0.5;}
-.chat-send-btn{background:var(--jade);border:none;padding:0 22px;color:var(--basalt);cursor:pointer;font-size:18px;transition:background 0.25s;}
-.chat-send-btn:hover{background:var(--wine);color:var(--blush);}
-
-/* FOOTER */
-footer{background:var(--basalt);padding:40px var(--pad) 24px;}
-.ft{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:32px;padding-bottom:28px;border-bottom:0.5px solid rgba(165,167,143,0.28);}
-.ft-bottom{max-width:var(--max);margin:0 auto;}
-.ft-logo{font-family:var(--font-serif);font-size:26px;font-weight:300;color:var(--petal);margin-bottom:12px;letter-spacing:0.1em;display:block;text-decoration:none;}
-.ft-logo span{color:var(--jade);}
-.ft-tag{font-size:13px;color:var(--petal);opacity:0.72;line-height:1.9;}
-.ft-h{font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--jade);margin-bottom:16px;}
-.ft-links{display:flex;flex-direction:column;gap:10px;}
-.ft-links a{font-size:14px;color:var(--blush);text-decoration:none;opacity:0.65;transition:opacity 0.2s;}
-.ft-links a:hover{opacity:1;}
-.ft-bottom{display:flex;justify-content:space-between;padding-top:22px;font-size:12px;color:var(--blush);opacity:0.4;}
-
-/* RESPONSIVE */
-@media(max-width:1024px){
-  .rooms-grid{grid-template-columns:repeat(2,1fr);}
-  .room-card:first-child{grid-template-columns:1fr;}
-  .room-card:first-child .room-img{min-height:240px;height:240px;}
-  .booking-inner{grid-template-columns:1fr;gap:14px;}
-}
-@media(max-width:768px){
-  body{overflow-x:hidden;}
-  .nav-inner{padding:14px 16px;position:relative;flex-wrap:wrap;}
-  .nav-toggle{display:flex;align-items:center;justify-content:center;}
-  .nav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;background:var(--basalt);flex-direction:column;align-items:stretch;padding:12px 16px 16px;gap:4px;border-top:1px solid rgba(165,167,143,0.25);box-shadow:0 12px 24px rgba(0,0,0,0.25);}
-  .nav-links.open{display:flex;}
-  .nav-links a{display:block;text-align:center;padding:10px 0;font-size:12px;}
-  .nav-cta{width:100%;margin-top:6px;}
-  .logo{font-size:16px;}
-  .hero{min-height:min(74vh,640px);padding:88px 16px 72px;}
-  .hero-title{max-width:none;font-size:34px;}
-  .hero-btns{width:100%;max-width:360px;margin:0 auto;}
-  .hero .btn-primary,.hero .btn-ghost{flex:1;min-width:140px;text-align:center;}
-  .trust-strip{grid-template-columns:repeat(2,1fr);}
-  .trust-item{border-right:none;border-bottom:1px solid rgba(165,167,143,0.2);font-size:9px;padding:12px 8px;}
-  .booking-bar{padding:16px;}
-  .booking-fields{grid-template-columns:1fr 1fr;gap:8px;}
-  .search-btn{grid-column:1/-1;width:100%;}
-  .section,.section-full{padding:40px 16px;}
-  #rooms{padding-top:40px;padding-bottom:40px;}
-  .rooms-grid{grid-template-columns:1fr;gap:12px;}
-  .room-card:first-child{display:block;min-height:0;}
-  .room-card:first-child .room-img{height:190px;min-height:0;}
-  .room-card:first-child .room-body{padding:18px 18px 20px;display:block;}
-  .room-card:first-child .room-name{font-size:22px;}
-  .room-img{height:190px;}
-  .room-foot{flex-direction:column;align-items:stretch;gap:10px;}
-  .book-btn{width:100%;text-align:center;}
-  .exp-grid,.reviews-grid{grid-template-columns:1fr;}
-  .loc-grid{grid-template-columns:1fr;}
-  .map-placeholder{min-height:220px;}
-  .cta-wrap{grid-template-columns:1fr;gap:16px;}
-  .cta-btns{justify-content:flex-start;}
-  .btn-cta-main,.btn-cta-ghost{width:100%;justify-content:center;}
-  .ft{grid-template-columns:1fr;gap:24px;}
-  .ft-bottom{flex-direction:column;gap:8px;text-align:center;}
-  footer{padding:32px 16px 20px;}
-}
-@media(max-width:480px){
-  .trust-strip{grid-template-columns:1fr;}
-  .booking-fields{grid-template-columns:1fr;}
-}
-</style>
-</head>
-<body>
-
-<!-- NAVIGATION -->
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="logo">CEYLON <span>BOUTIQUE</span></a>
-    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks" onclick="toggleNav()">
-      <i class="ti ti-menu-2"></i>
-    </button>
-    <div class="nav-links" id="navLinks">
-      <a href="#rooms">Rooms</a>
-      <a href="#experiences">Beach & Surf</a>
-      <a href="#location">Location</a>
-      <a href="#contact">Contact</a>
-      <button class="nav-cta" onclick="document.getElementById('checkin').focus()">
-        <i class="ti ti-calendar" style="font-size:13px;vertical-align:-2px;margin-right:6px;"></i>Book now
-      </button>
-    </div>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Papaya Tree · Boutique stay in Ahangama, Sri Lanka</title><meta name="description" content="Seven-room boutique house in a tropical garden in Ahangama, minutes from the surf at Kabalana. Book direct for the best rate.">
+<meta property="og:title" content="The Papaya Tree · Boutique stay in Ahangama, Sri Lanka"><meta property="og:description" content="Seven-room boutique house in a tropical garden in Ahangama, minutes from the surf at Kabalana. Book direct for the best rate."><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..900,0..100,0..1&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Hotel", "name": "The Papaya Tree", "description": "Seven-room boutique house in a tropical garden in Ahangama, Sri Lanka.", "address": {"@type": "PostalAddress", "addressLocality": "Ahangama", "addressRegion": "Southern Province", "addressCountry": "LK"}, "email": "hello@thepapayatree.lk", "telephone": "+94 77 123 4567", "numberOfRooms": 7, "checkinTime": "2 pm", "checkoutTime": "11 am", "amenityFeature": [{"@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Free wifi", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Surfboard storage", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Airport transfer", "value": true}]}</script></head>
+<body data-page="home">
+<header class="site-head" data-head>
+  <div class="head-in">
+    <a class="logo" href="index.html" aria-label="The Papaya Tree, home"><svg class="mark" viewBox="0 0 40 48" aria-hidden="true"><path d="M20 3c9 0 16 10 16 22 0 11-7 20-16 20S4 36 4 25C4 13 11 3 20 3z" fill="var(--papaya)"/><path d="M20 12c5 0 9 6 9 13s-4 12-9 12-9-5-9-12 4-13 9-13z" fill="var(--papaya-flesh)"/><g fill="var(--seed)"><circle cx="17" cy="20" r="1.9"/><circle cx="23" cy="20" r="1.9"/><circle cx="20" cy="24.5" r="1.9"/><circle cx="16.5" cy="28.5" r="1.9"/><circle cx="23.5" cy="28.5" r="1.9"/><circle cx="20" cy="32" r="1.9"/></g><path d="M20 3c1-2 4-3 7-2-1 3-4 4-7 2z" fill="var(--leaf)"/></svg><span class="wm"><span class="wm-the">the</span> papaya tree</span></a>
+    <nav class="nav" aria-label="Main"><a href="rooms.html">Rooms</a><a href="house.html">The House</a><div class="nav-drop"><a href="ahangama.html">Ahangama</a><div class="drop"><a href="ahangama.html">Area guide</a><a href="surf.html">Surf</a><a href="things-to-do.html">Things to do</a><a href="eat-drink.html">Eat &amp; drink</a><a href="day-trips.html">Day trips</a></div></div><a href="getting-here.html">Getting here</a><a href="faq.html">FAQ</a></nav>
+    <a class="btn btn-papaya head-cta" href="booking.html">Book now</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="mnav" data-burger><span></span><span></span><span class="sr">Menu</span></button>
   </div>
-</nav>
-
-<!-- HERO -->
+  <nav class="mnav" id="mnav" hidden aria-label="Mobile"><a href="rooms.html">Rooms</a><a href="house.html">The House</a><a href="ahangama.html">Ahangama</a><a class="sub" href="surf.html">Surf</a><a class="sub" href="things-to-do.html">Things to do</a><a class="sub" href="eat-drink.html">Eat &amp; drink</a><a class="sub" href="day-trips.html">Day trips</a><a href="getting-here.html">Getting here</a><a href="faq.html">FAQ</a><a class="btn btn-papaya" href="booking.html">Book now</a></nav>
+</header>
+<main>
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline>
-    <source src="hero.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <p class="hero-eyebrow">
-        <i class="ti ti-map-pin" style="font-size:13px;vertical-align:-2px;margin-right:4px;"></i>
-        Ahangama, Sri Lanka
-      </p>
-      <h1 class="hero-title">A sanctuary<br>of <em>quiet luxury</em></h1>
-      <p class="hero-sub">Boutique villa with seven rooms, steps from Ahangama’s surf beaches and village cafés.</p>
-      <div class="hero-btns">
-        <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Reserve your room</button>
-        <button class="btn-ghost" onclick="document.getElementById('rooms').scrollIntoView({behavior:'smooth'})">View rooms</button>
-      </div>
-    </div>
+  <div class="hero-media ph ph-hero" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata" src="hero.mp4"></video></div>
+  <div class="hero-in">
+    <p class="eyebrow eyebrow-light">Ahangama · Sri Lanka's south coast</p>
+    <h1>Seven rooms under<br>the <em>papaya trees</em>.</h1>
+    <p class="hero-lead">A small boutique house in a tropical garden, a few minutes from the surf at Kabalana and the cafés of Ahangama.</p>
+    <form class="bookbar" data-bookbar action="booking.html" method="get">
+  <label><span>Check-in</span><input type="date" name="in" id="bb-in" required></label>
+  <label><span>Check-out</span><input type="date" name="out" id="bb-out" required></label>
+  <label><span>Guests</span><select name="guests" id="bb-guests"><option>1</option><option selected>2</option><option>3</option></select></label>
+  <button class="btn btn-papaya" type="submit">See availability</button>
+</form>
   </div>
 </section>
 
-<!-- BOOKING BAR -->
-<div class="booking-shell">
-  <div class="booking-bar" id="booking">
-    <div class="booking-inner">
-      <div class="booking-head">
-        <p class="booking-eyebrow">Check availability</p>
-        <p class="booking-title">Book your stay</p>
-      </div>
-      <div class="booking-fields">
-        <div class="fg">
-          <label for="checkin">Check-in</label>
-          <input type="date" id="checkin">
-        </div>
-        <div class="fg">
-          <label for="checkout">Check-out</label>
-          <input type="date" id="checkout">
-        </div>
-        <div class="fg">
-          <label for="guests">Guests</label>
-          <select id="guests">
-            <option>1 guest</option>
-            <option selected>2 guests</option>
-            <option>3 guests</option>
-            <option>4 guests</option>
-            <option>5 guests</option>
-            <option>6 guests</option>
-          </select>
-        </div>
-        <button class="search-btn" onclick="handleSearch()">
-          <i class="ti ti-search" style="font-size:14px;vertical-align:-2px;margin-right:6px;"></i>Search
-        </button>
-      </div>
-    </div>
+<section class="facts">
+  <div><span class="big">7</span><span>rooms and suites,<br>each one different</span></div>
+  <div><span class="big">5<small>min</small></span><span>by tuk-tuk to the surf<br>at Kabalana Beach</span></div>
+  <div><span class="big">30<small>min</small></span><span>to the ramparts<br>of Galle Fort</span></div>
+  <div><span class="big">Nov<small>–Apr</small></span><span>surf season on<br>the south coast</span></div>
+</section>
+
+<section class="sec">
+  <div class="sec-head "><p class="eyebrow">Stay</p><h2>Rooms with a garden of their own</h2><p class="lead">Linen, teak and raw stone. Every room has its own terrace, courtyard or deck, air conditioning and fast wifi.</p></div>
+  <div class="room-grid"><article class="room-card">
+  <a href="rooms.html#mist" class="room-img-link"><div class="ph ph-c " style="aspect-ratio:4/5;--img:url('img/rooms/mist.jpg');" role="img" aria-label="The Mist Loft"><span class="ph-tag">Photo · The Mist Loft</span></div></a>
+  <div class="room-meta"><span class="chip">Most requested</span><span class="mono price">from $215<small> / night</small></span></div>
+  <h3><a href="rooms.html#mist">The Mist Loft</a></h3>
+  <ul class="feats"><li>Rooftop terrace</li><li>Herb garden</li><li>Air conditioning</li></ul>
+</article><article class="room-card">
+  <a href="rooms.html#jade" class="room-img-link"><div class="ph ph-b " style="aspect-ratio:4/5;--img:url('img/rooms/jade.jpg');" role="img" aria-label="The Jade Suite"><span class="ph-tag">Photo · The Jade Suite</span></div></a>
+  <div class="room-meta"><span class="chip">Courtyard bath</span><span class="mono price">from $245<small> / night</small></span></div>
+  <h3><a href="rooms.html#jade">The Jade Suite</a></h3>
+  <ul class="feats"><li>Freestanding stone tub</li><li>Private courtyard</li><li>Air conditioning</li></ul>
+</article><article class="room-card">
+  <a href="rooms.html#villa" class="room-img-link"><div class="ph ph-d " style="aspect-ratio:4/5;--img:url('img/rooms/villa.jpg');" role="img" aria-label="The Ahangama Villa"><span class="ph-tag">Photo · The Ahangama Villa</span></div></a>
+  <div class="room-meta"><span class="chip">Signature villa</span><span class="mono price">from $385<small> / night</small></span></div>
+  <h3><a href="rooms.html#villa">The Ahangama Villa</a></h3>
+  <ul class="feats"><li>Separate living lounge</li><li>Private terrace</li><li>Air conditioning</li></ul>
+</article></div>
+  <p class="center"><a class="btn btn-line" href="rooms.html">See all seven rooms</a></p>
+</section>
+
+<section class="sec split">
+  <div class="split-text">
+    <p class="eyebrow">The House</p>
+    <h2>No restaurant, no reception desk, no rush.</h2>
+    <p>The Papaya Tree is a house, not a resort. We don't cook on site because Ahangama already has some of the best food on the island within a short walk. Instead you get a host who knows the town, a garden to come home to and a shortlist of where to go.</p>
+    <ul class="ticks"><li>Board storage and outdoor rinse showers</li><li>Airport transfers and day-trip drivers on request</li><li>Local surf instructors, yoga and massage arranged for you</li><li>Direct booking with secure card payment</li></ul>
+    <a class="btn btn-line" href="house.html">About the house</a>
   </div>
-</div>
+  <div class="ph ph-a " style="aspect-ratio:4/5;--img:url('img/garden.jpg');" role="img" aria-label="The garden and papaya trees"><span class="ph-tag">Photo · The garden and papaya trees</span></div>
+</section>
 
-<!-- TRUST STRIP -->
-<div class="trust-strip">
-  <div class="trust-item"><i class="ti ti-award"></i>Boutique villa · Ahangama 2026</div>
-  <div class="trust-item"><i class="ti ti-star"></i>4.9 / 5 guest rating</div>
-  <div class="trust-item"><i class="ti ti-shield-check"></i>Flexible cancellation</div>
-  <div class="trust-item"><i class="ti ti-leaf"></i>Eco-conscious stay</div>
-</div>
+<section class="sec sec-green">
+  <div class="sec-head light"><p class="eyebrow">The Ahangama guide</p><h2>Everything we'd tell a friend</h2><p class="lead">We live here. This is the guide we wish we'd had: where to surf, what to eat, what's worth the drive, and when to come.</p></div>
+  <div class="guide-grid"><a class="guide-card" href="surf.html"><div class="ph ph-d " style="aspect-ratio:3/2;" role="img" aria-label="Surf"><span class="ph-tag">Photo · Surf</span></div><div><h3>Surf</h3><p>Eight breaks within fifteen minutes, from first-lesson beach waves to The Rock.</p><span class="arrow">Read the guide</span></div></a><a class="guide-card" href="things-to-do.html"><div class="ph ph-b " style="aspect-ratio:3/2;" role="img" aria-label="Things to do"><span class="ph-tag">Photo · Things to do</span></div><div><h3>Things to do</h3><p>Turtles, stilt fishermen, sauna and ice baths, river cruises at dusk.</p><span class="arrow">Read the guide</span></div></a><a class="guide-card" href="eat-drink.html"><div class="ph ph-a " style="aspect-ratio:3/2;" role="img" aria-label="Eat &amp; drink"><span class="ph-tag">Photo · Eat &amp; drink</span></div><div><h3>Eat & drink</h3><p>Our shortlist of brunch spots, rice and curry, and sunset bars.</p><span class="arrow">Read the guide</span></div></a><a class="guide-card" href="day-trips.html"><div class="ph ph-c " style="aspect-ratio:3/2;" role="img" aria-label="Day trips"><span class="ph-tag">Photo · Day trips</span></div><div><h3>Day trips</h3><p>Galle Fort, tea estates, whales off Mirissa and elephant safaris.</p><span class="arrow">Read the guide</span></div></a></div>
+</section>
 
-<!-- ROOMS -->
-<section id="rooms">
-  <div class="section">
-    <div class="section-head">
-      <p class="eyebrow">Accommodation</p>
-      <h2 class="sec-title">Seven rooms, each entirely unique</h2>
-      <p class="sec-sub">Steps from Ahangama’s surf and palm beaches. Handwoven linen, teak accents and garden terraces, a calm base on Sri Lanka’s south coast.</p>
+<section class="sec">
+  <div class="split split-map">
+    <div class="split-text">
+      <p class="eyebrow">Where we are</p>
+      <h2>Between Galle and Mirissa, on the quiet stretch of coast.</h2>
+      <p>Ahangama is a long, low-key surf village strung along the coast road. Behind the beach are rice paddies, palm gardens and small lanes. That's where you'll find us.</p>
+      <div class="tbl-wrap"><table class="dist"><thead><tr><th scope="col">From The Papaya Tree to</th><th scope="col">Time</th><th scope="col">By</th></tr></thead><tbody><tr><th scope="row">Kabalana Beach &amp; The Rock</th><td class="mono">5 min</td><td class="muted">tuk-tuk</td></tr><tr><th scope="row">Midigama surf breaks</th><td class="mono">10 min</td><td class="muted">tuk-tuk</td></tr><tr><th scope="row">Koggala stilt fishermen</th><td class="mono">10 min</td><td class="muted">tuk-tuk</td></tr><tr><th scope="row">Weligama Bay</th><td class="mono">15 min</td><td class="muted">tuk-tuk</td></tr><tr><th scope="row">Handunugoda tea estate</th><td class="mono">15 min</td><td class="muted">tuk-tuk</td></tr><tr><th scope="row">Dalawella (turtles)</th><td class="mono">15 min</td><td class="muted">tuk-tuk</td></tr></tbody></table></div>
+      <p><a class="link" href="getting-here.html">Getting here from the airport →</a></p>
     </div>
-    <div class="rooms-grid">
-      <div class="room-card">
-        <div class="room-img ri1">
-          <span class="room-badge">Garden View</span>
-        </div>
-        <div class="room-body">
-          <h3 class="room-name">The Lotus Room</h3>
-          <div class="amenities">
-            <span class="am">AC</span><span class="am">King bed</span><span class="am">Garden terrace</span><span class="am">Wifi</span>
-          </div>
-          <p class="room-desc">Warm sand-toned walls and hand-carved lotus motifs. Open-air bathroom in raw stone, designed for slow Ahangama mornings.</p>
-          <div class="room-foot">
-            <div class="price">$185 <span>/ night</span></div>
-            <button class="book-btn" onclick="bookRoom('The Lotus Room')">Book room</button>
-          </div>
-        </div>
-      </div>
-      <div class="room-card">
-        <div class="room-img ri2">
-          <span class="room-badge">Courtyard bath</span>
-        </div>
-        <div class="room-body">
-          <h3 class="room-name">The Jade Suite</h3>
-          <div class="amenities">
-            <span class="am">AC</span><span class="am">King bed</span><span class="am">Courtyard</span><span class="am">Freestanding tub</span>
-          </div>
-          <p class="room-desc">A freestanding basalt bathtub surrounded by fern and jasmine, with a shaded courtyard for slow Ahangama afternoons.</p>
-          <div class="room-foot">
-            <div class="price">$245 <span>/ night</span></div>
-            <button class="book-btn" onclick="bookRoom('The Jade Suite')">Book room</button>
-          </div>
-        </div>
-      </div>
-      <div class="room-card">
-        <div class="room-img ri3">
-          <span class="room-badge">Most popular</span>
-        </div>
-        <div class="room-body">
-          <h3 class="room-name">The Mist Loft</h3>
-          <div class="amenities">
-            <span class="am">AC</span><span class="am">Queen bed</span><span class="am">Rooftop terrace</span><span class="am">Herb garden</span>
-          </div>
-          <p class="room-desc">Upper-floor room with a private terrace overlooking the garden and the Indian Ocean haze beyond the palm line.</p>
-          <div class="room-foot">
-            <div class="price">$215 <span>/ night</span></div>
-            <button class="book-btn" onclick="bookRoom('The Mist Loft')">Book room</button>
-          </div>
-        </div>
-      </div>
-      <div class="room-card">
-        <div class="room-img ri4">
-          <span class="room-badge">Signature villa</span>
-        </div>
-        <div class="room-body">
-          <h3 class="room-name">The Ahangama Villa</h3>
-          <div class="amenities">
-            <span class="am">AC</span><span class="am">King bed</span><span class="am">Private terrace</span><span class="am">Living lounge</span>
-          </div>
-          <p class="room-desc">Our flagship. A separate living lounge, private terrace and space to spread out, minutes from Coconut Point surf.</p>
-          <div class="room-foot">
-            <div class="price">$385 <span>/ night</span></div>
-            <button class="book-btn" onclick="bookRoom('The Ahangama Villa')">Book room</button>
-          </div>
-        </div>
-      </div>
-      <div class="room-card">
-        <div class="room-img ri5">
-          <span class="room-badge">Ocean breeze</span>
-        </div>
-        <div class="room-body">
-          <h3 class="room-name">The Palm Room</h3>
-          <div class="amenities">
-            <span class="am">AC</span><span class="am">King bed</span><span class="am">Garden view</span><span class="am">Wifi</span>
-          </div>
-          <p class="room-desc">Ground-floor calm under coconut palms. Soft light, rattan details and the scent of frangipani from the courtyard.</p>
-          <div class="room-foot">
-            <div class="price">$195 <span>/ night</span></div>
-            <button class="book-btn" onclick="bookRoom('The Palm Room')">Book room</button>
-          </div>
-        </div>
-      </div>
-      <div class="room-card">
-        <div class="room-img ri6">
-          <span class="room-badge">Surf nearby</span>
-        </div>
-        <div class="room-body">
-          <h3 class="room-name">The Reef Suite</h3>
-          <div class="amenities">
-            <span class="am">AC</span><span class="am">Queen bed</span><span class="am">Terrace</span><span class="am">Board storage</span>
-          </div>
-          <p class="room-desc">A short stroll to Ahangama Beach. Store boards by the gate and rinse off in the outdoor shower after dawn sessions.</p>
-          <div class="room-foot">
-            <div class="price">$225 <span>/ night</span></div>
-            <button class="book-btn" onclick="bookRoom('The Reef Suite')">Book room</button>
-          </div>
-        </div>
-      </div>
-      <div class="room-card">
-        <div class="room-img ri7">
-          <span class="room-badge">Long-stay favourite</span>
-        </div>
-        <div class="room-body">
-          <h3 class="room-name">The Coastal Pavilion</h3>
-          <div class="amenities">
-            <span class="am">AC</span><span class="am">King bed</span><span class="am">Lounging deck</span><span class="am">Wifi</span>
-          </div>
-          <p class="room-desc">Open-plan pavilion with a wide lounging deck. Ideal for longer stays and slow south-coast days.</p>
-          <div class="room-foot">
-            <div class="price">$265 <span>/ night</span></div>
-            <button class="book-btn" onclick="bookRoom('The Coastal Pavilion')">Book room</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <figure class="coastmap"><svg viewBox="0 0 560 280" role="img" aria-label="Schematic map of the south coast from Galle to Mirissa, with The Papaya Tree in Ahangama">
+  <path class="m-land" d="M0 0H560V206C520 196 500 204 470 196C440 186 410 200 380 200C340 200 320 194 290 196C250 198 230 184 200 180C160 174 140 162 110 152C80 140 60 124 30 112L0 104Z"/>
+  <path class="m-coast" d="M0 104L30 112C60 124 80 140 110 152C140 162 160 174 200 180C230 184 250 198 290 196C320 194 340 200 380 200C410 200 440 186 470 196C500 204 520 196 560 206"/>
+  <path class="m-road" d="M20 96C60 112 90 132 120 142C150 152 175 164 205 168C240 172 260 182 295 182C335 182 360 186 400 184C430 182 460 176 520 186"/>
+  <text x="20" y="40" class="m-lbl">Southern Province</text>
+  <text x="280" y="258" class="m-lbl m-sea" text-anchor="middle">Indian Ocean</text>
+  <g class="m-pt m-town"><circle cx="60" cy="118" r="4"/><text x="60" y="104" text-anchor="middle">Galle Fort</text></g><g class="m-pt m-town"><circle cx="118" cy="150" r="4"/><text x="118" y="172" text-anchor="middle">Unawatuna</text></g><g class="m-pt m-spot"><circle cx="160" cy="164" r="4"/><text x="160" y="150" text-anchor="middle">Dalawella</text></g><g class="m-pt m-town"><circle cx="215" cy="178" r="4"/><text x="215" y="164" text-anchor="middle">Koggala</text></g><g class="m-pt m-spot"><circle cx="262" cy="188" r="4"/><text x="262" y="210" text-anchor="middle">Kabalana</text></g><g class="m-home"><circle cx="300" cy="192" r="9"/><circle cx="300" cy="192" r="3.5" class="m-home-dot"/><text x="300" y="170" text-anchor="middle">The Papaya Tree</text></g><g class="m-pt m-spot"><circle cx="345" cy="196" r="4"/><text x="345" y="218" text-anchor="middle">Sion</text></g><g class="m-pt m-spot"><circle cx="380" cy="196" r="4"/><text x="380" y="182" text-anchor="middle">Midigama</text></g><g class="m-pt m-town"><circle cx="430" cy="188" r="4"/><text x="430" y="210" text-anchor="middle">Weligama</text></g><g class="m-pt m-town"><circle cx="492" cy="196" r="4"/><text x="492" y="182" text-anchor="middle">Mirissa</text></g>
+</svg><figcaption>Schematic, not to scale. Galle Fort is about 30 minutes west, Mirissa about 30 minutes east.</figcaption></figure>
   </div>
 </section>
 
-<!-- EXPERIENCES -->
-<section id="experiences" class="exp-section section-full">
-  <div class="section">
-    <div class="section-head exp-head">
-      <p class="eyebrow" style="color:var(--jade);">Experiences</p>
-      <h2 class="sec-title" style="color:var(--blush);">Beach, surf &amp; slow coastal living</h2>
-      <p class="sec-sub" style="color:var(--petal);opacity:0.92;">Seven boutique rooms minutes from the sand. No meals on site, Ahangama’s cafés and beach spots are a short walk away.</p>
-    </div>
-    <div class="exp-grid">
-      <div class="exp-card" onclick="document.getElementById('rooms').scrollIntoView({behavior:'smooth'})">
-        <div class="exp-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17.55 16.75a7.5 7.5 0 0 1-10.61 0"/>
-            <path d="M18 3.8a6 6 0 0 0-8.2 2.2l10.4 6a6 6 0 0 0-2.2-8.2z"/>
-            <path d="M16.73 10c1.66-2.87 2.23-5.64 1.27-6.2-.96-.55-3.08 1.16-4.73 4.03"/>
-            <path d="M4 20h16"/>
-          </svg>
-        </div>
-        <h3 class="exp-name">Beach minutes away</h3>
-        <p class="exp-text">Palm-lined sand and Indian Ocean sunsets within a short walk. Rinse gear at the villa, stash boards by the gate, and be in the water for dawn without a long commute.</p>
-        <div class="exp-foot">
-          <span class="open-badge">Walk to the coast</span>
-          <a href="#rooms" class="exp-link" onclick="event.stopPropagation()">Choose your room <i class="ti ti-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="exp-card">
-        <div class="exp-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M13 2.5c2.5 3.2 4 6.8 4 10.5a7 7 0 0 1-14 0c0-3.7 1.5-7.3 4-10.5"/>
-            <path d="M8.5 19.5c1.3-.7 2.8-1 4.5-1s3.2.3 4.5 1"/>
-            <path d="M3.5 13.5c2.1 1.1 4.6 1.7 7 1.7s4.9-.6 7-1.7"/>
-          </svg>
-        </div>
-        <h3 class="exp-name">Surf &amp; South Coast</h3>
-        <p class="exp-text">Ahangama sits on one of Sri Lanka’s best surf stretches, Coconut Point, Midigama and Weligama breaks within minutes. Board storage and local guides on request.</p>
-        <div class="exp-foot">
-          <span class="open-badge">Guest favourite</span>
-          <a href="mailto:hello@ceylonboutique.lk?subject=Surf Enquiry" class="exp-link">Ask about surf <i class="ti ti-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="exp-card">
-        <div class="exp-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 3v7a3 3 0 0 0 6 0V3"/>
-            <path d="M8 3v18"/>
-            <path d="M16 3v4"/>
-            <path d="M19 3v4a3.5 3.5 0 0 1-3.5 3.5H14"/>
-            <path d="M16 10.5V21"/>
-          </svg>
-        </div>
-        <h3 class="exp-name">Village tables &amp; day trips</h3>
-        <p class="exp-text">No restaurant in-house, on purpose. We send you to the roti spots, beach cafés and sunset bars we actually use. Ask us about Galle Fort, whale season and tuk-tuk routes when you book.</p>
-        <div class="exp-foot">
-          <span class="open-badge">Local shortlist</span>
-          <a href="mailto:hello@ceylonboutique.lk?subject=Stay%20planning%20%26%20local%20tips" class="exp-link">Plan your stay <i class="ti ti-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="sec sec-sand">
+  <div class="sec-head "><p class="eyebrow">When to come</p><h2>The south coast, month by month</h2><p class="lead">Surf season and dry weather run from November to April. May to October brings the southwest monsoon: greener, quieter and cheaper, with showers most days.</p></div>
+  <div class="season-wrap"><table class="season"><thead><tr><th></th><th scope='col'>Jan</th><th scope='col'>Feb</th><th scope='col'>Mar</th><th scope='col'>Apr</th><th scope='col'>May</th><th scope='col'>Jun</th><th scope='col'>Jul</th><th scope='col'>Aug</th><th scope='col'>Sep</th><th scope='col'>Oct</th><th scope='col'>Nov</th><th scope='col'>Dec</th></tr></thead><tbody><tr><th scope='row'>Surf on the south coast</th><td><span class="sn sn-3" title="Best"></span></td><td><span class="sn sn-3" title="Best"></span></td><td><span class="sn sn-3" title="Best"></span></td><td><span class="sn sn-2" title="Good"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-2" title="Good"></span></td><td><span class="sn sn-3" title="Best"></span></td><td><span class="sn sn-3" title="Best"></span></td></tr><tr><th scope='row'>Beach & sunshine</th><td><span class="sn sn-3" title="Best"></span></td><td><span class="sn sn-3" title="Best"></span></td><td><span class="sn sn-3" title="Best"></span></td><td><span class="sn sn-2" title="Good"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-2" title="Good"></span></td><td><span class="sn sn-3" title="Best"></span></td></tr><tr><th scope='row'>Whales off Mirissa</th><td><span class="sn sn-3" title="Best"></span></td><td><span class="sn sn-3" title="Best"></span></td><td><span class="sn sn-3" title="Best"></span></td><td><span class="sn sn-3" title="Best"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-1" title="Quiet or rainy"></span></td><td><span class="sn sn-2" title="Good"></span></td><td><span class="sn sn-3" title="Best"></span></td></tr></tbody></table>
+<div class="season-key"><span><i class="sn sn-3"></i>Best</span><span><i class="sn sn-2"></i>Good</span><span><i class="sn sn-1"></i>Quiet, more rain</span></div></div>
 </section>
-
-<!-- REVIEWS -->
-<section class="reviews-section section-full">
-  <div class="section">
-    <div class="section-head">
-      <p class="eyebrow">Guest voices</p>
-      <h2 class="sec-title">What our guests say</h2>
-      <p class="sec-sub">Stories from travellers who found their rhythm between surf, village cafés and the Ahangama coast.</p>
+<section class="cta-band"><div class="cta-in"><h2>Only seven rooms. Dates go fast in surf season.</h2><p>November to April fills first. Book direct for the best rate and free cancellation up to 14 days before arrival.</p><div class="cta-row"><a class="btn btn-papaya" href="booking.html">Check availability</a><a class="btn btn-ghost-light" href="https://wa.me/94771234567" target="_blank" rel="noopener">Message us on WhatsApp</a></div></div></section>
+</main>
+<footer class="site-foot">
+  <div class="foot-in">
+    <div class="foot-brand">
+      <a class="logo logo-lg" href="index.html"><svg class="mark" viewBox="0 0 40 48" aria-hidden="true"><path d="M20 3c9 0 16 10 16 22 0 11-7 20-16 20S4 36 4 25C4 13 11 3 20 3z" fill="var(--papaya)"/><path d="M20 12c5 0 9 6 9 13s-4 12-9 12-9-5-9-12 4-13 9-13z" fill="var(--papaya-flesh)"/><g fill="var(--seed)"><circle cx="17" cy="20" r="1.9"/><circle cx="23" cy="20" r="1.9"/><circle cx="20" cy="24.5" r="1.9"/><circle cx="16.5" cy="28.5" r="1.9"/><circle cx="23.5" cy="28.5" r="1.9"/><circle cx="20" cy="32" r="1.9"/></g><path d="M20 3c1-2 4-3 7-2-1 3-4 4-7 2z" fill="var(--leaf)"/></svg><span class="wm"><span class="wm-the">the</span> papaya tree</span></a>
+      <p>Seven rooms in a garden of papaya and palms.<br>A short walk from the surf in Ahangama, on Sri Lanka's south coast.</p>
     </div>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-quote">"Ceylon Boutique is what the Ahangama coast should feel like, calm, beautiful and unhurried. We rebooked before we left."</p>
-        <p class="reviewer">Sofia & Marcus, Stockholm</p>
-      </div>
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-quote">"Golden-hour walks, surf in the morning, village cafés at night. Exactly the rhythm we wanted in Sri Lanka."</p>
-        <p class="reviewer">James T., London</p>
-      </div>
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-quote">"Seven rooms but it still feels intimate. Attentive team, and the beach is never more than a few minutes away."</p>
-        <p class="reviewer">Priya K., Mumbai</p>
-      </div>
-    </div>
+    <div class="foot-col"><h4>Stay</h4><a href="rooms.html">Rooms & suites</a><a href="house.html">The House</a><a href="booking.html">Book direct</a><a href="faq.html">FAQ & policies</a></div>
+    <div class="foot-col"><h4>Ahangama</h4><a href="ahangama.html">Area guide</a><a href="surf.html">Surf guide</a><a href="things-to-do.html">Things to do</a><a href="eat-drink.html">Eat & drink</a><a href="day-trips.html">Day trips</a><a href="getting-here.html">Getting here</a></div>
+    <div class="foot-col"><h4>Contact</h4><span class="sel">hello@thepapayatree.lk</span><span class="sel">+94 77 123 4567</span><a href="https://wa.me/94771234567" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a><span>Ahangama, Southern Province, Sri Lanka</span></div>
   </div>
-</section>
-
-<!-- LOCATION -->
-<section id="location">
-  <div class="section">
-    <div class="section-head">
-      <p class="eyebrow">Find us</p>
-      <h2 class="sec-title">Ahangama, Sri Lanka</h2>
-      <p class="sec-sub">A laid-back surf village on the south coast, between Galle and Mirissa. Palm beaches, reef breaks and easy tuk-tuk rides to temples and tea country day trips.</p>
-    </div>
-    <div class="loc-grid">
-      <div class="map-placeholder">
-        <i class="ti ti-map-pin map-pin-icon"></i>
-        <p class="map-name">Ceylon Boutique Hotel</p>
-        <p class="map-loc">Ahangama, Southern Province, Sri Lanka</p>
-      </div>
-      <div class="loc-list">
-        <div class="loc-row">
-          <i class="ti ti-plane loc-icon-wrap"></i>
-          <div><p class="loc-lbl">Nearest airports</p><p class="loc-val">Mattala Rajapaksa (HRI), about 1 hr 20 min. Bandaranaike, Colombo (CMB), about 2 hr 30 min. Private transfers arranged on request.</p></div>
-        </div>
-        <div class="loc-row">
-          <i class="ti ti-building-arch loc-icon-wrap"></i>
-          <div><p class="loc-lbl">Galle Fort</p><p class="loc-val">Roughly 20 minutes by car. UNESCO-listed fort, cafés, galleries and sunset walks on the ramparts.</p></div>
-        </div>
-        <div class="loc-row">
-          <i class="ti ti-wave-sine loc-icon-wrap"></i>
-          <div><p class="loc-lbl">Beach &amp; surf</p><p class="loc-val">Ahangama Beach and Coconut Point within walking distance. Weligama and Midigama breaks a short tuk-tuk ride away.</p></div>
-        </div>
-        <div class="loc-row" id="contact">
-          <i class="ti ti-phone loc-icon-wrap"></i>
-          <div><p class="loc-lbl">Contact</p><p class="loc-val">hello@ceylonboutique.lk &nbsp;·&nbsp; +94 77 123 4567</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BANNER -->
-<section class="cta-section">
-  <div class="cta-wrap">
-    <div>
-      <h2>Ready to stay in Ahangama?</h2>
-      <p>Only 7 rooms. Dates fill fast, especially in surf season (Nov–Apr).</p>
-    </div>
-    <div class="cta-btns">
-      <button class="btn-cta-main" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Reserve now</button>
-      <a href="mailto:hello@ceylonboutique.lk" class="btn-cta-ghost" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;">Contact us</a>
-    </div>
-  </div>
-</section>
-
-<!-- CHATBOT -->
-<div class="chatbot-container">
-  <p class="chat-label">Live concierge</p>
-  <div class="chatbot">
-    <div class="chat-hd">
-      <div class="chat-av"><i class="ti ti-message-chatbot"></i></div>
-      <div style="flex:1;">
-        <p class="chat-hd-name">Ceylon Boutique Concierge</p>
-        <p class="chat-hd-status"><span class="dot"></span>Online now, replies in seconds</p>
-      </div>
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="bubble bubble-bot">Welcome to Ceylon Boutique in Ahangama. I can help with room bookings, surf tips, local cafés and day trips, or any question about your stay. We do not serve meals on site. How can I help?</div>
-    </div>
-    <div class="chat-inp-row">
-      <input type="text" id="chatInput" placeholder="Type your question here..." onkeydown="if(event.key==='Enter')sendChat()">
-      <button class="chat-send-btn" onclick="sendChat()" aria-label="Send message">
-        <i class="ti ti-send"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="ft">
-    <div>
-      <a href="#" class="ft-logo">CEYLON <span>BOUTIQUE</span></a>
-      <p class="ft-tag">A calm address in Ahangama.<br>Seven rooms. Beach &amp; south-coast living.<br>Southern Province, Sri Lanka.</p>
-    </div>
-    <div>
-      <p class="ft-h">The hotel</p>
-      <div class="ft-links">
-        <a href="#rooms">Rooms & suites</a>
-        <a href="#experiences">Beach access</a>
-        <a href="#experiences">Surf &amp; boards</a>
-        <a href="#experiences">Local cafés &amp; trips</a>
-        <a href="#location">Local experiences</a>
-      </div>
-    </div>
-    <div>
-      <p class="ft-h">Information</p>
-      <div class="ft-links">
-        <a href="#">Booking terms</a>
-        <a href="#">Cancellation policy</a>
-        <a href="#">FAQ</a>
-        <a href="#location">Transfers & directions</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </div>
-  <div class="ft-bottom">
-    <span>© 2025 Ceylon Boutique Hotel, Ahangama, Sri Lanka</span>
-    <span>hello@ceylonboutique.lk</span>
-  </div>
+  <div class="foot-base"><span>© 2026 The Papaya Tree, Ahangama</span><span class="mono">5.97° N · 80.37° E</span></div>
 </footer>
-
-<script>
-function toggleNav(){
-  const links=document.getElementById('navLinks');
-  const btn=document.querySelector('.nav-toggle');
-  const open=links.classList.toggle('open');
-  btn.setAttribute('aria-expanded',open);
-  btn.innerHTML=open?'<i class="ti ti-x"></i>':'<i class="ti ti-menu-2"></i>';
-  btn.setAttribute('aria-label',open?'Close menu':'Open menu');
-}
-document.querySelectorAll('.nav-links a').forEach(link=>{
-  link.addEventListener('click',()=>{
-    const links=document.getElementById('navLinks');
-    const btn=document.querySelector('.nav-toggle');
-    if(links.classList.contains('open')){
-      links.classList.remove('open');
-      btn.setAttribute('aria-expanded','false');
-      btn.innerHTML='<i class="ti ti-menu-2"></i>';
-      btn.setAttribute('aria-label','Open menu');
-    }
-  });
-});
-function handleSearch(){
-  const ci=document.getElementById('checkin').value;
-  const co=document.getElementById('checkout').value;
-  const g=document.getElementById('guests').value;
-  if(!ci||!co){alert('Please select check-in and check-out dates.');return;}
-  document.getElementById('rooms').scrollIntoView({behavior:'smooth'});
-}
-
-function bookRoom(name){
-  const msg='You selected: '+name+'. To complete your booking, please email hello@ceylonboutique.lk or call +94 77 123 4567. We respond within 2 hours.';
-  alert(msg);
-}
-
-const replies={
-  food:'We do not have a restaurant. Ahangama has excellent beach cafés, roti shops and small restaurants within a short walk, our team can share current favourites.',
-  price:'Rooms from $185 per night. The Ahangama Villa from $385 per night. Seven rooms total, contact us for seasonal packages or extended stays.',
-  book:'You can check availability using the form at the top of the page, or email hello@ceylonboutique.lk. We respond within 2 hours and hold rooms for 24 hours on request.',
-  transfer:'We arrange private airport transfers from Mattala Rajapaksa (HRI) or Colombo (CMB). Email us your flight details and we handle the rest.',
-  surf:'Ahangama is known for consistent south-coast surf. Coconut Point is nearby; Weligama and Midigama are a short ride away. We offer board storage and can connect you with local instructors.',
-};
-
-function sendChat(){
-  const inp=document.getElementById('chatInput');
-  const body=document.getElementById('chatBody');
-  const val=inp.value.trim();
-  if(!val)return;
-  const ub=document.createElement('div');
-  ub.className='bubble bubble-user';
-  ub.textContent=val;
-  body.appendChild(ub);
-  inp.value='';
-  setTimeout(()=>{
-    const bb=document.createElement('div');
-    bb.className='bubble bubble-bot';
-    const v=val.toLowerCase();
-    let r='Thank you for your question. For anything specific, please email hello@ceylonboutique.lk or call +94 77 123 4567 and we\'ll take care of you.';
-    if(v.includes('restaur')||v.includes('food')||v.includes('dinner')||v.includes('breakfast')||v.includes('lunch')||v.includes('eat'))r=replies.food;
-    else if(v.includes('price')||v.includes('cost')||v.includes('$')||v.includes('rate')||v.includes('how much'))r=replies.price;
-    else if(v.includes('book')||v.includes('reserv')||v.includes('availab')||v.includes('room'))r=replies.book;
-    else if(v.includes('surf')||v.includes('board')||v.includes('wave'))r=replies.surf;
-    else if(v.includes('transfer')||v.includes('airport')||v.includes('taxi')||v.includes('pickup'))r=replies.transfer;
-    bb.textContent=r;
-    body.appendChild(bb);
-    body.scrollTop=body.scrollHeight;
-  },650);
-}
-</script>
-</body>
-</html>
+<a class="wa-float" href="https://wa.me/94771234567" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>Ask us anything</span></a>
+<script src="main.js" defer></script>
+</body></html>

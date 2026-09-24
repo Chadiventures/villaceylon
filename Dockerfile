@@ -1,7 +1,11 @@
 FROM nginx:1.27-alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY papaya-tree-site/papaya-tree-site/ /usr/share/nginx/html/
+
+COPY index.html rooms.html house.html ahangama.html surf.html things-to-do.html eat-drink.html day-trips.html getting-here.html faq.html booking.html /usr/share/nginx/html/
+COPY styles.css main.js sitemap.xml robots.txt /usr/share/nginx/html/
+COPY img /usr/share/nginx/html/img/
+
 COPY hero.mp4 beach1.jpg rum1.jpg /assets/
 COPY ["rum 2.jpg", "rum 3.jpg", "rum 4.jpg", "/assets/"]
 
