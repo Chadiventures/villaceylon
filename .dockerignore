@@ -2,3 +2,7 @@
 .vercel
 README.md
 vercel.json
+dist
+preview.html
+index.html
+zuri-hotel.html
