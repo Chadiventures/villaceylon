@@ -112,7 +112,8 @@ export function Concierge() {
           </form>
         </section>
       ) : null}
-      <button type="button" className="concierge-launch" aria-label={open ? "Close chat" : "Chat with Amaya"} aria-expanded={open} onClick={() => setOpen((value) => !value)}>
+      <span className="concierge-ask">Ask us anything</span>
+      <button type="button" className="concierge-launch" aria-label={open ? "Close chat" : "Ask us anything"} aria-expanded={open} onClick={() => setOpen((value) => !value)}>
         <AmayaMark />
       </button>
     </div>

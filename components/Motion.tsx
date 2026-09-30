@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation"
 import { useEffect } from "react"
 
-const selector = ".page-header .wrap,.guide-intro .wrap,.guide-pull,.welcome .wrap,.section-head,.rooms-grid>*,.card4,.bento .big,.bento .tile,.arch,.gi-card,.gcard,.info .it,.policy,.gallery .g,.cta .wrap,.stat,.sc,.yfit-block,.sheet .area-group"
+const selector = ".page-header .wrap,.guide-intro .wrap,.guide-pull,.welcome .wrap,.section-head,.rooms-grid>*,.card4,.bento .big,.bento .tile,.arch,.gi-card,.gcard,.info .it,.policy,.gallery .g,.cta .wrap,.stat,.sc,.yfit-block,.area-group"
 
 function countUp(node: HTMLElement) {
   const target = Number(node.dataset.count)

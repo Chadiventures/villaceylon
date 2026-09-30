@@ -1,5 +1,6 @@
 import { AreaGroup } from "../../components/AreaGroup"
 import { Cta } from "../../components/Cta"
+import { GuideFollow } from "../../components/GuideCard"
 import { PageHeader } from "../../components/PageHeader"
 import { Section } from "../../components/Section"
 
@@ -8,7 +9,7 @@ export default function EatPage() {
     <>
       <PageHeader eyebrow="Eat & drink" title="Where we actually eat" oneLine />
       <Section>
-        <div className="sheet">
+        <div className="area-cards">
           <AreaGroup
             title="At the house"
             items={[
@@ -53,17 +54,6 @@ export default function EatPage() {
             ]}
           />
           <AreaGroup
-            title="Weligama"
-            items={[
-              { name: "Hangtime", desc: "Breakfast, lunch and dinner looking over Weligama Bay." },
-              { name: "Dulnetha", desc: "Local rice and curry, done well." },
-              { name: "Nomad", desc: "The best brunch in the south, by our count." },
-              { name: "Weligama Fish Market", desc: "Pick your seafood and sit on the beach while the day's catch is cooked local style. Fresh and delicious." },
-              { name: "Kurumba Bay", desc: "Restaurants, bars, gelato, a pool and the beach in one place." },
-              { name: "Kai Beach Club", desc: "A beachfront hangout with a pool." },
-            ]}
-          />
-          <AreaGroup
             title="Matara and Polhena"
             items={[
               { name: "Matara Rest House", desc: "A colonial building with good local food and drinks." },
@@ -71,16 +61,30 @@ export default function EatPage() {
               { name: "The Doctors House", desc: "Live music on Saturdays, DJs on Wednesdays, fine dining upstairs." },
             ]}
           />
-          <AreaGroup
-            title="Unawatuna"
-            items={[
-              { name: "The Hideout", desc: "Mexican food and great cocktails, in Unawatuna." },
-              { name: "Skinny Tom's Deli", desc: "One of the best brunch spots on this stretch of coast." },
-              { name: "Wild & The Sage", desc: "Cafe, bookshop and a book club, all in one." },
-            ]}
-          />
+          <div className="area-stack">
+            <AreaGroup
+              title="Unawatuna"
+              items={[
+                { name: "The Hideout", desc: "Mexican food and great cocktails, in Unawatuna." },
+                { name: "Skinny Tom's Deli", desc: "One of the best brunch spots on this stretch of coast." },
+                { name: "Wild & The Sage", desc: "Cafe, bookshop and a book club, all in one." },
+              ]}
+            />
+            <AreaGroup
+              title="Weligama"
+              items={[
+                { name: "Hangtime", desc: "Breakfast, lunch and dinner looking over Weligama Bay." },
+                { name: "Dulnetha", desc: "Local rice and curry, done well." },
+                { name: "Nomad", desc: "The best brunch in the south, by our count." },
+                { name: "Weligama Fish Market", desc: "Pick your seafood and sit on the beach while the day's catch is cooked local style. Fresh and delicious." },
+                { name: "Kurumba Bay", desc: "Restaurants, bars, gelato, a pool and the beach in one place." },
+                { name: "Kai Beach Club", desc: "A beachfront hangout with a pool." },
+              ]}
+            />
+          </div>
         </div>
       </Section>
+      <GuideFollow />
       <Cta />
     </>
   )

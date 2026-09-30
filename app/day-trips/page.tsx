@@ -1,5 +1,6 @@
 import { AreaGroup } from "../../components/AreaGroup"
 import { Cta } from "../../components/Cta"
+import { GuideFollow } from "../../components/GuideCard"
 import { PageHeader } from "../../components/PageHeader"
 import { Section } from "../../components/Section"
 
@@ -8,7 +9,7 @@ export default function DayTripsPage() {
     <>
       <PageHeader eyebrow="Day trips" title="Worth the drive" />
       <Section>
-        <div className="sheet">
+        <div className="area-cards row">
           <AreaGroup
             title="Close to the garden"
             items={[
@@ -38,6 +39,7 @@ export default function DayTripsPage() {
           />
         </div>
       </Section>
+      <GuideFollow />
       <Cta />
     </>
   )

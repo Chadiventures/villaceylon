@@ -48,3 +48,21 @@ export function GuideBand() {
     </section>
   )
 }
+
+export function GuideFollow() {
+  return (
+    <section className="guide-follow">
+      <svg className="guide-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,46 C180,90 360,4 540,46 C720,88 900,2 1080,46 C1260,90 1360,18 1440,46 L1440,90 L0,90 Z" />
+      </svg>
+      <div className="guide-follow-body">
+        <div className="wrap">
+          <GuideCard />
+        </div>
+      </div>
+      <svg className="guide-wave guide-wave-bottom" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,44 C180,0 360,86 540,44 C720,2 900,88 1080,44 C1260,0 1360,72 1440,44 L1440,0 L0,0 Z" />
+      </svg>
+    </section>
+  )
+}

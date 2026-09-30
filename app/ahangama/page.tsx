@@ -1,6 +1,6 @@
 import { AreaGroup } from "../../components/AreaGroup"
 import { Cta } from "../../components/Cta"
-import { GuideCard } from "../../components/GuideCard"
+import { GuideFollow } from "../../components/GuideCard"
 import { PageHeader } from "../../components/PageHeader"
 import { BasketIcon, BoardIcon, BoltIcon, BugIcon, CameraIcon, CardIcon, ClockIcon, DropIcon, PalmIcon, PawIcon, PermitIcon, RainIcon, RoadIcon, ScooterIcon, SimIcon, SunIcon, SunsetIcon, TempleIcon, TukIcon, WaveIcon, WildIcon } from "../../components/Icons"
 import { Section } from "../../components/Section"
@@ -10,7 +10,7 @@ export default function AhangamaPage() {
     <>
       <PageHeader eyebrow="Good things to know" title="A few things worth knowing" />
       <Section>
-        <div className="sheet">
+        <div className="area-cards">
           <AreaGroup
             title="Tap water"
             items={[
@@ -46,14 +46,22 @@ export default function AhangamaPage() {
               { name: "Surf culture", desc: "Ahangama is surrounded by some of the south coast's best-known surf breaks. Whether you're a complete beginner or an experienced surfer, there are waves for different levels nearby.", icon: <BoardIcon /> },
             ]}
           />
-          <AreaGroup
-            title="Tropical life"
-            items={[
-              { name: "Mosquitoes", desc: "Mosquitoes are part of life in the tropics. We recommend bringing or buying insect repellent, especially around sunrise and sunset.", icon: <BugIcon /> },
-              { name: "The sun is stronger than it feels", desc: "Even when the sky is cloudy, the tropical sun can be intense. Sunscreen, water and a hat will go a long way.", icon: <SunIcon /> },
-              { name: "Tropical rain is normal", desc: "Ahangama can get sudden tropical showers, especially during the changing seasons. They often pass quickly, so don't let a little rain ruin your plans.", icon: <RainIcon /> },
-            ]}
-          />
+          <div className="area-stack">
+            <AreaGroup
+              title="Tropical life"
+              items={[
+                { name: "Mosquitoes", desc: "Mosquitoes are part of life in the tropics. We recommend bringing or buying insect repellent, especially around sunrise and sunset.", icon: <BugIcon /> },
+                { name: "The sun is stronger than it feels", desc: "Even when the sky is cloudy, the tropical sun can be intense. Sunscreen, water and a hat will go a long way.", icon: <SunIcon /> },
+                { name: "Tropical rain is normal", desc: "Ahangama can get sudden tropical showers, especially during the changing seasons. They often pass quickly, so don't let a little rain ruin your plans.", icon: <RainIcon /> },
+              ]}
+            />
+            <AreaGroup
+              title="Take it slow"
+              items={[
+                { name: "Don't plan every minute", desc: "Some of the best moments in Sri Lanka aren't on an itinerary. Follow the coast, stop for a coconut, watch the sunset, find a small local cafe and see where the day takes you.", icon: <SunsetIcon /> },
+              ]}
+            />
+          </div>
           <AreaGroup
             title="Local culture"
             items={[
@@ -81,15 +89,9 @@ export default function AhangamaPage() {
               { name: "Make the south coast your playground", desc: "Ahangama is a great base for exploring the south coast. Kabalana, Midigama, Weligama, Unawatuna, Galle and some of the area's quieter beaches are all within easy reach.", icon: <PalmIcon /> },
             ]}
           />
-          <AreaGroup
-            title="Take it slow"
-            items={[
-              { name: "Don't plan every minute", desc: "Some of the best moments in Sri Lanka aren't on an itinerary. Follow the coast, stop for a coconut, watch the sunset, find a small local cafe and see where the day takes you.", icon: <SunsetIcon /> },
-            ]}
-          />
         </div>
-        <GuideCard plain page />
       </Section>
+      <GuideFollow />
       <Cta />
     </>
   )

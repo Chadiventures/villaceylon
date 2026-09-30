@@ -1,5 +1,6 @@
 import { AreaGroup } from "../../components/AreaGroup"
 import { Cta } from "../../components/Cta"
+import { GuideFollow } from "../../components/GuideCard"
 import { InfoList } from "../../components/InfoList"
 import { PageHeader } from "../../components/PageHeader"
 import { Section } from "../../components/Section"
@@ -21,7 +22,7 @@ export default function ThingsPage() {
           { meta: "Afternoon", title: "Sauna and ice bath", text: "A wood-fired sauna and cold plunge near the beach, for after a long surf." },
           { meta: "Dusk", title: "River safari", text: "A quiet boat up the mangroves as the birds come in to roost." },
         ]} />
-        <div className="area-list">
+        <div className="area-cards">
           <AreaGroup
             title="Snorkel with turtles"
             items={[
@@ -45,6 +46,7 @@ export default function ThingsPage() {
           />
         </div>
       </Section>
+      <GuideFollow />
       <Cta />
     </>
   )

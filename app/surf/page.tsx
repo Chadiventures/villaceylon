@@ -1,4 +1,5 @@
 import { Cta } from "../../components/Cta"
+import { GuideFollow } from "../../components/GuideCard"
 import { InfoList } from "../../components/InfoList"
 import { SeasonChart } from "../../components/SeasonChart"
 import { Section } from "../../components/Section"
@@ -53,6 +54,7 @@ export default function SurfPage() {
           </div>
         </div>
       </section>
+      <GuideFollow />
       <Cta />
     </>
   )

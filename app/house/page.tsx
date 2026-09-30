@@ -8,7 +8,7 @@ import { Section } from "../../components/Section"
 export default function HousePage() {
   return (
     <>
-      <PageHeader eyebrow="On site" title="Your home under the palms" lead="Brand new AC rooms, a pool ringed with green, and the sea just past the gate. Everything you need, and nothing you have to think about." />
+      <PageHeader eyebrow="On site" title="Your home under the palms" oneLine lead="Brand new AC rooms, a pool ringed with green, and the sea just past the gate. Everything you need, and nothing you have to think about." />
       <Section decor={<div className="blob" style={{ top: "12%", left: "-6%", width: 320, height: 320, background: "radial-gradient(circle,#7FA894,transparent 70%)" }} />}>
         <Bento />
       </Section>
