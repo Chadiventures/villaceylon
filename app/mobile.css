@@ -189,7 +189,8 @@ a,button,.btn,.search-cell,.search-submit,.nav-toggle,.stepper button{
   .guide-soft .btn{min-height:44px;justify-content:center;width:100%}
   .why-one-line{white-space:normal}
   .foot .wrap{grid-template-columns:1fr;gap:28px}
-  .foot a{min-height:44px;display:inline-flex;align-items:center}
+  .foot a{min-height:44px;display:flex;align-items:center}
+  .foot-base a{justify-content:center}
   .foot-legal{flex-wrap:wrap}
   .eat-nav{
     flex-wrap:nowrap;
@@ -220,7 +221,7 @@ a,button,.btn,.search-cell,.search-submit,.nav-toggle,.stepper button{
   .rgallery-dots button{min-width:44px;min-height:44px;background:transparent;position:relative}
   .rgallery-dots button::after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:rgba(36,63,52,.22)}
   .rgallery-dots button.on::after{background:var(--forest)}
-  .currency-toggle button{min-width:44px;min-height:44px;padding:8px 12px}
+  .currency-menu-btn{min-height:44px;padding:8px 12px}
   .stepper button{width:44px;height:44px}
   .map-caption a,.region-stop-note{white-space:normal}
   .lightbox-frame{width:min(720px,calc(100vw - 32px),calc((100svh - 120px) * .8))}

@@ -1,52 +1,60 @@
+"use client"
+
 import Link from "next/link"
+import { copy } from "../lib/copy"
+import { localizePath } from "../lib/i18n"
+import { site } from "../lib/site"
+import { useLocale } from "./useLocale"
 import { GUIDE_PDF_FILENAME, GUIDE_PDF_HREF, PdfDownloadLink } from "./PdfDownloadLink"
-import { SearchLink } from "./search/SearchLink"
 import { InstagramIcon, MailIcon, WhatsAppIcon } from "./Icons"
+import { SearchLink } from "./search/SearchLink"
 
 export function Footer() {
+  const locale = useLocale()
+  const href = (path: string) => localizePath(path, locale)
   return (
     <footer className="foot">
       <div className="wrap">
         <div>
-          <Link className="logo" href="/" style={{ display: "inline-flex" }}>
+          <Link className="logo" href={href("/")} style={{ display: "inline-flex" }}>
             <span className="lw">THE PAPAYA TREE</span>
             <span className="ls">AHANGAMA · SRI LANKA</span>
           </Link>
-          <p style={{ maxWidth: "34ch", marginTop: 16 }}>Seven rooms in a garden of papaya and palms, three minutes from the surf in Ahangama.</p>
-          <p style={{ marginTop: 14, fontSize: ".9rem", opacity: 0.82 }}>Munidasa Mawatha, Ahangama 80650<br />Ahangama, Sri Lanka</p>
+          <p style={{ maxWidth: "34ch", marginTop: 16 }}>{copy.footer.blurb[locale]}</p>
+          <a className="foot-address" href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
+            Munidasa Mawatha, Ahangama 80650<br />Ahangama, Sri Lanka
+          </a>
         </div>
         <div>
-          <h4>Visit</h4>
-          <SearchLink href="/rooms">The rooms</SearchLink>
-          <Link href="/house">The house</Link>
-          <Link href="/guide">Ahangama Guide</Link>
-          <Link href="/faq">FAQ</Link>
-          <SearchLink href="/book">Book direct</SearchLink>
+          <h4>{copy.footer.visit[locale]}</h4>
+          <SearchLink href="/rooms">{copy.footer.rooms[locale]}</SearchLink>
+          <Link href={href("/house")}>{copy.footer.house[locale]}</Link>
+          <Link href={href("/guide")}>{copy.nav.guide[locale]}</Link>
+          <Link href={href("/faq")}>{copy.nav.faq[locale]}</Link>
+          <SearchLink href="/book">{copy.footer.book[locale]}</SearchLink>
         </div>
         <div>
-          <h4>Guide</h4>
-          <Link href="/guide">Ahangama Guide</Link>
+          <h4>{copy.footer.guide[locale]}</h4>
+          <Link href={href("/guide")}>{copy.nav.guide[locale]}</Link>
           <PdfDownloadLink href={GUIDE_PDF_HREF} filename={GUIDE_PDF_FILENAME} trackPage="footer">
-            Download the guide (PDF)
+            {copy.footer.download[locale]}
           </PdfDownloadLink>
         </div>
         <div>
-          <h4>Contact</h4>
-          <a href="https://wa.me/94787163242" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +94 78 716 3242" style={{ display: "flex", alignItems: "center", gap: 10 }}><WhatsAppIcon />+94 78 716 3242</a>
-          <a href="https://instagram.com/thepapayatree_ahangama" target="_blank" rel="noopener noreferrer" aria-label="Instagram @thepapayatree_ahangama" style={{ display: "flex", alignItems: "center", gap: 10 }}><InstagramIcon />@thepapayatree_ahangama</a>
-          <a href="mailto:hello@thepapayatree.com" aria-label="Email hello@thepapayatree.com" style={{ display: "flex", alignItems: "center", gap: 10 }}><MailIcon />hello@thepapayatree.com</a>
+          <h4>{copy.footer.contact[locale]}</h4>
+          <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" aria-label={`WhatsApp ${site.phone}`} style={{ display: "flex", alignItems: "center", gap: 10 }}><WhatsAppIcon />{site.phone}</a>
+          <a href={site.instagram} target="_blank" rel="noopener noreferrer" aria-label={`Instagram ${site.instagramHandle}`} style={{ display: "flex", alignItems: "center", gap: 10 }}><InstagramIcon />{site.instagramHandle}</a>
+          <a href={`mailto:${site.email}`} aria-label={`Email ${site.email}`} style={{ display: "flex", alignItems: "center", gap: 10 }}><MailIcon />{site.email}</a>
         </div>
       </div>
       <div className="wrap foot-base">
-        <div>
-          <p>© 2026 The Papaya Tree, Ahangama</p>
-          <a href="https://shorelinetechstudio.se/" target="_blank" rel="noopener noreferrer">Built and designed by Shoreline Tech Studio</a>
-        </div>
-        <div className="foot-legal">
-          <Link href="/privacy">Privacy</Link>
-          <Link href="/terms">Terms</Link>
-          <Link href="/cookies">Cookies</Link>
-        </div>
+        <p className="foot-copy">© 2026 The Papaya Tree, Ahangama</p>
+        <nav className="foot-legal" aria-label={locale === "sv" ? "Juridiskt" : "Legal"}>
+          <Link href={href("/privacy")}>{copy.footer.privacy[locale]}</Link>
+          <Link href={href("/terms")}>{copy.footer.terms[locale]}</Link>
+          <Link href={href("/cookies")}>{copy.footer.cookies[locale]}</Link>
+        </nav>
+        <a className="foot-credit" href="https://shorelinetechstudio.se/" target="_blank" rel="noopener noreferrer">{copy.footer.credit[locale]}</a>
       </div>
     </footer>
   )

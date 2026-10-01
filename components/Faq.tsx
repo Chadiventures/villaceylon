@@ -1,7 +1,11 @@
 import Link from "next/link"
+import { copy } from "../lib/copy"
 import type { FaqGroup, FaqItem } from "../lib/faq"
+import { localizePath } from "../lib/i18n"
+import { getLocale } from "../lib/locale"
 
-function FaqList({ items }: { items: FaqItem[] }) {
+async function FaqList({ items }: { items: FaqItem[] }) {
+  const locale = await getLocale()
   return (
     <div className="faq">
       {items.map((item) => (
@@ -10,7 +14,7 @@ function FaqList({ items }: { items: FaqItem[] }) {
           <p>{item.answer}</p>
           {item.href ? (
             <p className="faq-link">
-              <Link href={item.href}>{item.hrefLabel || "Learn more"}</Link>
+              <Link href={localizePath(item.href, locale)}>{item.hrefLabel || copy.faqPage.more[locale]}</Link>
             </p>
           ) : null}
         </details>
@@ -32,10 +36,12 @@ export function Faq({ groups }: { groups: FaqGroup[] }) {
   )
 }
 
-export function FaqSeed({ items, title = "Quick answers" }: { items: FaqItem[]; title?: string }) {
+export async function FaqSeed({ items, title }: { items: FaqItem[]; title?: string }) {
+  const locale = await getLocale()
+  const heading = title ?? copy.faqPage.quick[locale]
   return (
     <div className="faq-seed">
-      <p className="eyebrow">{title}</p>
+      <p className="eyebrow">{heading}</p>
       <FaqList items={items} />
     </div>
   )

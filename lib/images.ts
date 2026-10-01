@@ -84,7 +84,7 @@ export const IMAGES = {
   },
   house: {
     pool: slot("house-pool", "The pool at The Papaya Tree, ringed with palms", { caption: "The pool" }),
-    rooftop: slot("house-rooftop", "The rooftop bar at The Papaya Tree", { caption: "The rooftop" }),
+    rooftop: slot("house-rooftop", "The rooftop lounge and bar at The Papaya Tree", { caption: "The rooftop" }),
     restaurant: slot("house-restaurant", "The restaurant at The Papaya Tree set for breakfast", { caption: "The restaurant" }),
     garden: slot("house-garden", "The garden at The Papaya Tree, Ahangama", { caption: "The garden" }),
     entrance: slot("house-entrance", "The entrance to The Papaya Tree, Ahangama", { caption: "The entrance" }),

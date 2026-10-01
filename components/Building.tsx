@@ -1,4 +1,7 @@
+import { copy } from "../lib/copy"
+import { trText } from "../lib/image-copy"
 import { IMAGES } from "../lib/images"
+import { getLocale } from "../lib/locale"
 import { DeskIcon, PoolIcon, SunsetIcon } from "./Icons"
 import { PlaceholderImage } from "./PlaceholderImage"
 
@@ -6,38 +9,39 @@ const entrancePhoto = IMAGES.house.entrance
 const rooftopPhoto = IMAGES.home.rooftop
 const poolPhoto = IMAGES.home.pool
 
-export function Building() {
+export async function Building() {
+  const locale = await getLocale()
   return (
     <>
       <div className="section-head">
-        <p className="eyebrow">The building</p>
-        <h2>More than a room</h2>
-        <p className="lead">Seven rooms wrapped around a garden and a pool, with places to gather from the ground floor up to the roof.</p>
+        <p className="eyebrow">{copy.building.eyebrow[locale]}</p>
+        <h2>{copy.building.title[locale]}</h2>
+        <p className="lead">{copy.building.lead[locale]}</p>
       </div>
       <div className="grid3">
         <div className="card4">
           <div className="card-photo">
-            <PlaceholderImage src={entrancePhoto.src} alt={entrancePhoto.alt} sizes="(max-width: 720px) 100vw, 30vw" />
+            <PlaceholderImage src={entrancePhoto.src} alt={trText(entrancePhoto.alt, locale)} sizes="(max-width: 720px) 100vw, 30vw" />
           </div>
           <DeskIcon />
-          <h3>Ground floor</h3>
-          <p>Reception, a lounge to sink into, a restaurant, a quiet workspace for the odd email, and fast wifi throughout.</p>
+          <h3>{copy.building.groundTitle[locale]}</h3>
+          <p>{copy.building.ground[locale]}</p>
         </div>
         <div className="card4">
           <div className="card-photo">
-            <PlaceholderImage src={rooftopPhoto.src} alt={rooftopPhoto.alt} sizes="(max-width: 720px) 100vw, 30vw" />
+            <PlaceholderImage src={rooftopPhoto.src} alt={trText(rooftopPhoto.alt, locale)} sizes="(max-width: 720px) 100vw, 30vw" />
           </div>
           <SunsetIcon />
-          <h3>Rooftop</h3>
-          <p>A lounge and bar above the palms, made for a cold drink and a long look at the coast as the sun goes down.</p>
+          <h3>{copy.building.roofTitle[locale]}</h3>
+          <p>{copy.building.roof[locale]}</p>
         </div>
         <div className="card4">
           <div className="card-photo">
-            <PlaceholderImage src={poolPhoto.src} alt={poolPhoto.alt} sizes="(max-width: 720px) 100vw, 30vw" />
+            <PlaceholderImage src={poolPhoto.src} alt={trText(poolPhoto.alt, locale)} sizes="(max-width: 720px) 100vw, 30vw" />
           </div>
           <PoolIcon />
-          <h3>Garden and pool</h3>
-          <p>A pool ringed with papaya, banana and coconut palms, with shade for the hottest part of the day.</p>
+          <h3>{copy.building.gardenTitle[locale]}</h3>
+          <p>{copy.building.garden[locale]}</p>
         </div>
       </div>
     </>

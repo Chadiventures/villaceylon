@@ -1,12 +1,13 @@
 'use client'
 import { useEffect, useState } from "react"
+import { copy, nightLabel } from "../../lib/copy"
+import { useLocale } from "../useLocale"
 import {
   MAX_STAY_NIGHTS,
-  MONTH_LABELS,
-  WEEKDAY_LABELS,
   addDays,
   addMonths,
   buildMonthGrid,
+  calendarLabels,
   fromIso,
   isCheckoutDisabled,
   isPastDate,
@@ -41,6 +42,8 @@ export function DateRangePicker({
   onClear,
   onClose,
 }: DateRangePickerProps) {
+  const locale = useLocale()
+  const labels = calendarLabels(locale)
   const today = startOfDay(new Date())
   const start = checkIn ? fromIso(checkIn) : null
   const end = checkOut ? fromIso(checkOut) : null
@@ -94,9 +97,9 @@ export function DateRangePicker({
     const monthKey = `${monthStart.getFullYear()}-${String(monthStart.getMonth() + 1).padStart(2, "0")}`
     return (
       <div className="dr-month" key={key} data-month={monthKey}>
-        <p className="dr-month-title">{MONTH_LABELS[monthStart.getMonth()]} {monthStart.getFullYear()}</p>
+        <p className="dr-month-title">{labels.months[monthStart.getMonth()]} {monthStart.getFullYear()}</p>
         <div className="dr-weekdays">
-          {WEEKDAY_LABELS.map((label) => <span key={label}>{label}</span>)}
+          {labels.weekdays.map((label) => <span key={label}>{label}</span>)}
         </div>
         <div className="dr-grid">
           {cells.map((date, index) => {
@@ -115,7 +118,7 @@ export function DateRangePicker({
                 className={["dr-cell", isStart || isEnd ? "edge" : "", inRange ? "in-range" : "", isFocus ? "is-focus" : ""].filter(Boolean).join(" ")}
                 onClick={() => pick(date)}
                 onFocus={() => setFocusDate(date)}
-                aria-label={date.toDateString()}
+                aria-label={date.toLocaleDateString(locale === "sv" ? "sv-SE" : "en-GB", { weekday: "long", day: "numeric", month: "long" })}
                 aria-pressed={isStart || isEnd}
                 data-date={toIso(date)}
               >
@@ -131,17 +134,17 @@ export function DateRangePicker({
   const footer = (
     <div className="dr-footer">
       <span className="dr-nights" data-testid="dr-nights">
-        {nights > 0 ? `${nights} ${nights === 1 ? "night" : "nights"}` : `Pick your dates, max ${MAX_STAY_NIGHTS} nights`}
+        {nights > 0 ? `${nights} ${nightLabel(locale, nights)}` : `${copy.search.pickDates[locale]} ${MAX_STAY_NIGHTS} ${copy.search.maxNights[locale]}`}
       </span>
       <div className="dr-actions">
-        <button type="button" className="dr-clear" onClick={() => { onClear(); onSelectingChange("checkin") }}>Clear</button>
+        <button type="button" className="dr-clear" onClick={() => { onClear(); onSelectingChange("checkin") }}>{copy.search.clear[locale]}</button>
         <button
           type="button"
           className="btn btn-solid dr-done"
           disabled={!checkIn || !checkOut}
           onClick={onClose}
         >
-          Done
+          {copy.search.done[locale]}
         </button>
       </div>
     </div>
@@ -149,7 +152,7 @@ export function DateRangePicker({
 
   if (sheet) {
     return (
-      <div className="dr-sheet" role="group" aria-label={selecting === "checkout" ? "Choose check out" : "Choose check in"} data-testid="search-datepicker">
+      <div className="dr-sheet" role="group" aria-label={selecting === "checkout" ? copy.search.chooseOut[locale] : copy.search.chooseIn[locale]} data-testid="search-datepicker">
         <div className="dr-months-scroll">
           <div className="dr-months dr-months-stack">
             {sheetMonths.map((month, index) => renderMonth(month, `sheet-${index}`))}
@@ -161,10 +164,10 @@ export function DateRangePicker({
   }
 
   return (
-    <div className="dr-popover" role="dialog" aria-label={selecting === "checkout" ? "Choose check out" : "Choose check in"} data-testid="search-datepicker">
+    <div className="dr-popover" role="dialog" aria-label={selecting === "checkout" ? copy.search.chooseOut[locale] : copy.search.chooseIn[locale]} data-testid="search-datepicker">
       <div className="dr-nav">
-        <button type="button" aria-label="Previous month" onClick={() => setFocusDate((current) => addMonths(current, -1))}>‹</button>
-        <button type="button" aria-label="Next month" onClick={() => setFocusDate((current) => addMonths(current, 1))}>›</button>
+        <button type="button" aria-label={copy.search.prevMonth[locale]} onClick={() => setFocusDate((current) => addMonths(current, -1))}>‹</button>
+        <button type="button" aria-label={copy.search.nextMonth[locale]} onClick={() => setFocusDate((current) => addMonths(current, 1))}>›</button>
       </div>
       <div className="dr-months">
         {renderMonth(viewMonth, "m1")}

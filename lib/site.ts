@@ -1,4 +1,8 @@
+import { fromNightlyUsd } from "./prices"
+
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://thepapayatree.com"
+
+export const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Munidasa+Mawatha+Ahangama+80650+Sri+Lanka"
 
 export const site = {
   name: "The Papaya Tree",
@@ -16,10 +20,12 @@ export const site = {
     country: "LK",
     countryName: "Sri Lanka",
     full: "Munidasa Mawatha, Ahangama 80650, Sri Lanka",
+    line: "Munidasa Mawatha, Ahangama 80650, Ahangama, Sri Lanka",
   },
+  mapsUrl: MAPS_URL,
   // TODO: replace with the exact Google Maps pin for The Papaya Tree
   geo: { lat: 5.9736, lng: 80.3622 },
-  priceFrom: 65,
+  priceFrom: fromNightlyUsd("double"),
   rooms: 7,
   checkIn: "14:00",
   checkOut: "11:00",

@@ -1,3 +1,7 @@
+import type { Locale } from "./i18n"
+import { exampleRates } from "./prices"
+import { faqSv } from "./faq.sv"
+
 export type FaqCategoryId =
   | "booking-and-policies"
   | "rooms-and-facilities"
@@ -24,7 +28,7 @@ export const FAQ_UPDATED = "October 2026"
 export const FAQ_TITLE = "FAQ: Staying at The Papaya Tree, Ahangama | Boutique Hotel Sri Lanka"
 
 export const FAQ_DESCRIPTION =
-  "Answers on rooms from $65, cancellation, the pool, food on site and how to reach The Papaya Tree in Ahangama. Still unsure? Message us on WhatsApp."
+  `Answers on rooms from $${exampleRates.double}, cancellation, the pool, food on site and how to reach The Papaya Tree in Ahangama. Still unsure? Message us on WhatsApp.`
 
 export const FAQ_CATEGORIES: { id: FaqCategoryId; title: string }[] = [
   { id: "booking-and-policies", title: "Booking and policies" },
@@ -64,7 +68,7 @@ export const faqItems: FaqItem[] = [
     category: "booking-and-policies",
     question: "How much does a room cost?",
     answer:
-      "Rooms start from $65 a night for a Deluxe Double and $90 a night for the Deluxe Four-Bed family room. The total for your dates shows before you book. Prices are per room, and booking direct is the best rate we offer.",
+      `Rooms start from $${exampleRates.double} a night for a Deluxe Double and $${exampleRates.family} a night for the Deluxe Four-Bed. The total for your dates shows before you book. Prices are per room, and booking direct is the best rate we offer.`,
   },
   {
     id: "check-in-out",
@@ -78,49 +82,49 @@ export const faqItems: FaqItem[] = [
     category: "rooms-and-facilities",
     question: "How many rooms are there?",
     answer:
-      "There are seven rooms: six Deluxe Doubles and one Deluxe Four-Bed family room. Together they sleep up to 16 guests. Every room has air conditioning, WiFi and an ensuite bathroom.",
+      "There are seven rooms: six Deluxe Doubles on the first and second floors, and one Deluxe Four-Bed on the ground floor. Together they sleep up to 16 guests. Every room has air conditioning, an internet cable, WiFi and a bathroom.",
   },
   {
     id: "deluxe-double",
     category: "rooms-and-facilities",
     question: "What is a Deluxe Double like?",
     answer:
-      "A Deluxe Double is 34 square metres with a king bed, a private balcony, air conditioning, an ensuite bathroom, wired internet and WiFi. It sleeps two and starts from $65 a night.",
+      `A Deluxe Double is 34 square metres with a king size bed and a private balcony. It has air conditioning, an internet cable, WiFi and a bathroom, and the view is over the garden and the pool. It sleeps two and starts from $${exampleRates.double} a night.`,
   },
   {
     id: "family-room",
     category: "rooms-and-facilities",
     question: "What is the family room like?",
     answer:
-      "The Deluxe Four-Bed family room has a king bed and a bunk, so it sleeps four. It opens onto a private patio and includes air conditioning, WiFi and an ensuite bathroom. It starts from $90 a night.",
+      `The Deluxe Four-Bed is 34 square metres on the ground floor, with a king size bed and a bunk bed, so it sleeps four. It has a private patio, air conditioning, an internet cable, WiFi and a bathroom. The view is over the garden, not the pool. It starts from $${exampleRates.family} a night.`,
   },
   {
     id: "all-rooms-facilities",
     category: "rooms-and-facilities",
     question: "Do all rooms have air conditioning and WiFi?",
     answer:
-      "Yes, every room has air conditioning, WiFi and an ensuite bathroom. Deluxe Doubles also have a balcony, wired internet and measure 34 square metres. The family room opens onto a patio and sleeps four.",
+      "Yes. Every room has air conditioning, an internet cable, WiFi and a bathroom. Each Deluxe Double is 34 square metres, with a private balcony and a view of the garden and pool. The Deluxe Four-Bed is also 34 square metres, with a private patio and a garden view.",
   },
   {
     id: "pool",
     category: "rooms-and-facilities",
     question: "Is there a swimming pool?",
     answer:
-      "Yes, there is a pool in the garden. All seven rooms have garden and pool access, so you can swim without leaving the grounds. The house sleeps up to 16 guests around that garden.",
+      "Yes, there is a pool in the garden. The six Deluxe Doubles look over the garden and the pool. The Deluxe Four-Bed looks over the garden, not the pool. You can swim without leaving the grounds, and the house sleeps up to 16 guests.",
   },
   {
     id: "restaurant",
     category: "food-and-drink",
     question: "Is there a restaurant?",
     answer:
-      "Yes, there is a restaurant and lounge on the ground floor. You can eat and sit downstairs without leaving the house. The rooftop bar is on site as well if you want a drink after the beach.",
+      "Yes. The ground floor has a reception, a lounge, a restaurant and a workspace, with WiFi throughout. You can eat and sit downstairs without leaving the house. The rooftop lounge and bar are upstairs if you want a drink after the beach.",
   },
   {
     id: "rooftop-bar",
     category: "food-and-drink",
     question: "Is there a rooftop bar?",
     answer:
-      "Yes, there is a rooftop bar at The Papaya Tree. The restaurant and lounge sit on the ground floor, and the bar is on the roof. Come up for a drink after the beach or before dinner downstairs.",
+      "Yes, the roof has a lounge and a bar. The ground floor holds the reception, lounge, restaurant and a workspace, with WiFi. Come up for a drink after the beach, or stay downstairs for dinner in the restaurant.",
   },
   {
     id: "airport",
@@ -242,6 +246,19 @@ export function faqAnswerPlain(answer: string) {
 export function wordCount(text: string) {
   const words = faqAnswerPlain(text).split(/\s+/).filter(Boolean)
   return words.length
+}
+
+export function faqContent(locale: Locale = "en") {
+  if (locale === "sv") return faqSv
+  return {
+    title: FAQ_TITLE,
+    description: FAQ_DESCRIPTION,
+    updated: FAQ_UPDATED,
+    categories: FAQ_CATEGORIES,
+    items: faqItems,
+    groups: faqGroups,
+    seed: seedFaq,
+  }
 }
 
 export function faqPageLd(items: FaqLdSource[]) {

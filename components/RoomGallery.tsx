@@ -1,13 +1,16 @@
 'use client'
 import dynamic from "next/dynamic"
 import { useCallback, useRef, useState } from "react"
+import { photoGroup, photoOpen, photoShow } from "../lib/copy"
 import { PlaceholderImage } from "./PlaceholderImage"
+import { useLocale } from "./useLocale"
 
 const Lightbox = dynamic(() => import("./Lightbox").then((mod) => ({ default: mod.Lightbox })), { ssr: false })
 
 type Photo = { src: string; alt: string }
 
 export function RoomGallery({ roomId, caption, photos }: { roomId: string; caption: string; photos: Photo[] }) {
+  const locale = useLocale()
   const [active, setActive] = useState(0)
   const [open, setOpen] = useState(false)
   const [index, setIndex] = useState(0)
@@ -32,7 +35,7 @@ export function RoomGallery({ roomId, caption, photos }: { roomId: string; capti
             type="button"
             className="rgallery-slide"
             key={photo.src}
-            aria-label={`Open photo ${photoIndex + 1} of ${photos.length}: ${photo.alt}`}
+            aria-label={photoOpen(locale, photoIndex + 1, photos.length, photo.alt)}
             onClick={() => openAt(photoIndex)}
           >
             <PlaceholderImage src={photo.src} alt={photo.alt} sizes="100vw" />
@@ -45,7 +48,7 @@ export function RoomGallery({ roomId, caption, photos }: { roomId: string; capti
             type="button"
             key={photo.src}
             className={photoIndex === active ? "on" : ""}
-            aria-label={`Show photo ${photoIndex + 1}`}
+            aria-label={photoShow(locale, photoIndex + 1)}
             onClick={() => {
               setActive(photoIndex)
               const node = swipeRef.current
@@ -54,11 +57,11 @@ export function RoomGallery({ roomId, caption, photos }: { roomId: string; capti
           />
         ))}
       </div>
-      <button type="button" className="arch" aria-label={`Open photo ${active + 1} of ${photos.length}: ${main.alt}`} onClick={() => openAt(active)}>
+      <button type="button" className="arch" aria-label={photoOpen(locale, active + 1, photos.length, main.alt)} onClick={() => openAt(active)}>
         <PlaceholderImage src={main.src} alt={main.alt} sizes="(max-width: 860px) 100vw, 55vw" />
         <span className="cap">{caption}</span>
       </button>
-      <div className="rthumbs" role="listbox" aria-label={`${caption} photos`}>
+      <div className="rthumbs" role="listbox" aria-label={photoGroup(locale, caption)}>
         {photos.map((photo, photoIndex) => (
           <button
             type="button"
@@ -66,7 +69,7 @@ export function RoomGallery({ roomId, caption, photos }: { roomId: string; capti
             key={photo.src}
             role="option"
             aria-selected={photoIndex === active}
-            aria-label={`Show photo ${photoIndex + 1}: ${photo.alt}`}
+            aria-label={photoShow(locale, photoIndex + 1, photo.alt)}
             onClick={() => setActive(photoIndex)}
             onDoubleClick={() => openAt(photoIndex)}
             onKeyDown={(event) => {

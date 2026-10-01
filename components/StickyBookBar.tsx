@@ -2,13 +2,17 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
+import { copy } from "../lib/copy"
+import { localizeHref, stripLocale } from "../lib/i18n"
+import { site } from "../lib/site"
 import { Price } from "./CurrencyToggle"
 import { useOverlay } from "./OverlayContext"
 import { searchHref, useSearch } from "./search/SearchContext"
-import { site } from "../lib/site"
+import { useLocale } from "./useLocale"
 
 export function StickyBookBar() {
   const path = usePathname()
+  const locale = useLocale()
   const { checkIn, checkOut, guests } = useSearch()
   const { chromeHidden } = useOverlay()
   const [pastHero, setPastHero] = useState(false)
@@ -32,13 +36,13 @@ export function StickyBookBar() {
     observer.observe(hero)
     return () => observer.disconnect()
   }, [path])
-  const onBook = path === "/book"
+  const onBook = stripLocale(path) === "/book"
   const visible = !onBook && !chromeHidden && (isMobile || pastHero)
   return (
     <div className={visible ? "sticky-book show" : "sticky-book"} aria-hidden={!visible}>
       <div className="sticky-book-inner">
-        <p className="sticky-price">From <Price usd={site.priceFrom} /> / night</p>
-        <Link className="btn btn-amber sticky-cta" href={searchHref("/book", { checkIn, checkOut, guests })}>Check availability</Link>
+        <p className="sticky-price">{copy.sticky.from[locale]} <Price usd={site.priceFrom} /> {copy.sticky.night[locale]}</p>
+        <Link className="btn btn-amber sticky-cta" href={localizeHref(searchHref("/book", { checkIn, checkOut, guests }), locale)}>{copy.sticky.availability[locale]}</Link>
       </div>
     </div>
   )

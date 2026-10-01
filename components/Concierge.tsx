@@ -1,11 +1,10 @@
 'use client'
 import { useEffect, useRef, useState } from "react"
+import { copy } from "../lib/copy"
+import { site } from "../lib/site"
+import { useLocale } from "./useLocale"
 
 type ChatMessage = { role: "user" | "assistant"; content: string; fallback?: boolean }
-
-const greeting = "Hi, I'm Amaya, the virtual concierge for The Papaya Tree. Ask me anything about the rooms, the property, or getting here."
-const fallback = "Sorry, I can't reach the desk just now. Message the team on WhatsApp and they'll help you right away."
-const rateNote = "You've sent quite a few notes this hour. Message the team on WhatsApp and they'll pick it up."
 
 function AmayaMark() {
   return (
@@ -22,6 +21,10 @@ function AmayaMark() {
 }
 
 export function Concierge() {
+  const locale = useLocale()
+  const greeting = copy.concierge.greeting[locale]
+  const fallback = copy.concierge.fallback[locale]
+  const rateNote = copy.concierge.rate[locale]
   const [open, setOpen] = useState(false)
   const [draft, setDraft] = useState("")
   const [waiting, setWaiting] = useState(false)
@@ -38,6 +41,13 @@ export function Concierge() {
     if (open) fieldRef.current?.focus()
   }, [open])
 
+  useEffect(() => {
+    setMessages((current) => {
+      if (current.length === 1 && current[0].role === "assistant") return [{ role: "assistant", content: greeting }]
+      return current
+    })
+  }, [greeting])
+
   async function send() {
     const text = draft.trim()
     if (!text || waiting || text.length > 500) return
@@ -49,7 +59,7 @@ export function Concierge() {
       const response = await fetch("/api/concierge", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: next.map(({ role, content }) => ({ role, content })) }),
+        body: JSON.stringify({ locale, messages: next.map(({ role, content }) => ({ role, content })) }),
       })
       const data = await response.json().catch(() => null)
       if (response.ok && data && typeof data.reply === "string" && data.reply.trim()) {
@@ -67,21 +77,21 @@ export function Concierge() {
   return (
     <div className={open ? "concierge open" : "concierge"}>
       {open ? (
-        <section className="concierge-panel" role="dialog" aria-label="Chat with Amaya">
+        <section className="concierge-panel" role="dialog" aria-label={copy.concierge.chat[locale]}>
           <header className="concierge-head">
             <AmayaMark />
-            <h2>Amaya · Virtual Concierge</h2>
-            <button type="button" className="concierge-close" aria-label="Close chat" onClick={() => setOpen(false)}>×</button>
+            <h2>{copy.concierge.title[locale]}</h2>
+            <button type="button" className="concierge-close" aria-label={copy.concierge.close[locale]} onClick={() => setOpen(false)}>×</button>
           </header>
           <div className="concierge-thread" ref={threadRef}>
             {messages.map((message, index) => (
               <div className={message.role === "user" ? "concierge-msg me" : "concierge-msg"} key={`${message.role}-${index}`}>
                 <p>{message.content}</p>
-                {message.fallback ? <a href="https://wa.me/94787163242" target="_blank" rel="noopener noreferrer">Message on WhatsApp</a> : null}
+                {message.fallback ? <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">{copy.concierge.whatsapp[locale]}</a> : null}
               </div>
             ))}
             {waiting ? (
-              <div className="concierge-msg" aria-label="Amaya is typing">
+              <div className="concierge-msg" aria-label={copy.concierge.typing[locale]}>
                 <span className="concierge-dots"><span /><span /><span /></span>
               </div>
             ) : null}
@@ -98,8 +108,8 @@ export function Concierge() {
               value={draft}
               maxLength={500}
               rows={1}
-              placeholder="Ask about your stay"
-              aria-label="Message Amaya"
+              placeholder={copy.concierge.placeholder[locale]}
+              aria-label={copy.concierge.message[locale]}
               onChange={(event) => setDraft(event.target.value)}
               onKeyDown={(event) => {
                 if (event.key === "Enter" && !event.shiftKey) {
@@ -108,12 +118,12 @@ export function Concierge() {
                 }
               }}
             />
-            <button type="submit" className="btn btn-solid" disabled={waiting || !draft.trim()}>Send</button>
+            <button type="submit" className="btn btn-solid" disabled={waiting || !draft.trim()}>{copy.concierge.send[locale]}</button>
           </form>
         </section>
       ) : null}
-      <span className="concierge-ask">Ask us anything</span>
-      <button type="button" className="concierge-launch" aria-label={open ? "Close chat" : "Ask us anything"} aria-expanded={open} onClick={() => setOpen((value) => !value)}>
+      <span className="concierge-ask">{copy.concierge.ask[locale]}</span>
+      <button type="button" className="concierge-launch" aria-label={open ? copy.concierge.close[locale] : copy.concierge.ask[locale]} aria-expanded={open} onClick={() => setOpen((value) => !value)}>
         <AmayaMark />
       </button>
     </div>

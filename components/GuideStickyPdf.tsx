@@ -1,10 +1,13 @@
 'use client'
 import { useEffect, useState } from "react"
+import { copy } from "../lib/copy"
 import { useOverlay } from "./OverlayContext"
 import { GUIDE_PDF_FILENAME, GUIDE_PDF_HREF, PdfDownloadLink } from "./PdfDownloadLink"
+import { useLocale } from "./useLocale"
 
 export function GuideStickyPdf() {
   const { chromeHidden } = useOverlay()
+  const locale = useLocale()
   const [pastIntro, setPastIntro] = useState(false)
   const [nearClose, setNearClose] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
@@ -47,7 +50,7 @@ export function GuideStickyPdf() {
         trackPage="/guide"
         position="sticky"
       >
-        Download the guide (PDF)
+        {copy.guide.download[locale]}
       </PdfDownloadLink>
     </div>
   )

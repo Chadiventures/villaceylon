@@ -1,30 +1,37 @@
-export function RoomCompare() {
+import { copy } from "../lib/copy"
+import { getLocale } from "../lib/locale"
+import { exampleRates } from "../lib/prices"
+import { Price } from "./CurrencyToggle"
+
+export async function RoomCompare() {
+  const locale = await getLocale()
+  const night = copy.compare.perNight[locale]
   return (
     <section className="room-compare">
       <div className="wrap">
         <div className="section-head">
-          <p className="eyebrow">Compare</p>
-          <h2>Choose your room</h2>
+          <p className="eyebrow">{copy.compare.eyebrow[locale]}</p>
+          <h2>{copy.compare.title[locale]}</h2>
         </div>
         <div className="compare-cards">
           <article className="compare-card">
-            <h3>Deluxe double</h3>
+            <h3>{copy.compare.double[locale]}</h3>
             <dl>
-              <div><dt>Sleeps</dt><dd>2</dd></div>
-              <div><dt>Bed</dt><dd>King</dd></div>
-              <div><dt>Floor</dt><dd>1st / 2nd</dd></div>
-              <div><dt>Size</dt><dd>34 m²</dd></div>
-              <div><dt>From</dt><dd>$65 / night</dd></div>
+              <div><dt>{copy.compare.sleeps[locale]}</dt><dd>2</dd></div>
+              <div><dt>{copy.compare.bed[locale]}</dt><dd>{copy.compare.king[locale]}</dd></div>
+              <div><dt>{copy.compare.floor[locale]}</dt><dd>{copy.compare.floors[locale]}</dd></div>
+              <div><dt>{copy.compare.size[locale]}</dt><dd>34 m²</dd></div>
+              <div><dt>{copy.compare.from[locale]}</dt><dd><Price usd={exampleRates.double} /> {night}</dd></div>
             </dl>
           </article>
           <article className="compare-card">
-            <h3>Deluxe four-bed</h3>
+            <h3>{copy.compare.family[locale]}</h3>
             <dl>
-              <div><dt>Sleeps</dt><dd>4</dd></div>
-              <div><dt>Bed</dt><dd>King + bunk</dd></div>
-              <div><dt>Floor</dt><dd>Ground</dd></div>
-              <div><dt>Size</dt><dd>34 m²</dd></div>
-              <div><dt>From</dt><dd>$90 / night</dd></div>
+              <div><dt>{copy.compare.sleeps[locale]}</dt><dd>4</dd></div>
+              <div><dt>{copy.compare.bed[locale]}</dt><dd>{copy.compare.kingBunk[locale]}</dd></div>
+              <div><dt>{copy.compare.floor[locale]}</dt><dd>{copy.compare.ground[locale]}</dd></div>
+              <div><dt>{copy.compare.size[locale]}</dt><dd>34 m²</dd></div>
+              <div><dt>{copy.compare.from[locale]}</dt><dd><Price usd={exampleRates.family} /> {night}</dd></div>
             </dl>
           </article>
         </div>
@@ -33,35 +40,35 @@ export function RoomCompare() {
             <thead>
               <tr>
                 <th scope="col"></th>
-                <th scope="col">Deluxe double</th>
-                <th scope="col">Deluxe four-bed</th>
+                <th scope="col">{copy.compare.double[locale]}</th>
+                <th scope="col">{copy.compare.family[locale]}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Sleeps</th>
+                <th scope="row">{copy.compare.sleeps[locale]}</th>
                 <td>2</td>
                 <td>4</td>
               </tr>
               <tr>
-                <th scope="row">Bed</th>
-                <td>King</td>
-                <td>King + bunk</td>
+                <th scope="row">{copy.compare.bed[locale]}</th>
+                <td>{copy.compare.king[locale]}</td>
+                <td>{copy.compare.kingBunk[locale]}</td>
               </tr>
               <tr>
-                <th scope="row">Floor</th>
-                <td>1st / 2nd</td>
-                <td>Ground</td>
+                <th scope="row">{copy.compare.floor[locale]}</th>
+                <td>{copy.compare.floors[locale]}</td>
+                <td>{copy.compare.ground[locale]}</td>
               </tr>
               <tr>
-                <th scope="row">Size</th>
+                <th scope="row">{copy.compare.size[locale]}</th>
                 <td>34 m²</td>
                 <td>34 m²</td>
               </tr>
               <tr>
-                <th scope="row">From</th>
-                <td>$65 / night</td>
-                <td>$90 / night</td>
+                <th scope="row">{copy.compare.from[locale]}</th>
+                <td><Price usd={exampleRates.double} /> {night}</td>
+                <td><Price usd={exampleRates.family} /> {night}</td>
               </tr>
             </tbody>
           </table>

@@ -1,22 +1,17 @@
-const items = [
-  "Free cancellation up to 5 days before check-in: full refund.",
-  "Less than 5 days before check-in: non-refundable.",
-  "No-show: non-refundable.",
-  "Shortening your stay less than 5 days before check-in: the removed nights are non-refundable.",
-  "Approved refunds return to your original payment method within 5 to 10 business days.",
-  "The same terms apply whether you book here, on Airbnb or on Booking.com.",
-]
+import { copy } from "../lib/copy"
+import { getLocale } from "../lib/locale"
 
-export function PolicyCard({ hint }: { hint?: boolean }) {
+export async function PolicyCard({ hint }: { hint?: boolean }) {
+  const locale = await getLocale()
   return (
     <div className="policy">
-      <h3>Cancellation and refund policy</h3>
+      <h3>{copy.policy.title[locale]}</h3>
       <ul>
-        {items.map((item) => (
-          <li key={item}>{item}</li>
+        {copy.policy.items.map((item) => (
+          <li key={item.en}>{item[locale]}</li>
         ))}
       </ul>
-      {hint ? <p className="phint">Free cancellation up to 5 days before check-in. Full refund.</p> : null}
+      {hint ? <p className="phint">{copy.policy.hint[locale]}</p> : null}
     </div>
   )
 }

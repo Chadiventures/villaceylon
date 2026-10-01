@@ -1,10 +1,13 @@
 'use client'
 import { useEffect, useRef, useState } from "react"
+import { copy } from "../lib/copy"
 import { site } from "../lib/site"
+import { useLocale } from "./useLocale"
 
 export function MapEmbed({ caption, zoom = 16 }: { caption?: string; zoom?: number }) {
   const mapSrc = `https://www.google.com/maps?q=${site.geo.lat},${site.geo.lng}&z=${zoom}&output=embed`
   const openUrl = `https://www.google.com/maps/search/?api=1&query=${site.geo.lat},${site.geo.lng}`
+  const locale = useLocale()
   const rootRef = useRef<HTMLDivElement>(null)
   const [show, setShow] = useState(false)
   useEffect(() => {
@@ -21,7 +24,7 @@ export function MapEmbed({ caption, zoom = 16 }: { caption?: string; zoom?: numb
       <div className="map-embed">
         {show ? (
           <iframe
-            title={`Map of ${site.name} in Ahangama`}
+            title={copy.map.title[locale]}
             src={mapSrc}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -31,7 +34,7 @@ export function MapEmbed({ caption, zoom = 16 }: { caption?: string; zoom?: numb
       </div>
       <div className="map-caption">
         <p>{caption || site.address.full}</p>
-        <a href={openUrl} target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+        <a href={openUrl} target="_blank" rel="noopener noreferrer">{copy.map.open[locale]}</a>
       </div>
     </div>
   )

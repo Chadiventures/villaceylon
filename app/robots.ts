@@ -1,13 +1,14 @@
 import type { MetadataRoute } from "next"
-import { absoluteUrl } from "../lib/seo"
+import { absoluteUrl, blockIndexing } from "../lib/seo"
 import { SITE_URL } from "../lib/site"
 
 // Treat anything that isn't the real production domain as staging and block indexing.
 // Set NEXT_PUBLIC_SITE_URL to the live domain in production to allow crawling.
+// NEXT_PUBLIC_NOINDEX=true blocks every crawler even on the live domain.
 const isStaging = !SITE_URL.includes("thepapayatree.com")
 
 export default function robots(): MetadataRoute.Robots {
-  if (isStaging) {
+  if (blockIndexing || isStaging) {
     return { rules: { userAgent: "*", disallow: "/" } }
   }
   return {

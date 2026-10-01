@@ -1,0 +1,50 @@
+import type { Locale } from "./i18n"
+
+const sv: Record<string, string> = {
+  "A figure walking the shoreline at golden hour near The Papaya Tree, Ahangama": "En person går längs stranden i gyllene ljus nära The Papaya Tree, Ahangama",
+  "Tropical garden with papaya and palm trees at The Papaya Tree, Ahangama": "Tropisk trädgård med papaya och palmer på The Papaya Tree, Ahangama",
+  "The Papaya Tree's pool ringed with palms and plumeria": "Poolen på The Papaya Tree, omgiven av palmer och plumeria",
+  "Rooftop lounge at The Papaya Tree at golden hour, with low seating and string lights": "Takloungen på The Papaya Tree i gyllene ljus, med låga sittplatser och ljusslingor",
+  "Breakfast table with tropical fruit and coffee at The Papaya Tree": "Frukostbord med tropisk frukt och kaffe på The Papaya Tree",
+  "A surfer on a south coast Sri Lanka wave near Ahangama": "En surfare på en våg vid Sri Lankas sydkust nära Ahangama",
+  "Deluxe Double room with king bed at The Papaya Tree, Ahangama": "Deluxe Double med kingsize-säng på The Papaya Tree, Ahangama",
+  "Private balcony of a Deluxe Double room over the garden and pool": "Privat balkong på ett Deluxe Double med utsikt över trädgård och pool",
+  "Ensuite bathroom in a Deluxe Double room at The Papaya Tree": "Badrum i ett Deluxe Double på The Papaya Tree",
+  "Detail of a Deluxe Double room at The Papaya Tree": "Detalj från ett Deluxe Double på The Papaya Tree",
+  "Deluxe Four-Bed family room with king bed and bunk at The Papaya Tree": "Deluxe Four-Bed med kingsize-säng och våningssäng på The Papaya Tree",
+  "Private patio of the Deluxe Four-Bed family room": "Privat uteplats till Deluxe Four-Bed",
+  "Ensuite bathroom in the Deluxe Four-Bed room at The Papaya Tree": "Badrum i Deluxe Four-Bed på The Papaya Tree",
+  "Detail of the Deluxe Four-Bed family room": "Detalj från Deluxe Four-Bed",
+  "The pool at The Papaya Tree, ringed with palms": "Poolen på The Papaya Tree, omgiven av palmer",
+  "The rooftop lounge and bar at The Papaya Tree": "Takloungen och baren på The Papaya Tree",
+  "The rooftop bar at The Papaya Tree": "Takloungen och baren på The Papaya Tree",
+  "The restaurant at The Papaya Tree set for breakfast": "Restaurangen på The Papaya Tree dukad till frukost",
+  "The garden at The Papaya Tree, Ahangama": "Trädgården på The Papaya Tree, Ahangama",
+  "The entrance to The Papaya Tree, Ahangama": "Entrén till The Papaya Tree, Ahangama",
+  "A surf break on the south coast near Ahangama": "Ett surfbreak på sydkusten nära Ahangama",
+  "A beachfront meal near Ahangama": "En måltid vid stranden nära Ahangama",
+  "Stilt fishermen near Koggala, or a yoga session near Ahangama": "Styltfiskare nära Koggala, eller yoga nära Ahangama",
+  "Galle Fort ramparts, or tea hills inland from Ahangama": "Murarna vid Galle Fort, eller tebackar inåt landet från Ahangama",
+  "A tuk-tuk, or the coastal train that passes Ahangama": "En tuk-tuk, eller kusttåget som passerar Ahangama",
+  "Everyday street life in Ahangama": "Vardagsliv på gatan i Ahangama",
+  "Dawn light near The Papaya Tree, Ahangama": "Gryningsljus nära The Papaya Tree, Ahangama",
+  "Breakfast at The Papaya Tree": "Frukost på The Papaya Tree",
+  "Midday at the pool at The Papaya Tree": "Mitt på dagen vid poolen på The Papaya Tree",
+  "An afternoon out from The Papaya Tree": "En eftermiddag ute från The Papaya Tree",
+  "Sunset from The Papaya Tree's rooftop": "Solnedgång från taket på The Papaya Tree",
+  "A quiet room at The Papaya Tree at night": "Ett tyst rum på The Papaya Tree på kvällen",
+  "Golden hour, three minutes from the gate": "Gyllene timmen, tre minuter från grinden",
+  "The garden": "Trädgården",
+  "The pool": "Poolen",
+  "The rooftop": "Taket",
+  "Breakfast": "Frukost",
+  "The surf": "Surfen",
+  "The restaurant": "Restaurangen",
+  "The entrance": "Entrén",
+  "Cover of The Ahangama Guide by The Papaya Tree": "Omslag till Ahangama-guiden från The Papaya Tree",
+}
+
+export function trText(text: string, locale: Locale) {
+  if (locale === "en") return text
+  return sv[text] || text
+}

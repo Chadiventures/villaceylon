@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "check-images": "node scripts/check-images.mjs",
-    "test": "node --test lib/*.test.ts",
+    "test": "node --import ./scripts/register-ts.mjs --test lib/*.test.ts",
     "validate:faq": "node scripts/validate-faq.mjs",
     "test:e2e": "playwright test",
     "test:mobile": "playwright test tests/mobile.spec.ts --project=chromium",

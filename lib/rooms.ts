@@ -3,21 +3,28 @@
 // lib/capacity.ts is the single source of truth: change a number there and this
 // follows automatically.
 import { ROOM_TYPES as CAPACITY_ROOM_TYPES, guestCapacity, nightlyTotal as capacityNightlyTotal, roomCount as capacityRoomCount, type RoomTypeId } from "./capacity"
+import type { Locale } from "./i18n"
 
-export const ROOM_TYPES = CAPACITY_ROOM_TYPES.map((room) => ({
-  id: room.id,
-  name: room.name,
-  rate: room.priceUsd,
-  capacityPerRoom: room.maxGuests,
-  maxRooms: room.units,
-  subtitle: room.id === "double" ? "King bed, up to 2 guests" : "King plus bunk, up to 4 guests",
-}))
+export function roomCatalog(locale: Locale = "en") {
+  return CAPACITY_ROOM_TYPES.map((room) => ({
+    id: room.id,
+    name: room.name,
+    rate: room.priceUsd,
+    capacityPerRoom: room.maxGuests,
+    maxRooms: room.units,
+    subtitle: room.id === "double"
+      ? (locale === "sv" ? "Kingsize-säng, upp till 2 gäster" : "King bed, up to 2 guests")
+      : (locale === "sv" ? "Kingsize plus våningssäng, upp till 4 gäster" : "King plus bunk, up to 4 guests"),
+  }))
+}
+
+export const ROOM_TYPES = roomCatalog()
 
 export type RoomId = RoomTypeId
 export type RoomQty = Record<RoomId, number>
 
-export function nightlyTotal(qty: RoomQty) {
-  return capacityNightlyTotal(qty)
+export function nightlyTotal(qty: RoomQty, on?: string) {
+  return capacityNightlyTotal(qty, on)
 }
 
 export function guestCap(qty: RoomQty) {
@@ -36,8 +43,8 @@ export function nightsBetween(checkIn: string, checkOut: string) {
   return nights > 0 ? nights : 0
 }
 
-export function staySummary(qty: RoomQty, guests: number) {
-  const rooms = ROOM_TYPES.filter((room) => (qty[room.id] || 0) > 0).map((room) => `${qty[room.id]} ${room.name}`)
-  const guestLabel = `${guests} ${guests === 1 ? "guest" : "guests"}`
+export function staySummary(qty: RoomQty, guests: number, locale: Locale = "en") {
+  const rooms = roomCatalog(locale).filter((room) => (qty[room.id] || 0) > 0).map((room) => `${qty[room.id]} ${room.name}`)
+  const guestLabel = `${guests} ${locale === "sv" ? (guests === 1 ? "gäst" : "gäster") : (guests === 1 ? "guest" : "guests")}`
   return `${rooms.join(" + ")} · ${guestLabel}`
 }

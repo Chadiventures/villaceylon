@@ -1,11 +1,25 @@
+import type { Locale } from "../../lib/i18n"
+
 export const WEEKDAY_LABELS = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
 export const MONTH_LABELS = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December",
 ]
+const WEEKDAY_LABELS_SV = ["Må", "Ti", "On", "To", "Fr", "Lö", "Sö"]
+const MONTH_LABELS_SV = [
+  "januari", "februari", "mars", "april", "maj", "juni",
+  "juli", "augusti", "september", "oktober", "november", "december",
+]
 export const MAX_STAY_NIGHTS = 30
 const SHORT_WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 const SHORT_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+const SHORT_WEEKDAYS_SV = ["sön", "mån", "tis", "ons", "tors", "fre", "lör"]
+const SHORT_MONTHS_SV = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
+
+export function calendarLabels(locale: Locale = "en") {
+  if (locale === "sv") return { weekdays: WEEKDAY_LABELS_SV, months: MONTH_LABELS_SV }
+  return { weekdays: WEEKDAY_LABELS, months: MONTH_LABELS }
+}
 
 export function toIso(date: Date) {
   const y = date.getFullYear()
@@ -38,10 +52,12 @@ export function sameDay(a: Date, b: Date) {
 }
 
 /** "Sat 17 Oct", used for the check in and check out cell values. */
-export function formatDateLabel(iso: string) {
+export function formatDateLabel(iso: string, locale: Locale = "en") {
   if (!iso) return ""
   const date = fromIso(iso)
-  return `${SHORT_WEEKDAYS[date.getDay()]} ${date.getDate()} ${SHORT_MONTHS[date.getMonth()]}`
+  const weekdays = locale === "sv" ? SHORT_WEEKDAYS_SV : SHORT_WEEKDAYS
+  const months = locale === "sv" ? SHORT_MONTHS_SV : SHORT_MONTHS
+  return `${weekdays[date.getDay()]} ${date.getDate()} ${months[date.getMonth()]}`
 }
 
 export function nightsBetweenIso(checkIn: string, checkOut: string) {

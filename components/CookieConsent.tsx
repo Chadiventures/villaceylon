@@ -2,7 +2,10 @@
 import Link from "next/link"
 import Script from "next/script"
 import { useEffect, useState } from "react"
+import { copy } from "../lib/copy"
+import { localizePath } from "../lib/i18n"
 import { useOverlay } from "./OverlayContext"
+import { useLocale } from "./useLocale"
 
 type Consent = "accepted" | "declined"
 
@@ -14,6 +17,7 @@ export function CookieConsent() {
   const [consent, setConsent] = useState<Consent | null>(null)
   const [ready, setReady] = useState(false)
   const { chromeHidden } = useOverlay()
+  const locale = useLocale()
 
   useEffect(() => {
     const saved = window.localStorage.getItem("ptCookieConsent") as Consent | null
@@ -40,12 +44,12 @@ gtag('config', '${GA_ID}', { anonymize_ip: true });`}
         </>
       ) : null}
       {ready && !consent && !chromeHidden ? (
-        <div className="cookie-banner" role="dialog" aria-label="Cookie preferences">
+        <div className="cookie-banner" role="dialog" aria-label={copy.cookie.label[locale]}>
           <div className="cookie-banner-inner">
-            <p>We use a few cookies to remember your preferences and, if you accept, to understand how guests use the site. See our <Link href="/cookies">cookie policy</Link>.</p>
+            <p>{copy.cookie.body[locale]} <Link href={localizePath("/cookies", locale)}>{copy.cookie.policy[locale]}</Link>.</p>
             <div className="cookie-actions">
-              <button type="button" className="btn btn-line" onClick={() => choose("declined")}>Decline non-essential</button>
-              <button type="button" className="btn btn-amber" onClick={() => choose("accepted")}>Accept</button>
+              <button type="button" className="btn btn-line" onClick={() => choose("declined")}>{copy.cookie.decline[locale]}</button>
+              <button type="button" className="btn btn-amber" onClick={() => choose("accepted")}>{copy.cookie.accept[locale]}</button>
             </div>
           </div>
         </div>

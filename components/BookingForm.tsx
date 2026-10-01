@@ -4,15 +4,18 @@ import { useEffect, useState } from "react"
 import { formatPrice } from "../lib/currency"
 import { useCurrency } from "./CurrencyContext"
 import { submitBooking } from "../lib/booking"
+import { copy, fitMessage, nightLabel } from "../lib/copy"
 import { guestCap, nightlyTotal, roomCount, staySummary, type RoomId, type RoomQty } from "../lib/rooms"
 import { capacityHelperText, suggestRoomsText } from "../lib/capacity"
 import { useSearch } from "./search/SearchContext"
 import { formatDateLabel, nightsBetweenIso } from "./search/dateUtils"
 import { site } from "../lib/site"
 import { RoomGuestPicker } from "./RoomGuestPicker"
+import { useLocale } from "./useLocale"
 
 export function BookingForm() {
   const params = useSearchParams()
+  const locale = useLocale()
   const { currency } = useCurrency()
   const { checkIn, checkOut, guests, setGuests } = useSearch()
   const [sent, setSent] = useState(false)
@@ -36,7 +39,7 @@ export function BookingForm() {
   }, [params])
 
   const nights = nightsBetweenIso(checkIn, checkOut)
-  const nightly = nightlyTotal(roomQty)
+  const nightly = nightlyTotal(roomQty, checkIn || undefined)
   const total = nights * nightly
   const cap = Math.max(1, guestCap(roomQty))
   const ready = nights > 0
@@ -52,10 +55,10 @@ export function BookingForm() {
 
   function validate() {
     const next: Record<string, string> = {}
-    if (!ready) next.dates = "Choose your dates in the search bar above."
-    if (guests > cap) next.guests = `These rooms fit ${cap} ${cap === 1 ? "guest" : "guests"}, you have ${guests}.`
-    if (!name.trim()) next.name = "Let us know your name."
-    if (!email.trim()) next.email = "Add an email so we can reply."
+    if (!ready) next.dates = copy.form.datesMissing[locale]
+    if (guests > cap) next.guests = fitMessage(locale, cap, guests)
+    if (!name.trim()) next.name = copy.form.nameMissing[locale]
+    if (!email.trim()) next.email = copy.form.emailMissing[locale]
     setErrors(next)
     return Object.keys(next).length === 0
   }
@@ -76,7 +79,7 @@ export function BookingForm() {
       checkOut,
       nights,
       guests,
-      roomSummary: staySummary(roomQty, guests),
+      roomSummary: staySummary(roomQty, guests, locale),
       note,
     })
     setSent(true)
@@ -90,64 +93,64 @@ export function BookingForm() {
           <input type="text" name="company" tabIndex={-1} autoComplete="off" />
         </label>
         {ready ? (
-          <p className="form-hint">{formatDateLabel(checkIn)} to {formatDateLabel(checkOut)} · {nights} {nights === 1 ? "night" : "nights"}</p>
+          <p className="form-hint">{formatDateLabel(checkIn, locale)} {copy.form.to[locale]} {formatDateLabel(checkOut, locale)} · {nights} {nightLabel(locale, nights)}</p>
         ) : (
-          <p className="form-error" role="alert">Choose your dates in the search bar above.</p>
+          <p className="form-error" role="alert">{copy.form.datesMissing[locale]}</p>
         )}
         <div className="room-field">
-          Rooms
+          {copy.form.rooms[locale]}
           <RoomGuestPicker
             roomQty={roomQty}
             guests={guests}
             onRoomQty={changeRooms}
             onGuests={(count) => { setGuests(count); setSent(false) }}
           />
-          <p className="form-hint">{capacityHelperText()}</p>
-          {suggestRoomsText(guests) ? <p className="form-hint">{suggestRoomsText(guests)}</p> : null}
+          <p className="form-hint">{capacityHelperText(undefined, locale)}</p>
+          {suggestRoomsText(guests, locale) ? <p className="form-hint">{suggestRoomsText(guests, locale)}</p> : null}
           {guests > cap ? (
-            <span className="form-error" role="alert">These rooms fit {cap} {cap === 1 ? "guest" : "guests"}, you have {guests}.</span>
+            <span className="form-error" role="alert">{fitMessage(locale, cap, guests)}</span>
           ) : errors.guests ? (
             <span className="form-error" role="alert">{errors.guests}</span>
           ) : null}
         </div>
         <label>
-          Name
-          <input type="text" name="name" placeholder="Your name" required autoComplete="name" value={name} onChange={(event) => { setName(event.target.value); setSent(false) }} aria-invalid={Boolean(errors.name)} />
+          {copy.form.name[locale]}
+          <input type="text" name="name" placeholder={copy.form.namePh[locale]} required autoComplete="name" value={name} onChange={(event) => { setName(event.target.value); setSent(false) }} aria-invalid={Boolean(errors.name)} />
           {errors.name ? <span className="form-error" role="alert">{errors.name}</span> : null}
         </label>
         <label>
-          Email
+          {copy.form.email[locale]}
           <input type="email" name="email" inputMode="email" autoComplete="email" placeholder="you@email.com" required value={email} onChange={(event) => { setEmail(event.target.value); setSent(false) }} aria-invalid={Boolean(errors.email)} />
           {errors.email ? <span className="form-error" role="alert">{errors.email}</span> : null}
         </label>
         <label>
-          Anything we should know
-          <textarea name="note" placeholder="Arrival time, surf plans, anything at all" value={note} onChange={(event) => setNote(event.target.value)} />
+          {copy.form.note[locale]}
+          <textarea name="note" placeholder={copy.form.notePh[locale]} value={note} onChange={(event) => setNote(event.target.value)} />
         </label>
         <div className="price-summary">
           {ready ? (
             <>
               <p>
-                {nights} {nights === 1 ? "night" : "nights"} × {formatPrice(nightly, currency)} <span className="price-usd-note">({formatPrice(nightly, "USD")})</span> = <strong>{formatPrice(total, currency)}</strong>
+                {nights} {nightLabel(locale, nights)} × {formatPrice(nightly, currency)} <span className="price-usd-note">({formatPrice(nightly, "USD")})</span> = <strong>{formatPrice(total, currency)}</strong>
               </p>
-              <p className="form-hint">Taxes and fees included.</p>
-              <p className="form-hint">Free cancellation up to 5 days before check-in.</p>
+              <p className="form-hint">{copy.form.taxes[locale]}</p>
+              <p className="form-hint">{copy.form.freeCancel[locale]}</p>
             </>
           ) : (
-            <p>Add your dates to see your price.</p>
+            <p>{copy.form.addDates[locale]}</p>
           )}
-          <p className="form-hint">Live availability. Book and pay securely in one step.</p>
+          <p className="form-hint">{copy.form.live[locale]}</p>
         </div>
         <button className="btn btn-solid" type="submit" disabled={!canBook} aria-disabled={!canBook} style={{ width: "100%", justifyContent: "center" }}>
-          {canBook ? "Book now" : "Check availability"}
+          {canBook ? copy.form.book[locale] : copy.form.availability[locale]}
         </button>
-        {!canBook ? <p className="form-hint">Choose your dates to continue.</p> : null}
+        {!canBook ? <p className="form-hint">{copy.form.continue[locale]}</p> : null}
         {sent ? (
-          <p className="form-success" role="status">Thanks! Your booking details are on their way to us now.</p>
+          <p className="form-success" role="status">{copy.form.thanks[locale]}</p>
         ) : null}
       </form>
       <p className="form-alt">
-        Questions? <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">Message us</a>
+        {copy.form.questions[locale]} <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">{copy.form.message[locale]}</a>
       </p>
     </div>
   )

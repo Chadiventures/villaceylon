@@ -497,7 +497,15 @@ em{font-style:italic}
 .foot h4{font-family:var(--caps);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sun);margin-bottom:14px}
 .foot a{text-decoration:none;display:block;padding:5px 0}
 .foot a:hover{color:var(--cream)}
-.foot-base{border-top:1px solid rgba(245,237,218,.14);margin-top:44px;padding-top:22px;font-size:.78rem;font-family:var(--caps);letter-spacing:.1em}
+.foot-address{display:inline-block;max-width:36ch;margin-top:14px;font-size:.9rem;opacity:.82;line-height:1.6;text-decoration:underline;text-underline-offset:3px}
+.foot .wrap.foot-base{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px 24px;border-top:1px solid rgba(245,237,218,.14);margin-top:44px;padding-top:22px;font-size:.78rem;font-family:var(--caps);letter-spacing:.1em}
+.foot-copy{margin:0;justify-self:start}
+.foot .wrap.foot-base .foot-legal{margin:0;justify-self:center;justify-content:center}
+.foot-credit{justify-self:end;text-align:right;opacity:.85}
+@media(max-width:720px){
+  .foot .wrap.foot-base{grid-template-columns:1fr;justify-items:center;text-align:center;gap:14px}
+  .foot-copy,.foot-credit,.foot .wrap.foot-base .foot-legal{justify-self:center;text-align:center}
+}
 
 .section,.welcome,.stats{position:relative}
 .section>.wrap,.welcome>.wrap{position:relative;z-index:1}
@@ -768,13 +776,22 @@ body{padding-bottom:120px}
 .skip-link:focus{left:0}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--amber-d);outline-offset:3px;border-radius:4px}
 
-/* Currency toggle: header only */
-.currency-toggle{display:inline-flex;align-items:center;gap:2px;background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:3px;margin:0}
-.currency-toggle button{border:0;background:transparent;font-family:var(--caps);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 8px;min-height:28px;border-radius:100px;cursor:pointer;color:var(--ink-2)}
-.currency-toggle button.on{background:var(--forest);color:var(--cream)}
-.currency-toggle button:focus-visible{outline:3px solid var(--amber-d);outline-offset:2px}
+/* Currency menu and language flags in the header */
+.currency-menu{position:relative;flex:none}
+.currency-menu-btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--paper);color:var(--forest);font-family:var(--caps);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;min-height:32px;border-radius:100px;cursor:pointer}
+.currency-menu-btn span{font-size:.7rem;line-height:1}
+.currency-menu-list{position:absolute;top:calc(100% + 6px);right:0;z-index:80;min-width:100%;margin:0;padding:4px;list-style:none;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 16px 36px -18px rgba(36,63,52,.45)}
+.currency-menu-list button{display:block;width:100%;text-align:left;border:0;background:transparent;font-family:var(--caps);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--forest);min-height:36px}
+.currency-menu-list button.on,.currency-menu-list button[aria-selected="true"]{background:var(--forest);color:var(--cream)}
 .head-currency{flex:none}
-.head-scrolled .head-currency,.head.on-light .head-currency{background:var(--paper);border-color:var(--line)}
+.lang-switch{display:inline-flex;align-items:center;gap:2px}
+.lang-switch button{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:34px;height:34px;padding:0;border-radius:50%;border:1px solid transparent;background:transparent;cursor:pointer;color:inherit}
+.lang-switch button.on{border-color:var(--amber);background:rgba(251,247,238,.2)}
+.head.on-light .lang-switch button.on,.head.head-scrolled .lang-switch button.on{background:rgba(36,63,52,.08)}
+.lang-switch.labelled{gap:8px}
+.lang-switch.labelled button{width:auto;height:auto;min-height:44px;padding:6px 10px;border-radius:100px;color:var(--forest)}
+.lang-switch.labelled button span{font-family:var(--caps);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
+.flag{display:block;width:18px;height:12px;border-radius:1px;box-shadow:0 0 0 1px rgba(0,0,0,.18)}
 .price-usd-note{color:var(--ink-2);font-size:.82em;font-style:italic}
 .rooms-search-sticky{position:sticky;top:80px;z-index:20;margin:18px 0 28px}
 .rooms-search-sticky .search-bar-page{box-shadow:0 14px 36px -16px rgba(36,63,52,.32)}

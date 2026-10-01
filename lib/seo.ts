@@ -1,5 +1,8 @@
 import type { Metadata } from "next"
+import { localizePath, type Locale } from "./i18n"
 import { SITE_URL, site } from "./site"
+
+export const blockIndexing = process.env.NEXT_PUBLIC_NOINDEX === "true"
 
 type PageSeo = {
   title: string
@@ -7,19 +10,31 @@ type PageSeo = {
   path: string
   image?: string
   absoluteTitle?: boolean
+  locale?: Locale
 }
 
-export function pageMetadata({ title, description, path, image = site.ogImage, absoluteTitle = false }: PageSeo): Metadata {
-  const url = path === "/" ? "/" : path
+export function languageAlternates(path: string) {
+  const en = absoluteUrl(path === "/" ? "/" : path)
+  const sv = absoluteUrl(localizePath(path, "sv"))
+  return { en, sv, "x-default": en }
+}
+
+export function pageMetadata({ title, description, path, image = site.ogImage, absoluteTitle = false, locale = "en" }: PageSeo): Metadata {
+  const url = localizePath(path, locale)
   const socialTitle = absoluteTitle ? title : `${title} | ${site.name}`
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      languages: languageAlternates(path),
+    },
     openGraph: {
       title: socialTitle,
       description,
       url,
+      locale: locale === "sv" ? "sv_SE" : "en_US",
+      alternateLocale: locale === "sv" ? ["en_US"] : ["sv_SE"],
       images: [{ url: image, width: 1200, height: 630, alt: `${site.name}, Ahangama` }],
     },
     twitter: {

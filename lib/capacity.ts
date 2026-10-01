@@ -2,7 +2,11 @@
  * Single source of truth for room capacity. Every guest picker, price summary,
  * validation message and room suggestion on the site reads from here. Change a
  * number here and the whole UI follows, with no other edits needed.
+ * Nightly rates come from lib/prices.ts.
  */
+
+import type { Locale } from "./i18n"
+import { nightlyUsd, exampleRates } from "./prices"
 
 export type RoomTypeId = "double" | "family"
 
@@ -15,8 +19,8 @@ export type RoomType = {
 }
 
 export const ROOM_TYPES: RoomType[] = [
-  { id: "double", name: "Deluxe Double", units: 6, maxGuests: 2, priceUsd: 65 },
-  { id: "family", name: "Deluxe Four-Bed", units: 1, maxGuests: 4, priceUsd: 90 },
+  { id: "double", name: "Deluxe Double", units: 6, maxGuests: 2, priceUsd: exampleRates.double },
+  { id: "family", name: "Deluxe Four-Bed", units: 1, maxGuests: 4, priceUsd: exampleRates.family },
 ]
 
 export const MAX_GUESTS = ROOM_TYPES.reduce((sum, room) => sum + room.units * room.maxGuests, 0)
@@ -29,7 +33,8 @@ export function roomType(id: RoomTypeId): RoomType {
   return found
 }
 
-export function guestLabel(count: number) {
+export function guestLabel(count: number, locale: Locale = "en") {
+  if (locale === "sv") return `${count} ${count === 1 ? "gäst" : "gäster"}`
   return `${count} ${count === 1 ? "guest" : "guests"}`
 }
 
@@ -45,8 +50,8 @@ export function guestCapacity(qty: RoomQty): number {
   return ROOM_TYPES.reduce((sum, room) => sum + (qty[room.id] || 0) * room.maxGuests, 0)
 }
 
-export function nightlyTotal(qty: RoomQty): number {
-  return ROOM_TYPES.reduce((sum, room) => sum + (qty[room.id] || 0) * room.priceUsd, 0)
+export function nightlyTotal(qty: RoomQty, on?: string): number {
+  return ROOM_TYPES.reduce((sum, room) => sum + (qty[room.id] || 0) * nightlyUsd(room.id, on), 0)
 }
 
 /**
@@ -54,14 +59,17 @@ export function nightlyTotal(qty: RoomQty): number {
  * Beds24's getAvailability() is live to show real numbers for the chosen dates;
  * without it, this falls back to the full config (units in lib/capacity.ts).
  */
-export function capacityHelperText(availability?: Partial<Record<RoomTypeId, number>>): string {
+export function capacityHelperText(availability?: Partial<Record<RoomTypeId, number>>, locale: Locale = "en"): string {
   const parts = ROOM_TYPES.map((room) => {
     const count = availability?.[room.id] ?? room.units
     const namePart = count === 1 ? room.name : `${room.name}s`
-    return `${count} ${namePart} (${room.maxGuests} guests each)`
+    const each = locale === "sv" ? "gäster vardera" : "guests each"
+    return `${count} ${namePart} (${room.maxGuests} ${each})`
   })
-  const prefix = availability ? "Available now" : "We have"
-  return `${prefix}: ${parts.join(" and ")}.`
+  const prefix = availability
+    ? (locale === "sv" ? "Ledigt nu" : "Available now")
+    : (locale === "sv" ? "Vi har" : "We have")
+  return `${prefix}: ${parts.join(locale === "sv" ? " och " : " and ")}.`
 }
 
 export function shortRoomName(room: RoomType, count = 1) {
@@ -70,14 +78,16 @@ export function shortRoomName(room: RoomType, count = 1) {
 }
 
 /** Hero search helper: "6 Deluxe Doubles (2 guests each) and 1 Four-Bed (4 guests)." */
-export function capacityHelperShort(availability?: Partial<Record<RoomTypeId, number>>): string {
+export function capacityHelperShort(availability?: Partial<Record<RoomTypeId, number>>, locale: Locale = "en"): string {
   const parts = ROOM_TYPES.map((room) => {
     const count = availability?.[room.id] ?? room.units
     const namePart = shortRoomName(room, count)
-    const guestBit = count === 1 ? `(${room.maxGuests} guests)` : `(${room.maxGuests} guests each)`
+    const guests = locale === "sv" ? "gäster" : "guests"
+    const each = locale === "sv" ? "gäster vardera" : "guests each"
+    const guestBit = count === 1 ? `(${room.maxGuests} ${guests})` : `(${room.maxGuests} ${each})`
     return `${count} ${namePart} ${guestBit}`
   })
-  return `${parts.join(" and ")}.`
+  return `${parts.join(locale === "sv" ? " och " : " and ")}.`
 }
 
 type Combo = { d: number; f: number; rooms: number; waste: number }
@@ -141,8 +151,10 @@ export function suggestRooms(guests: number): { label: string; rooms: RoomQty }[
 }
 
 /** "Suggested: 1 Deluxe Four-Bed, or 2 Deluxe Doubles." for the guests field. */
-export function suggestRoomsText(guests: number): string {
+export function suggestRoomsText(guests: number, locale: Locale = "en"): string {
   const suggestions = suggestRooms(guests)
   if (!suggestions.length) return ""
-  return `Suggested: ${suggestions.map((s) => s.label).join(", or ")}.`
+  const prefix = locale === "sv" ? "Förslag" : "Suggested"
+  const or = locale === "sv" ? ", eller " : ", or "
+  return `${prefix}: ${suggestions.map((s) => s.label).join(or)}.`
 }
