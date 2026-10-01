@@ -150,8 +150,10 @@ export function DateRangePicker({
   if (sheet) {
     return (
       <div className="dr-sheet" role="group" aria-label={selecting === "checkout" ? "Choose check out" : "Choose check in"} data-testid="search-datepicker">
-        <div className="dr-months dr-months-stack">
-          {sheetMonths.map((month, index) => renderMonth(month, `sheet-${index}`))}
+        <div className="dr-months-scroll">
+          <div className="dr-months dr-months-stack">
+            {sheetMonths.map((month, index) => renderMonth(month, `sheet-${index}`))}
+          </div>
         </div>
         {footer}
       </div>
