@@ -35,7 +35,7 @@ export const guidePreviews: GuidePreview[] = [
   {
     slug: "day-trips",
     label: "Day trips",
-    desc: "Galle Fort, whales off Mirissa, tea country and Yala safari.",
+    desc: "Galle Fort, tea country and Yala safari.",
     icon: <CarIcon />,
     image: IMAGES.guide.dayTrips,
   },

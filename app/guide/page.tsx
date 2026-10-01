@@ -20,9 +20,9 @@ export const metadata: Metadata = pageMetadata({
 })
 
 const sneakPeeks = [
-  "Nomad: the best brunch in the south, by our count.",
-  "Kabalana's sandy beach break welcomes every level.",
-  "Blue whales and dolphins off Mirissa, December to April.",
+  "Nomad in Weligama: the best brunch in the south, by our count.",
+  "Weligama Bay is the best bay on the coast for beginner and intermediate surfers.",
+  "The Doctors House: live music on Saturdays, DJs on Wednesdays, fine dining upstairs.",
 ]
 
 export default function GuidePage() {
@@ -56,13 +56,13 @@ export default function GuidePage() {
         </div>
       </section>
       <section className="gp-taste">
-        <div className="wrap">
+        <div className="wrap gp-frame">
           <h2>A taste of what&apos;s inside</h2>
           <div className="gp-bento">
             {guidePreviews.map((preview) => (
               <article className="gp-card" key={preview.slug}>
                 <div className="gp-photo">
-                  <PlaceholderImage src={preview.image.src} alt={preview.image.alt} sizes="(max-width: 820px) 100vw, 50vw" />
+                  <PlaceholderImage src={preview.image.src} alt={preview.image.alt} sizes="(max-width: 639px) 100vw, (max-width: 1099px) 50vw, 347px" />
                 </div>
                 <div className="gp-card-body">
                   <div className="gp-card-icon">{preview.icon}</div>
@@ -75,7 +75,7 @@ export default function GuidePage() {
         </div>
       </section>
       <section className="gp-peek">
-        <div className="wrap">
+        <div className="wrap gp-frame">
           <h2>Sneak peek</h2>
           <div className="gp-quotes">
             {sneakPeeks.map((quote) => (
@@ -85,7 +85,7 @@ export default function GuidePage() {
         </div>
       </section>
       <section className="gp-close" id="guide-closing">
-        <div className="wrap">
+        <div className="wrap gp-frame">
           <div className="gp-cover">
             <div className="gp-cover-frame">
               <Image

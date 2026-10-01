@@ -106,6 +106,12 @@ a,button,.btn,.search-cell,.search-submit,.nav-toggle,.stepper button{
   .nav-toggle{display:inline-flex}
   .logo .lw{font-size:1.02rem;letter-spacing:.12em}
   .head .btn{padding:10px 16px;min-height:44px}
+  .wa-fab{
+    right:16px;
+    bottom:calc(76px + env(safe-area-inset-bottom,0px));
+    width:56px;
+    height:56px;
+  }
 }
 
 @media(max-width:760px){
@@ -169,6 +175,9 @@ a,button,.btn,.search-cell,.search-submit,.nav-toggle,.stepper button{
   .route-table td::before{content:attr(data-label);display:block;font-family:var(--caps);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brown);margin-bottom:2px}
   .faq summary{width:100%;min-height:44px;padding:16px 40px 16px 0}
   .faq details{overflow-anchor:none}
+  .guide-soft{flex-direction:column;align-items:stretch}
+  .guide-soft .btn{min-height:44px;justify-content:center;width:100%}
+  .why-one-line{white-space:normal}
   .foot .wrap{grid-template-columns:1fr;gap:28px}
   .foot a{min-height:44px;display:inline-flex;align-items:center}
   .foot-legal{flex-wrap:wrap}
