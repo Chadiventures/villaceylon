@@ -7,12 +7,6 @@ const ROUTES = [
   { name: "room-detail", path: "/rooms#double" },
   { name: "house", path: "/house" },
   { name: "guide", path: "/guide" },
-  { name: "guide-surf", path: "/guide/surf" },
-  { name: "guide-eat", path: "/guide/eat" },
-  { name: "guide-things", path: "/guide/things-to-do" },
-  { name: "guide-day-trips", path: "/guide/day-trips" },
-  { name: "guide-getting-here", path: "/guide/getting-here" },
-  { name: "guide-good-to-know", path: "/guide/good-things-to-know" },
   { name: "book", path: "/book" },
   { name: "faq", path: "/faq" },
 ] as const

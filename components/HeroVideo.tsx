@@ -1,45 +1,47 @@
 'use client'
 import { useEffect, useRef, useState } from "react"
+import { PlaceholderImage } from "./PlaceholderImage"
 
 type NetworkInformation = { saveData?: boolean }
 
-export function HeroVideo({ poster, hasWebm, hasMp4 }: { poster: string; hasWebm: boolean; hasMp4: boolean }) {
+export function HeroVideo({ poster, alt, hasWebm, hasMp4 }: { poster: string; alt: string; hasWebm: boolean; hasMp4: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [canPlayVideo, setCanPlayVideo] = useState(false)
-  const [videoFailed, setVideoFailed] = useState(false)
-  const hasSource = hasWebm || hasMp4
+  const [preferStill, setPreferStill] = useState(false)
 
   useEffect(() => {
-    if (!hasSource) return
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
     const connection = (navigator as Navigator & { connection?: NetworkInformation }).connection
-    const saveData = Boolean(connection?.saveData)
-    if (reduced || saveData) return
-    const boot = () => setCanPlayVideo(true)
-    const idle = window.requestIdleCallback || ((cb: IdleRequestCallback) => window.setTimeout(cb, 400))
-    const id = idle(() => boot())
-    return () => {
-      if (typeof window.cancelIdleCallback === "function") window.cancelIdleCallback(id as number)
-      else window.clearTimeout(id as number)
-    }
-  }, [hasSource])
+    if (reduced || connection?.saveData) setPreferStill(true)
+  }, [])
 
   useEffect(() => {
     const video = videoRef.current
-    if (!video || !canPlayVideo) return
+    if (!video || preferStill) return
+    const fail = () => setPreferStill(true)
+    const sources = video.querySelectorAll("source")
+    const failedAlready = Boolean(video.error) || video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE
+    if (failedAlready) fail()
+    video.addEventListener("error", fail)
+    sources.forEach((source) => source.addEventListener("error", fail))
+    video.muted = true
+    const play = () => {
+      video.play().catch(() => {})
+    }
+    play()
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        video.play().catch(() => {})
-      } else {
-        video.pause()
-      }
+      if (entry.isIntersecting) play()
+      else video.pause()
     }, { threshold: 0.2 })
     observer.observe(video)
-    return () => observer.disconnect()
-  }, [canPlayVideo])
+    return () => {
+      video.removeEventListener("error", fail)
+      sources.forEach((source) => source.removeEventListener("error", fail))
+      observer.disconnect()
+    }
+  }, [preferStill])
 
-  if (!hasSource || !canPlayVideo || videoFailed) {
-    return null
+  if (preferStill) {
+    return <PlaceholderImage src={poster} alt={alt} priority sizes="100vw" />
   }
 
   return (
@@ -50,9 +52,9 @@ export function HeroVideo({ poster, hasWebm, hasMp4 }: { poster: string; hasWebm
       loop
       playsInline
       autoPlay
-      preload="metadata"
+      preload="auto"
       poster={poster}
-      onError={() => setVideoFailed(true)}
+      onError={() => setPreferStill(true)}
       aria-hidden="true"
     >
       {hasMp4 ? <source src="/video/hero.mp4" type="video/mp4" /> : null}

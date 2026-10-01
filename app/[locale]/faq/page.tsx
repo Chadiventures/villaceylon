@@ -3,7 +3,6 @@ import Link from "next/link"
 import { BookCta } from "../../../components/BookCta"
 import { Breadcrumbs } from "../../../components/Breadcrumbs"
 import { Faq } from "../../../components/Faq"
-import { GuidePdfLink } from "../../../components/GuidePdfLink"
 import { JsonLd } from "../../../components/JsonLd"
 import { PageHeader } from "../../../components/PageHeader"
 import { Section } from "../../../components/Section"
@@ -51,10 +50,6 @@ export default async function FaqPage() {
           ))}
         </nav>
         <Faq groups={faq.groups} />
-        <div className="guide-soft">
-          <p>{copy.faqPage.pdf[locale]}</p>
-          <GuidePdfLink className="btn btn-line">{copy.faqPage.download[locale]}</GuidePdfLink>
-        </div>
         <p className="faq-whatsapp">
           <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">{copy.faqPage.message[locale]}</a>
         </p>

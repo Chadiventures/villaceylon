@@ -10,6 +10,8 @@ import { useOverlay } from "./OverlayContext"
 import { searchHref, useSearch } from "./search/SearchContext"
 import { useLocale } from "./useLocale"
 
+const barHiddenPaths = ["/book", "/faq", "/privacy", "/terms", "/cookies"]
+
 export function StickyBookBar() {
   const path = usePathname()
   const locale = useLocale()
@@ -17,6 +19,7 @@ export function StickyBookBar() {
   const { chromeHidden } = useOverlay()
   const [pastHero, setPastHero] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [footerVisible, setFooterVisible] = useState(false)
   useEffect(() => {
     const media = window.matchMedia("(max-width: 820px)")
     const sync = () => setIsMobile(media.matches)
@@ -30,14 +33,27 @@ export function StickyBookBar() {
       setPastHero(true)
       return
     }
+    setPastHero(false)
     const observer = new IntersectionObserver(([entry]) => {
       setPastHero(!entry.isIntersecting)
     }, { threshold: 0.08 })
     observer.observe(hero)
     return () => observer.disconnect()
   }, [path])
-  const onBook = stripLocale(path) === "/book"
-  const visible = !onBook && !chromeHidden && (isMobile || pastHero)
+  useEffect(() => {
+    const footer = document.getElementById("site-footer")
+    if (!footer) {
+      setFooterVisible(false)
+      return
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      setFooterVisible(entry.isIntersecting)
+    }, { threshold: 0 })
+    observer.observe(footer)
+    return () => observer.disconnect()
+  }, [path])
+  const hiddenPage = barHiddenPaths.includes(stripLocale(path))
+  const visible = !hiddenPage && !chromeHidden && !footerVisible && (isMobile || pastHero)
   return (
     <div className={visible ? "sticky-book show" : "sticky-book"} aria-hidden={!visible}>
       <div className="sticky-book-inner">

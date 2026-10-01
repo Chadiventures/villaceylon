@@ -1,11 +1,9 @@
 "use client"
-
 import Link from "next/link"
 import { copy } from "../lib/copy"
 import { localizePath } from "../lib/i18n"
 import { site } from "../lib/site"
 import { useLocale } from "./useLocale"
-import { GUIDE_PDF_FILENAME, GUIDE_PDF_HREF, PdfDownloadLink } from "./PdfDownloadLink"
 import { InstagramIcon, MailIcon, WhatsAppIcon } from "./Icons"
 import { SearchLink } from "./search/SearchLink"
 
@@ -13,7 +11,7 @@ export function Footer() {
   const locale = useLocale()
   const href = (path: string) => localizePath(path, locale)
   return (
-    <footer className="foot">
+    <footer className="foot" id="site-footer">
       <div className="wrap">
         <div>
           <Link className="logo" href={href("/")} style={{ display: "inline-flex" }}>
@@ -32,13 +30,6 @@ export function Footer() {
           <Link href={href("/guide")}>{copy.nav.guide[locale]}</Link>
           <Link href={href("/faq")}>{copy.nav.faq[locale]}</Link>
           <SearchLink href="/book">{copy.footer.book[locale]}</SearchLink>
-        </div>
-        <div>
-          <h4>{copy.footer.guide[locale]}</h4>
-          <Link href={href("/guide")}>{copy.nav.guide[locale]}</Link>
-          <PdfDownloadLink href={GUIDE_PDF_HREF} filename={GUIDE_PDF_FILENAME} trackPage="footer">
-            {copy.footer.download[locale]}
-          </PdfDownloadLink>
         </div>
         <div>
           <h4>{copy.footer.contact[locale]}</h4>

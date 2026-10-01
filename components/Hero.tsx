@@ -11,14 +11,18 @@ import { SearchBar } from "./search/SearchBar"
 
 const hero = IMAGES.home.hero
 const heroVideo = heroVideoSources()
+const hasHeroVideo = heroVideo.webm || heroVideo.mp4
 
 export async function Hero() {
   const locale = await getLocale()
   return (
     <section className="hero">
       <div className="hero-bg">
-        <PlaceholderImage src={hero.src} alt={trText(hero.alt, locale)} priority sizes="100vw" />
-        <HeroVideo poster={hero.src} hasWebm={heroVideo.webm} hasMp4={heroVideo.mp4} />
+        {hasHeroVideo ? (
+          <HeroVideo poster={hero.src} alt={trText(hero.alt, locale)} hasWebm={heroVideo.webm} hasMp4={heroVideo.mp4} />
+        ) : (
+          <PlaceholderImage src={hero.src} alt={trText(hero.alt, locale)} priority sizes="100vw" />
+        )}
       </div>
       <div className="hero-scrim" />
       <div className="wrap">

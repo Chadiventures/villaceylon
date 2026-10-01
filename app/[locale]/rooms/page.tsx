@@ -6,6 +6,7 @@ import { Building } from "../../../components/Building"
 import { Price } from "../../../components/CurrencyToggle"
 import { JsonLd } from "../../../components/JsonLd"
 import { PolicyCard } from "../../../components/PolicyCard"
+import { RoomAmenities } from "../../../components/RoomAmenities"
 import { RoomCompare } from "../../../components/RoomCompare"
 import { RoomGallery } from "../../../components/RoomGallery"
 import { Section } from "../../../components/Section"
@@ -20,6 +21,7 @@ import { getLocale } from "../../../lib/locale"
 import { exampleRates } from "../../../lib/prices"
 import { pageMetadata } from "../../../lib/seo"
 import { site } from "../../../lib/site"
+import "../../rooms/rooms.css"
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()
@@ -116,9 +118,8 @@ export default async function RoomsPage() {
           <RoomGallery roomId="family" caption={copy.rooms.familyCaption[locale]} photos={roomPhotos.family} />
         </div>
       </Section>
-      <Section>
-        <p className="room-includes"><strong>{copy.rooms.includesLead[locale]}</strong> {copy.rooms.includes[locale]}</p>
-      </Section>
+      <RoomAmenities />
+      <WhyBookDirect />
       <RoomCompare />
       <Section decor={<div className="blob" style={{ top: "10%", right: "-6%", width: 320, height: 320, background: "radial-gradient(circle,#E3A24C,transparent 70%)" }} />}>
         <Building />
@@ -127,7 +128,6 @@ export default async function RoomsPage() {
         <PolicyCard hint />
         <p className="route-note">{copy.rooms.faqNote[locale]} <Link href={localizePath("/faq#cancellation", locale)}>{copy.rooms.cancelLink[locale]}</Link> {copy.rooms.and[locale]} <Link href={localizePath("/faq#room-cost", locale)}>{copy.rooms.priceLink[locale]}</Link>.</p>
       </Section>
-      <WhyBookDirect />
       <BookCta />
     </>
   )

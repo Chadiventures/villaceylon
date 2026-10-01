@@ -8,8 +8,10 @@ export function DownloadIcon() {
 
 export function AcIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-      <path d="M4 6h14v6a7 7 0 01-14 0zM4 20h14M9 16v4M13 16v4" strokeLinecap="round" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+      <path d="M3.5 5.5h17v7.2a2.6 2.6 0 01-2.6 2.6H6.1a2.6 2.6 0 01-2.6-2.6V5.5z" strokeLinejoin="round" />
+      <path d="M6.5 9h11" strokeLinecap="round" />
+      <path d="M6 18.8c1.2-1.2 2.2-1.2 3.2 0s2 1.2 3.2 0 2-1.2 3.2 0 2 1.2 3.2 0" strokeLinecap="round" />
     </svg>
   )
 }
@@ -24,8 +26,86 @@ export function ShowerIcon() {
 
 export function WifiIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-      <path d="M4 20c4-6 12-6 16 0M7 9a5 5 0 0110 0" strokeLinecap="round" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+      <path d="M4.5 10.2a11 11 0 0115 0" strokeLinecap="round" />
+      <path d="M7.4 13.2a7 7 0 019.2 0" strokeLinecap="round" />
+      <path d="M10.2 16.1a3.2 3.2 0 013.6 0" strokeLinecap="round" />
+      <circle cx="12" cy="19.2" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+export function WiredIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+      <path d="M8 3.5h8v5H8z" strokeLinejoin="round" />
+      <path d="M10 5.2v1.5M12 5.2v1.5M14 5.2v1.5" strokeLinecap="round" />
+      <path d="M12 8.5v2.2" strokeLinecap="round" />
+      <path d="M9 13h6v3.2H9z" strokeLinejoin="round" />
+      <path d="M8 16.2h8v4.3H8z" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+export function SleepsIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+      <circle cx="12" cy="8" r="2.3" />
+      <path d="M6.5 19.2c.9-3.1 2.9-4.6 5.5-4.6s4.6 1.5 5.5 4.6" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function BedIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+      <path d="M4 18V11.5M4 14.5h16M20 18v-4.2a2.8 2.8 0 00-2.8-2.8H9" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M8.2 11.2V9.6A1.6 1.6 0 019.8 8h2.2" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function FloorIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+      <path d="M7 20V7.2L12 4.5l5 2.7V20" strokeLinejoin="round" />
+      <path d="M7 12.2h10M7 16h10" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function SizeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+      <path d="M5 9V5h4M15 5h4v4M19 15v4h-4M9 19H5v-4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+export function RateIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+      <path d="M12 4.5v15" strokeLinecap="round" />
+      <path d="M16.2 8.4c-.4-1.3-1.7-2.1-3.2-2.1-1.9 0-3.2 1.1-3.2 2.6 0 3.4 6.6 1.7 6.6 4.9 0 1.6-1.4 2.8-3.4 2.8-1.7 0-3-.8-3.5-2.2" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function BalconyIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+      <path d="M5 13.5h14M7.5 13.5V19M12 13.5V19M16.5 13.5V19" strokeLinecap="round" />
+      <path d="M8 13.5V9.2a4 4 0 018 0v4.3" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function PatioIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+      <path d="M4 18.5h16M7 18.5V12h10v6.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12 12V7.5" strokeLinecap="round" />
+      <path d="M9.2 9.4C9.2 7.6 12 6 12 6s2.8 1.6 2.8 3.4" strokeLinecap="round" />
     </svg>
   )
 }
@@ -90,6 +170,18 @@ export function ForkIcon() {
   return (
     <svg className="gi" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5">
       <path d="M12 4v14M8 4v8a4 4 0 008 0V4M12 18v18M28 4c-3 0-5 4-5 9s2 7 5 7 5-2 5-7-2-9-5-9zM28 20v16" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function NightIcon() {
+  return (
+    <svg className="gi" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M10 8h12l-1.6 9.2a6 6 0 01-8.8 0L10 8z" strokeLinejoin="round" />
+      <path d="M16 23.2V31M12.5 31h7" strokeLinecap="round" />
+      <path d="M28 8v11" strokeLinecap="round" />
+      <path d="M28 8.4h3.4" strokeLinecap="round" />
+      <circle cx="28" cy="21.2" r="2.3" />
     </svg>
   )
 }

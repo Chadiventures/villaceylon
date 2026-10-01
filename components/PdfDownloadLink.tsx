@@ -4,7 +4,7 @@ import { trackEvent } from "../lib/analytics"
 
 export const GUIDE_PDF_HREF = "/the-papaya-tree-ahangama-guide.pdf"
 export const GUIDE_PDF_FILENAME = "The-Papaya-Tree-Ahangama-Guide.pdf"
-export type GuidePdfPosition = "intro" | "sticky" | "closing"
+export type GuidePdfPosition = "intro" | "closing" | "sticky"
 
 /** A plain download link that also fires a trackEvent on click. Kept as its own tiny
  * client component so the server components that use it (e.g. GuideBand) do not need

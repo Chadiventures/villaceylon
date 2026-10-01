@@ -9,6 +9,7 @@ import { InstagramIcon, MailIcon, WhatsAppIcon } from "../../../components/Icons
 import { JsonLd } from "../../../components/JsonLd"
 import { MapEmbed } from "../../../components/MapEmbed"
 import { PageHeader } from "../../../components/PageHeader"
+import { GUIDE_PDF_FILENAME, GUIDE_PDF_HREF, PdfDownloadLink } from "../../../components/PdfDownloadLink"
 import { PolicyCard } from "../../../components/PolicyCard"
 import { Section } from "../../../components/Section"
 import { SearchBar } from "../../../components/search/SearchBar"
@@ -45,6 +46,7 @@ export default async function BookPage() {
       <Section>
         <Breadcrumbs items={[{ name: "Book", path: "/book" }]} />
         <SearchBar variant="page" />
+        <WhyBookDirect variant="compact" />
         <div className="book-grid" style={{ marginTop: 28 }}>
           <Suspense fallback={<div className="form">{copy.book.loading[locale]}</div>}>
             <BookingForm />
@@ -52,6 +54,7 @@ export default async function BookPage() {
           <div>
             <PolicyCard />
             <p className="route-note"><Link href={localizePath("/faq#cancellation", locale)}>{copy.book.cancel[locale]}</Link> {copy.rooms.and[locale]} <Link href={localizePath("/faq#cheaper-direct", locale)}>{copy.book.why[locale]}</Link>.</p>
+            <p className="book-pdf"><PdfDownloadLink className="book-pdf-link" href={GUIDE_PDF_HREF} filename={GUIDE_PDF_FILENAME} trackPage="/book">{copy.guide.download[locale]}</PdfDownloadLink></p>
             <div className="policy" style={{ marginTop: 20 }}>
               <h3>{copy.book.find[locale]}</h3>
               <p style={{ color: "var(--ink-2)", lineHeight: 1.85 }}>{site.name}<br />{site.address.line}</p>
@@ -70,7 +73,6 @@ export default async function BookPage() {
       <Section>
         <FaqSeed items={faq.seed.book} title={copy.faqPage.booking[locale]} />
       </Section>
-      <WhyBookDirect />
       <BookCta />
     </>
   )

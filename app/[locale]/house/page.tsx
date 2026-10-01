@@ -4,7 +4,6 @@ import { Breadcrumbs } from "../../../components/Breadcrumbs"
 import { Building } from "../../../components/Building"
 import { Cta } from "../../../components/Cta"
 import { DayTimeline } from "../../../components/DayTimeline"
-import { GuideBand } from "../../../components/GuideCard"
 import { HouseFeatureCards } from "../../../components/HouseFeatureCards"
 import { MapEmbed } from "../../../components/MapEmbed"
 import { PageHeader } from "../../../components/PageHeader"
@@ -52,7 +51,6 @@ export default async function HousePage() {
         <MapEmbed caption={copy.house.map[locale]} />
         <p className="route-note">{copy.house.more[locale]} <Link href={localizePath("/guide", locale)}>{copy.house.guide[locale]}</Link>{copy.house.or[locale]} <Link href={localizePath("/faq#airport", locale)}>{copy.house.getting[locale]}</Link>.</p>
       </Section>
-      <GuideBand />
       <Cta />
     </>
   )
