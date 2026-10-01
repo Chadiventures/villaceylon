@@ -245,7 +245,7 @@ export const copy = {
       "Ladda ner Ahangama-guiden som PDF, 15 sidor, din att behålla",
     ),
     coverAria: tx("Download the Ahangama guide PDF", "Ladda ner Ahangama-guiden som PDF"),
-    caption: tx("Free. 15 pages.", "Gratis. 15 sidor."),
+    caption: tx("Free. 15 pages. No sign-up.", "Gratis. 15 sidor. Ingen registrering."),
     homeCaption: tx("Free. 15 pages. Surf, eat, explore.", "Gratis. 15 sidor. Surf, mat, utflykter."),
     inside: tx("See what's inside", "Se vad som finns inuti"),
     taste: tx("A taste of what's inside", "En smak av innehållet"),
