@@ -1,38 +1,25 @@
 import Link from "next/link"
 import { Bento } from "../components/Bento"
-import { Building } from "../components/Building"
-import { Cta } from "../components/Cta"
+import { BookCta } from "../components/BookCta"
 import { GuideBand } from "../components/GuideCard"
 import { Hero } from "../components/Hero"
 import { AcIcon, GardenIcon, ShowerIcon, WifiIcon } from "../components/Icons"
-import { Marquee } from "../components/Marquee"
 import { Palm } from "../components/Palm"
 import { PlaceholderImage } from "../components/PlaceholderImage"
 import { Section } from "../components/Section"
-import { Stats } from "../components/Stats"
-import { photos } from "../lib/photos"
+import { WhyBookDirect } from "../components/WhyBookDirect"
+import { IMAGES } from "../lib/images"
 
-const roomPreview = photos.rooms.double.bedroom
+const roomPreview = IMAGES.rooms.double[0]
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <Marquee />
-      <section className="welcome">
-        <Palm flip style={{ top: -20, right: -10 }} />
-        <div className="wrap">
-          <p className="eyebrow">A house, not a resort</p>
-          <h2>The kind of place you book<br />for three nights and stay for ten.</h2>
-          <div className="rule" />
-          <p className="lead">Slow mornings, warm water, and the soft hum of Ahangama drifting in through the shutters. We keep it simple, so your days can be too.</p>
-        </div>
-      </section>
-      <Stats />
       <Section tint id="rooms">
         <div className="rooms-grid">
           <div className="arch">
-            <PlaceholderImage src={roomPreview} alt="Deluxe Double room with king bed and garden view at The Papaya Tree" sizes="(max-width: 860px) 100vw, 55vw" />
+            <PlaceholderImage src={roomPreview.src} alt={roomPreview.alt} sizes="(max-width: 860px) 100vw, 55vw" />
             <span className="cap">The room, opening to the garden</span>
           </div>
           <div className="room-copy">
@@ -66,11 +53,9 @@ export default function HomePage() {
         </div>
         <Bento />
       </Section>
-      <Section decor={<div className="blob" style={{ top: "10%", right: "-6%", width: 320, height: 320, background: "radial-gradient(circle,#E3A24C,transparent 70%)" }} />}>
-        <Building />
-      </Section>
+      <WhyBookDirect />
       <GuideBand />
-      <Cta />
+      <BookCta />
     </>
   )
 }

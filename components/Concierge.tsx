@@ -77,7 +77,7 @@ export function Concierge() {
             {messages.map((message, index) => (
               <div className={message.role === "user" ? "concierge-msg me" : "concierge-msg"} key={`${message.role}-${index}`}>
                 <p>{message.content}</p>
-                {message.fallback ? <a href="https://wa.me/94787163242" target="_blank" rel="noopener">Message on WhatsApp</a> : null}
+                {message.fallback ? <a href="https://wa.me/94787163242" target="_blank" rel="noopener noreferrer">Message on WhatsApp</a> : null}
               </div>
             ))}
             {waiting ? (

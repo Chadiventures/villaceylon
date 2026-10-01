@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img">
+  <title>The house entrance</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F5EDDA" />
+      <stop offset="1" stop-color="#243F34" />
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise" />
+      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.035 0" />
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)" />
+  <rect width="1200" height="900" filter="url(#grain)" />
+  <g transform="translate(501 351) scale(1.98)" fill="none" stroke="#E3A24C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".55">
+    <path d="M50 90V52" /><path d="M50 52c-10-14-28-16-38-10 8-2 24 2 30 14" /><path d="M50 52c10-14 28-16 38-10-8-2-24 2-30 14" /><path d="M50 52c-4-16 2-30 14-36-6 10-8 24-4 36" /><path d="M50 52c4-16-2-30-14-36 6 10 8 24 4 36" /><path d="M50 52c0-16 0-28 0-36" />
+  </g>
+</svg>

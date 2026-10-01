@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="925" height="1309" viewBox="0 0 925 1309" role="img" aria-labelledby="t">
+  <title id="t">Cover of The Ahangama Guide by The Papaya Tree</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F5EDDA" />
+      <stop offset="1" stop-color="#243F34" />
+    </linearGradient>
+  </defs>
+  <rect width="925" height="1309" fill="url(#g)" />
+  <rect x="48" y="48" width="829" height="1213" fill="none" stroke="#E3A24C" stroke-width="2" opacity=".5" />
+</svg>

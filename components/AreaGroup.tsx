@@ -1,6 +1,7 @@
 import type { ReactNode } from "react"
 
-type Item = { name: string; desc: string; icon?: ReactNode }
+type PriceBand = "Budget" | "Mid" | "Splurge"
+type Item = { name: string; desc: string; icon?: ReactNode; price?: PriceBand; tag?: string; time?: string }
 type Block = { title: string; note?: string; items: Item[] }
 
 function Venues({ items }: { items: Item[] }) {
@@ -11,7 +12,14 @@ function Venues({ items }: { items: Item[] }) {
           {item.icon ? <span className="venue-icon">{item.icon}</span> : null}
           <div className="venue-copy">
             <div className="venue-name">{item.name}</div>
+            {item.price || item.tag ? (
+              <div className="venue-pills">
+                {item.price ? <span className={`pill pill-price pill-${item.price.toLowerCase()}`}>{item.price}</span> : null}
+                {item.tag ? <span className="pill pill-tag">{item.tag}</span> : null}
+              </div>
+            ) : null}
             <div className="venue-desc">{item.desc}</div>
+            {item.time ? <div className="venue-time">{item.time}</div> : null}
           </div>
         </div>
       ))}

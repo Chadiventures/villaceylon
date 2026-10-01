@@ -1,0 +1,46 @@
+.faq-updated{
+  font-family:var(--caps);
+  font-size:.58rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--brown);
+  margin:0 0 16px;
+}
+.faq-nav{
+  position:sticky;
+  top:calc(72px + env(safe-area-inset-top,0px));
+  z-index:8;
+  display:flex;
+  flex-wrap:nowrap;
+  gap:8px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  padding:10px 0 14px;
+  margin:0 0 28px;
+  background:var(--cream);
+  scrollbar-width:thin;
+}
+.faq-nav a{
+  flex:none;
+  border-radius:999px;
+  padding:8px 14px;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  border:1px solid var(--line);
+  background:var(--paper);
+  color:var(--forest);
+  text-decoration:none;
+  font-family:var(--caps);
+  font-size:.58rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.faq-nav a:hover{border-color:var(--amber);color:var(--forest-ink)}
+.faq-group,.faq details{scroll-margin-top:calc(140px + env(safe-area-inset-top,0px))}
+.faq-whatsapp{margin-top:18px}
+.faq-whatsapp a{color:var(--amber-d);font-weight:600;text-underline-offset:3px}
+@media(min-width:821px){
+  .faq-nav{flex-wrap:wrap;overflow:visible}
+}

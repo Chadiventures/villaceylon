@@ -1,10 +1,10 @@
+import { IMAGES } from "../lib/images"
 import { DeskIcon, PoolIcon, SunsetIcon } from "./Icons"
 import { PlaceholderImage } from "./PlaceholderImage"
-import { photos } from "../lib/photos"
 
-const groundFloorPhoto = photos.property.groundFloor
-const rooftopPhoto = photos.rooms.double.balcony
-const poolPhoto = photos.property.pool1
+const entrancePhoto = IMAGES.house.entrance
+const rooftopPhoto = IMAGES.home.rooftop
+const poolPhoto = IMAGES.home.pool
 
 export function Building() {
   return (
@@ -17,7 +17,7 @@ export function Building() {
       <div className="grid3">
         <div className="card4">
           <div className="card-photo">
-            <PlaceholderImage src={groundFloorPhoto} alt="The Papaya Tree at night, ground floor lit beside the pool in Ahangama" sizes="(max-width: 720px) 100vw, 30vw" />
+            <PlaceholderImage src={entrancePhoto.src} alt={entrancePhoto.alt} sizes="(max-width: 720px) 100vw, 30vw" />
           </div>
           <DeskIcon />
           <h3>Ground floor</h3>
@@ -25,7 +25,7 @@ export function Building() {
         </div>
         <div className="card4">
           <div className="card-photo">
-            <PlaceholderImage src={rooftopPhoto} alt="A balcony looking into the garden at The Papaya Tree, Ahangama" sizes="(max-width: 720px) 100vw, 30vw" />
+            <PlaceholderImage src={rooftopPhoto.src} alt={rooftopPhoto.alt} sizes="(max-width: 720px) 100vw, 30vw" />
           </div>
           <SunsetIcon />
           <h3>Rooftop</h3>
@@ -33,7 +33,7 @@ export function Building() {
         </div>
         <div className="card4">
           <div className="card-photo">
-            <PlaceholderImage src={poolPhoto} alt="Pool loungers beside the garden pool at The Papaya Tree, Ahangama" sizes="(max-width: 720px) 100vw, 30vw" />
+            <PlaceholderImage src={poolPhoto.src} alt={poolPhoto.alt} sizes="(max-width: 720px) 100vw, 30vw" />
           </div>
           <PoolIcon />
           <h3>Garden and pool</h3>

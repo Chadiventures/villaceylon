@@ -1,24 +1,39 @@
-// TODO: confirm real price with client
-export const FAMILY_ROOM_RATE = 90
+// Thin wrapper around lib/capacity.ts, kept so existing imports (ROOM_TYPES with
+// subtitle/rate/maxRooms field names, RoomId, RoomQty) do not all need rewriting.
+// lib/capacity.ts is the single source of truth: change a number there and this
+// follows automatically.
+import { ROOM_TYPES as CAPACITY_ROOM_TYPES, guestCapacity, nightlyTotal as capacityNightlyTotal, roomCount as capacityRoomCount, type RoomTypeId } from "./capacity"
 
-export const ROOM_TYPES = [
-  { id: "double", name: "Deluxe Double", rate: 65, capacityPerRoom: 2, maxRooms: 6, subtitle: "King bed, up to 2 guests" },
-  { id: "family", name: "Deluxe Four-Bed", rate: FAMILY_ROOM_RATE, capacityPerRoom: 4, maxRooms: 1, subtitle: "King plus bunk, up to 4 guests" },
-] as const
+export const ROOM_TYPES = CAPACITY_ROOM_TYPES.map((room) => ({
+  id: room.id,
+  name: room.name,
+  rate: room.priceUsd,
+  capacityPerRoom: room.maxGuests,
+  maxRooms: room.units,
+  subtitle: room.id === "double" ? "King bed, up to 2 guests" : "King plus bunk, up to 4 guests",
+}))
 
-export type RoomId = (typeof ROOM_TYPES)[number]["id"]
+export type RoomId = RoomTypeId
 export type RoomQty = Record<RoomId, number>
 
 export function nightlyTotal(qty: RoomQty) {
-  return ROOM_TYPES.reduce((sum, room) => sum + (qty[room.id] || 0) * room.rate, 0)
+  return capacityNightlyTotal(qty)
 }
 
 export function guestCap(qty: RoomQty) {
-  return ROOM_TYPES.reduce((sum, room) => sum + (qty[room.id] || 0) * room.capacityPerRoom, 0)
+  return guestCapacity(qty)
 }
 
 export function roomCount(qty: RoomQty) {
-  return ROOM_TYPES.reduce((sum, room) => sum + (qty[room.id] || 0), 0)
+  return capacityRoomCount(qty)
+}
+
+export function nightsBetween(checkIn: string, checkOut: string) {
+  if (!checkIn || !checkOut) return 0
+  const start = new Date(`${checkIn}T00:00:00`)
+  const end = new Date(`${checkOut}T00:00:00`)
+  const nights = (end.getTime() - start.getTime()) / 86400000
+  return nights > 0 ? nights : 0
 }
 
 export function staySummary(qty: RoomQty, guests: number) {

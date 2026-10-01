@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useRef } from "react"
 import { PlaceholderImage } from "./PlaceholderImage"
-import { photos } from "../lib/photos"
 
 type Spot = {
   name: string
@@ -20,7 +19,7 @@ const spots: Spot[] = [
   { name: "Weligama Bay", time: "15 min", note: "Beach break with sandbanks, every level", x: 85, y: 68 },
 ]
 
-export function SurfMap() {
+export function SurfMap({ seaSrc }: { seaSrc: string }) {
   const mapRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const root = mapRef.current
@@ -45,7 +44,7 @@ export function SurfMap() {
     <>
       <div className="surfmap" ref={mapRef} role="img" aria-label="Surf breaks along the south coast. Kabalana, 5 minutes, good for intermediate and advanced. Ahangama is home: The Rock, Marshmallows, Gas Station and Sticks, reef peaks best in the morning. Midigama, 10 minutes: Lazy Left, Lazy Right, Rams and Plantations, for surfers with a bit of experience. Weligama Bay, 15 minutes, a beach break with sandbanks for every level.">
         <div className="surfmap-sea" aria-hidden="true">
-          <PlaceholderImage src={photos.activities.wave} alt="" sizes="(max-width: 1160px) 100vw, 1040px" style={{ objectPosition: "center 72%" }} />
+          <PlaceholderImage src={seaSrc} alt="" sizes="(max-width: 1160px) 100vw, 1040px" style={{ objectPosition: "center 72%" }} />
         </div>
         <svg className="surfmap-route" viewBox="0 0 900 500" aria-hidden="true">
           <path d="M40 330 C 90 292, 120 368, 144 340 C 230 292, 300 392, 351 340 C 430 286, 510 398, 558 340 C 650 280, 720 396, 765 340 C 820 312, 860 360, 870 332" fill="none" stroke="rgba(196,148,60,.5)" strokeWidth="1.75" strokeDasharray="2 8" strokeLinecap="round" />
