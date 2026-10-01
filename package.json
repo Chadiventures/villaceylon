@@ -1,6 +1,9 @@
 {
   "name": "papaya-tree",
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -18,7 +21,8 @@
     "@anthropic-ai/sdk": "^0.129.0",
     "next": "^15.5.4",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "server-only": "0.0.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",

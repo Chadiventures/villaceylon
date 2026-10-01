@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import { BookCta } from "../../../components/BookCta"
-import { Breadcrumbs } from "../../../components/Breadcrumbs"
 import { guidePreviews } from "../../../components/guideCategories"
 import { GuideStickyPdf } from "../../../components/GuideStickyPdf"
 import { GUIDE_PDF_FILENAME, GUIDE_PDF_HREF, PdfDownloadLink } from "../../../components/PdfDownloadLink"
@@ -35,7 +34,6 @@ export default async function GuidePage() {
       <section className="guide-intro gp-intro" id="guide-intro">
         <div className="wrap gp-frame">
           <div className="gp-intro-copy">
-            <Breadcrumbs items={[{ name: "Ahangama Guide", path: "/guide" }]} />
             <p className="eyebrow">{copy.guide.eyebrow[locale]}</p>
             <h1>{copy.guide.title[locale]}</h1>
             <p className="gp-intro-lead">{copy.guide.lead[locale]}</p>

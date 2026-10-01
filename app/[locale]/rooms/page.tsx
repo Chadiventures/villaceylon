@@ -16,7 +16,7 @@ import { WhyBookDirect } from "../../../components/WhyBookDirect"
 import { copy } from "../../../lib/copy"
 import { trText } from "../../../lib/image-copy"
 import { localizePath } from "../../../lib/i18n"
-import { IMAGES } from "../../../lib/images"
+import { getResolvedImages } from "../../../lib/images.server"
 import { getLocale } from "../../../lib/locale"
 import { exampleRates } from "../../../lib/prices"
 import { pageMetadata } from "../../../lib/seo"
@@ -35,6 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RoomsPage() {
   const locale = await getLocale()
+  const IMAGES = getResolvedImages()
   const roomPhotos = {
     double: IMAGES.rooms.double.map((image) => ({ src: image.src, alt: trText(image.alt, locale) })),
     family: IMAGES.rooms.family.map((image) => ({ src: image.src, alt: trText(image.alt, locale) })),
@@ -120,7 +121,7 @@ export default async function RoomsPage() {
       </Section>
       <RoomAmenities />
       <WhyBookDirect />
-      <RoomCompare />
+      <RoomCompare doubleImage={IMAGES.rooms.double[0]} familyImage={IMAGES.rooms.family[0]} />
       <Section decor={<div className="blob" style={{ top: "10%", right: "-6%", width: 320, height: 320, background: "radial-gradient(circle,#E3A24C,transparent 70%)" }} />}>
         <Building />
       </Section>

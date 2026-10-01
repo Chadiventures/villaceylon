@@ -2,7 +2,7 @@
 import Link from "next/link"
 import type { ComponentType } from "react"
 import { copy, pick, tx } from "../lib/copy"
-import { IMAGES } from "../lib/images"
+import type { ImageSlot } from "../lib/images"
 import { useLocale } from "./useLocale"
 import { Price } from "./CurrencyToggle"
 import { BedIcon, FloorIcon, RateIcon, SizeIcon, SleepsIcon } from "./Icons"
@@ -15,8 +15,10 @@ type Chip = { id: string; label: string; Icon: Icon }
 
 type Row = { id: string; label: string; Icon: Icon; price?: number }
 
+type RoomId = "double" | "family"
+
 const rooms: {
-  id: string
+  id: RoomId
   title: string
   href: string
   anchor: string
@@ -24,7 +26,6 @@ const rooms: {
   badge: string
   feel: string
   tone: "double" | "family"
-  image: { src: string; alt: string }
   chips: Chip[]
   rows: Row[]
 }[] = [
@@ -37,7 +38,6 @@ const rooms: {
     badge: "6 rooms",
     feel: "Balcony over the garden and pool.",
     tone: "double",
-    image: IMAGES.rooms.double[0],
     chips: [
       { id: "sleeps", label: "Sleeps 2", Icon: SleepsIcon },
       { id: "bed", label: "King bed", Icon: BedIcon },
@@ -61,7 +61,6 @@ const rooms: {
     badge: "1 room",
     feel: "Private patio on the garden, room for the whole family.",
     tone: "family",
-    image: IMAGES.rooms.family[0],
     chips: [
       { id: "sleeps", label: "Sleeps 4", Icon: SleepsIcon },
       { id: "bed", label: "King + bunk", Icon: BedIcon },
@@ -78,8 +77,9 @@ const rooms: {
   },
 ]
 
-export function RoomCompare() {
+export function RoomCompare({ doubleImage, familyImage }: { doubleImage: ImageSlot; familyImage: ImageSlot }) {
   const locale = useLocale()
+  const images: Record<RoomId, ImageSlot> = { double: doubleImage, family: familyImage }
   const from = copy.compare.from[locale]
   const night = copy.compare.perNight[locale]
   const chipLabel = (roomId: string, id: string, fallback: string) => {
@@ -100,10 +100,12 @@ export function RoomCompare() {
           <p className="room-compare-lead">{pick(locale, tx("Two ways to stay, both a few steps from the pool.", "Två sätt att bo, båda ett par steg från poolen."))}</p>
         </div>
         <div className="room-compare-cards">
-          {rooms.map((room) => (
+          {rooms.map((room) => {
+            const image = images[room.id]
+            return (
             <article className={`room-compare-card room-compare-card-${room.tone}`} key={room.id}>
               <div className="room-compare-photo">
-                <PlaceholderImage src={room.image.src} alt={room.image.alt} sizes="(max-width: 640px) 100vw, 50vw" />
+                <PlaceholderImage src={image.src} alt={image.alt} sizes="(max-width: 640px) 100vw, 50vw" />
                 <span className="room-compare-badge">{room.badge}</span>
               </div>
               <div className="room-compare-body">
@@ -126,7 +128,8 @@ export function RoomCompare() {
                 </div>
               </div>
             </article>
-          ))}
+            )
+          })}
         </div>
         <details className="room-compare-full">
           <summary>{pick(locale, tx("See full comparison", "Se hela jämförelsen"))}</summary>

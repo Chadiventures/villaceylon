@@ -13,11 +13,12 @@ import { WhyBookDirect } from "../../components/WhyBookDirect"
 import { copy } from "../../lib/copy"
 import { trText } from "../../lib/image-copy"
 import { localizePath } from "../../lib/i18n"
-import { IMAGES } from "../../lib/images"
+import { getResolvedImages } from "../../lib/images.server"
 import { getLocale } from "../../lib/locale"
 import { exampleRates } from "../../lib/prices"
 import { pageMetadata } from "../../lib/seo"
 
+const IMAGES = getResolvedImages()
 const roomPreview = IMAGES.rooms.double[0]
 
 export async function generateMetadata(): Promise<Metadata> {

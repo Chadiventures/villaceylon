@@ -2,13 +2,14 @@ import Link from "next/link"
 import { copy } from "../lib/copy"
 import { trText } from "../lib/image-copy"
 import { localizePath } from "../lib/i18n"
-import { heroVideoSources, IMAGES } from "../lib/images"
+import { getResolvedImages, heroVideoSources } from "../lib/images.server"
 import { getLocale } from "../lib/locale"
 import { HeroVideo } from "./HeroVideo"
 import { PlaceholderImage } from "./PlaceholderImage"
 import { RatingBadge } from "./RatingBadge"
 import { SearchBar } from "./search/SearchBar"
 
+const IMAGES = getResolvedImages()
 const hero = IMAGES.home.hero
 const heroVideo = heroVideoSources()
 const hasHeroVideo = heroVideo.webm || heroVideo.mp4

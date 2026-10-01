@@ -31,13 +31,12 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    ".next-mobile-build/types/**/*.ts",
-    ".next-push-build/types/**/*.ts",
     ".next/types/**/*.ts",
     "next-env.d.ts"
   ],
   "exclude": [
     "node_modules",
+    ".next-*/**",
     "**/*.test.ts",
     "tests",
     "playwright.config.ts"

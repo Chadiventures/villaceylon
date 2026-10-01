@@ -1,10 +1,11 @@
 import { copy } from "../lib/copy"
 import { trText } from "../lib/image-copy"
-import { IMAGES } from "../lib/images"
+import { getResolvedImages } from "../lib/images.server"
 import { getLocale } from "../lib/locale"
 import { CoolIcon, ForkIcon, SurfMinIcon } from "./Icons"
 import { PlaceholderImage } from "./PlaceholderImage"
 
+const IMAGES = getResolvedImages()
 const poolPhoto = IMAGES.home.pool
 const surfPhoto = IMAGES.home.surf
 const restaurantPhoto = IMAGES.home.restaurant

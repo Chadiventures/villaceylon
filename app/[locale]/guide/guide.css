@@ -3,7 +3,6 @@
 .guide-intro.gp-intro{background:var(--paper);padding:72px 0 40px;overflow-x:clip}
 .guide-intro.gp-intro .wrap{display:block;max-width:1080px;margin-left:auto;margin-right:auto}
 .gp-intro-copy{max-width:640px;text-align:left}
-.gp-intro .crumbs{margin-bottom:18px}
 .gp-intro .eyebrow{color:var(--amber)}
 .guide-intro.gp-intro h1{color:var(--forest);margin-top:12px;font-size:clamp(1.85rem,4vw,3rem);line-height:1.08;max-width:640px;white-space:normal;overflow-wrap:break-word}
 .gp-intro-lead{color:var(--ink-2);max-width:640px;margin-top:16px;font-size:1.05rem;line-height:1.7;overflow-wrap:break-word}

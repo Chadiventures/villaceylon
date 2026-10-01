@@ -1,5 +1,6 @@
 import type { ReactNode } from "react"
-import { IMAGES, type ImageSlot } from "../lib/images"
+import type { ImageSlot } from "../lib/images"
+import { getResolvedImages } from "../lib/images.server"
 import { CarIcon, ForkIcon, PalmIcon, PinIcon, SunsetIcon, WaveIcon } from "./Icons"
 
 export type GuidePreview = {
@@ -9,6 +10,8 @@ export type GuidePreview = {
   icon: ReactNode
   image: ImageSlot
 }
+
+const IMAGES = getResolvedImages()
 
 export const guidePreviews: GuidePreview[] = [
   {

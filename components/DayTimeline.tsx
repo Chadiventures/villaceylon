@@ -1,9 +1,10 @@
 import Image from "next/image"
 import { copy } from "../lib/copy"
 import { trText } from "../lib/image-copy"
-import { IMAGES } from "../lib/images"
+import { getResolvedImages } from "../lib/images.server"
 import { getLocale } from "../lib/locale"
 
+const IMAGES = getResolvedImages()
 const images = [IMAGES.day.dawn, IMAGES.day.breakfast, IMAGES.day.pool, IMAGES.day.afternoon, IMAGES.day.sunset, IMAGES.day.night]
 
 export async function DayTimeline() {

@@ -7,10 +7,7 @@ const eslintConfig = [
   {
     ignores: [
       ".next/**",
-      ".next-e2e/**",
-      ".next-verify/**",
-      ".next-mobile-build/**",
-      ".next-mobile-e2e/**",
+      ".next-*/**",
       "papaya-tree-*/**",
       "papaya-tree-site/**",
       "node_modules/**",

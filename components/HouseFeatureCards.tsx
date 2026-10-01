@@ -1,12 +1,13 @@
 import { copy } from "../lib/copy"
 import { trText } from "../lib/image-copy"
-import { IMAGES } from "../lib/images"
+import { getResolvedImages } from "../lib/images.server"
 import { getLocale } from "../lib/locale"
 import { CoolIcon, ForkIcon, GardenIcon, SurfMinIcon } from "./Icons"
 import { PlaceholderImage } from "./PlaceholderImage"
 
 export async function HouseFeatureCards() {
   const locale = await getLocale()
+  const IMAGES = getResolvedImages()
   const cards = [
     { icon: <SurfMinIcon />, title: copy.houseCards.poolTitle[locale], text: copy.houseCards.pool[locale], image: IMAGES.house.pool },
     { icon: <ForkIcon />, title: copy.houseCards.restaurantTitle[locale], text: copy.houseCards.restaurant[locale], image: IMAGES.house.restaurant },

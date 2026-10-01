@@ -1,10 +1,11 @@
 import { copy } from "../lib/copy"
 import { trText } from "../lib/image-copy"
-import { IMAGES } from "../lib/images"
+import { getResolvedImages } from "../lib/images.server"
 import { getLocale } from "../lib/locale"
 import { DeskIcon, PoolIcon, SunsetIcon } from "./Icons"
 import { PlaceholderImage } from "./PlaceholderImage"
 
+const IMAGES = getResolvedImages()
 const entrancePhoto = IMAGES.house.entrance
 const rooftopPhoto = IMAGES.home.rooftop
 const poolPhoto = IMAGES.home.pool

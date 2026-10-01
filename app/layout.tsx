@@ -7,7 +7,7 @@ import { Footer } from "../components/Footer"
 import { GuideScroll } from "../components/GuideScroll"
 import { Header, SkipLink } from "../components/Header"
 import { ImagePlaceholderWarning } from "../components/ImagePlaceholderWarning"
-import { IMAGES, placeholderSlots } from "../lib/images"
+import { getResolvedImages, placeholderSlots } from "../lib/images.server"
 import { JsonLd } from "../components/JsonLd"
 import { LazyConcierge } from "../components/LazyConcierge"
 import { Motion } from "../components/Motion"
@@ -139,6 +139,7 @@ function hotelJsonLd(locale: "en" | "sv") {
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const locale = await getLocale()
+  const IMAGES = getResolvedImages()
   return (
     <html lang={locale} className={`${serif.variable} ${caps.variable} ${sans.variable}`}>
       <head>
