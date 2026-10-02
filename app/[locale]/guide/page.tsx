@@ -32,8 +32,8 @@ export default async function GuidePage() {
   const locale = await getLocale()
   return (
     <>
-      <section className="guide-intro gp-intro" id="guide-intro">
-        <div className="wrap gp-frame">
+      <section className="guide-intro gp-intro">
+        <div className="wrap">
           <div className="gp-intro-copy">
             <p className="gp-hero-eyebrow">
               <span className="gp-hero-rule" aria-hidden="true" />
@@ -79,7 +79,7 @@ export default async function GuidePage() {
           </div>
           <div className="gp-cover-stage">
             <div className="gp-hero-glow" aria-hidden="true" />
-            <PdfDownloadLink className="gp-cover-link" href={GUIDE_PDF_HREF} filename={GUIDE_PDF_FILENAME} trackPage="/guide" position="intro" ariaLabel={copy.guide.coverAlt[locale]}>
+            <PdfDownloadLink className="gp-cover-link" href={GUIDE_PDF_HREF} filename={GUIDE_PDF_FILENAME} trackPage="/guide" position="intro" ariaLabel={copy.guide.coverAria[locale]}>
               <span className="gp-cover-sheet" aria-hidden="true" />
               <Image
                 className="gp-cover-img"
@@ -94,9 +94,9 @@ export default async function GuidePage() {
           </div>
         </div>
       </section>
-      <section className="gp-taste" id="guide-taste">
+      <section className="gp-taste">
         <div className="wrap gp-frame">
-          <h2>{copy.guide.taste[locale]}</h2>
+          <h2 id="guide-taste">{copy.guide.taste[locale]}</h2>
           <div className="gp-bento">
             {guidePreviews.map((preview) => {
               const card = copy.guide.cards[preview.slug as keyof typeof copy.guide.cards]
