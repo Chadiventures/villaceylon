@@ -235,6 +235,8 @@ export const copy = {
   guide: {
     eyebrow: tx("The Ahangama guide", "Ahangama-guiden"),
     title: tx("Everything we'd tell a friend", "Allt vi skulle berätta för en vän"),
+    titleBefore: tx("Everything we'd tell a", "Allt vi skulle berätta för en"),
+    titleEm: tx("friend", "vän"),
     lead: tx(
       "We live here. This is the guide we wish we'd had: where the waves break, where to eat, and what is worth the drive. Yours to keep, whether you book or not.",
       "Vi bor här. Det här är guiden vi önskar att vi hade haft: var vågorna bryter, var man äter och vad som är värt resan. Din att behålla, oavsett om du bokar eller inte.",
@@ -245,7 +247,10 @@ export const copy = {
       "Ladda ner Ahangama-guiden som PDF, 15 sidor, din att behålla",
     ),
     coverAria: tx("Download the Ahangama guide PDF", "Ladda ner Ahangama-guiden som PDF"),
-    caption: tx("Free. 15 pages. No sign-up.", "Gratis. 15 sidor. Ingen registrering."),
+    pages: tx("15 pages", "15 sidor"),
+    format: tx("A5, print or phone", "A5, utskrift eller telefon"),
+    free: tx("Free, no sign-up", "Gratis, ingen registrering"),
+    coverAlt: tx("The Papaya Tree Ahangama Guide, cover", "The Papaya Tree Ahangama-guiden, omslag"),
     homeCaption: tx("Free. 15 pages. Surf, eat, explore.", "Gratis. 15 sidor. Surf, mat, utflykter."),
     inside: tx("See what's inside", "Se vad som finns inuti"),
     taste: tx("A taste of what's inside", "En smak av innehållet"),

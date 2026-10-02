@@ -12,7 +12,7 @@ import { RoomGallery } from "../../../components/RoomGallery"
 import { Section } from "../../../components/Section"
 import { SearchBar } from "../../../components/search/SearchBar"
 import { SearchLink } from "../../../components/search/SearchLink"
-import { WhyBookDirect } from "../../../components/WhyBookDirect"
+import { BookDirectStrip } from "../../../components/BookDirectStrip"
 import { copy } from "../../../lib/copy"
 import { trText } from "../../../lib/image-copy"
 import { localizePath } from "../../../lib/i18n"
@@ -120,7 +120,7 @@ export default async function RoomsPage() {
         </div>
       </Section>
       <RoomAmenities />
-      <WhyBookDirect />
+      <BookDirectStrip />
       <RoomCompare doubleImage={IMAGES.rooms.double[0]} familyImage={IMAGES.rooms.family[0]} />
       <Section decor={<div className="blob" style={{ top: "10%", right: "-6%", width: 320, height: 320, background: "radial-gradient(circle,#E3A24C,transparent 70%)" }} />}>
         <Building />

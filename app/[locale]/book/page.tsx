@@ -13,7 +13,7 @@ import { GUIDE_PDF_FILENAME, GUIDE_PDF_HREF, PdfDownloadLink } from "../../../co
 import { PolicyCard } from "../../../components/PolicyCard"
 import { Section } from "../../../components/Section"
 import { SearchBar } from "../../../components/search/SearchBar"
-import { WhyBookDirect } from "../../../components/WhyBookDirect"
+import { BookDirectStrip } from "../../../components/BookDirectStrip"
 import { copy } from "../../../lib/copy"
 import { faqContent, faqPageLd } from "../../../lib/faq"
 import { localizePath } from "../../../lib/i18n"
@@ -46,7 +46,7 @@ export default async function BookPage() {
       <Section>
         <Breadcrumbs items={[{ name: "Book", path: "/book" }]} />
         <SearchBar variant="page" />
-        <WhyBookDirect variant="compact" />
+        <BookDirectStrip />
         <div className="book-grid" style={{ marginTop: 28 }}>
           <Suspense fallback={<div className="form">{copy.book.loading[locale]}</div>}>
             <BookingForm />

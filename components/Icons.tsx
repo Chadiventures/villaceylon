@@ -464,3 +464,23 @@ export function WildIcon() {
     </svg>
   )
 }
+
+export function PercentIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      <circle cx="7.25" cy="7.25" r="2.35" />
+      <circle cx="16.75" cy="16.75" r="2.35" />
+      <path d="M18.2 5.8 5.8 18.2" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function CalendarCheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      <rect x="3.5" y="4.75" width="17" height="15.75" rx="2" />
+      <path d="M8 3.25v3M16 3.25v3M3.5 9.5h17" strokeLinecap="round" />
+      <path d="M8.3 14.7 10.6 16.9 15.7 11.9" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}

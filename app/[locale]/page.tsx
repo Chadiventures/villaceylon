@@ -9,7 +9,7 @@ import { AcIcon, GardenIcon, ShowerIcon, WifiIcon } from "../../components/Icons
 import { Palm } from "../../components/Palm"
 import { PlaceholderImage } from "../../components/PlaceholderImage"
 import { Section } from "../../components/Section"
-import { WhyBookDirect } from "../../components/WhyBookDirect"
+import { BookDirectStrip } from "../../components/BookDirectStrip"
 import { copy } from "../../lib/copy"
 import { trText } from "../../lib/image-copy"
 import { localizePath } from "../../lib/i18n"
@@ -74,7 +74,7 @@ export default async function HomePage() {
         </div>
         <Bento />
       </Section>
-      <WhyBookDirect />
+      <BookDirectStrip />
       <GuideBand />
       <BookCta />
     </>
