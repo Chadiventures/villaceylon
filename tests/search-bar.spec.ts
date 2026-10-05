@@ -64,6 +64,7 @@ test("search bar dates, disabled checkout, labels and alignment", async ({ page 
   await (await showDate(page, CHECK_IN)).click()
   await expect(page.getByTestId("search-datepicker")).toBeVisible()
   await expect(await showDate(page, INVALID_OUT)).toBeDisabled()
+  await expect(await showDate(page, "2026-10-18")).toBeDisabled()
   await (await showDate(page, CHECK_OUT)).click()
 
   await expect(checkIn).toContainText("Sat 17 Oct")

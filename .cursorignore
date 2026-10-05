@@ -1,0 +1,15 @@
+.next
+.next-*
+.next*/**
+node_modules
+out
+dist
+coverage
+*.tsbuildinfo
+papaya-tree-redesign/
+papaya-tree-redesign1/
+papaya-tree-redesign_3/
+papaya-tree-redesign_4/
+papaya-tree-site/
+*.zip
+test-results/

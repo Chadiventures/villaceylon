@@ -54,7 +54,7 @@ export const faqItems: FaqItem[] = [
     category: "booking-and-policies",
     question: "What is the cancellation policy?",
     answer:
-      "Free cancellation up to 5 days before check-in for a full refund. Within 5 days of check-in the booking is non-refundable, and a no-show is non-refundable. If you shorten your stay less than 5 days before check-in, the removed nights are non-refundable. Approved refunds return to the original payment method within 5 to 10 business days. The same terms apply whether you book here, on Airbnb or on Booking.com.",
+      "Free cancellation up to 5 days before arrival, with a full refund. Late cancellation or a no-show is not refunded. If you shorten your stay less than 5 days before arrival, the removed nights are non-refundable. Approved refunds return to the original payment method within 5 to 10 business days. Booking direct, you can pay for two nights and pay for the additional nights at the hotel on arrival, or pay for the whole stay at once. The same cancellation rules apply either way, including airport pickup and transfer. Prices are displayed in USD and the transaction is in LKR. The minimum stay is two nights. The same cancellation terms apply whether you book here, on Airbnb or on Booking.com.",
   },
   {
     id: "cheaper-direct",

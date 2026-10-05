@@ -6,7 +6,6 @@ import { copy } from "../lib/copy"
 import { localizeHref, samePath, stripLocale } from "../lib/i18n"
 import { site } from "../lib/site"
 import { CurrencyToggle } from "./CurrencyToggle"
-import { LanguageSwitcher } from "./LanguageSwitcher"
 import { WhatsAppIcon } from "./Icons"
 import { useOverlay } from "./OverlayContext"
 import { searchHref, useSearch } from "./search/SearchContext"
@@ -124,7 +123,6 @@ export function Header() {
           ))}
         </nav>
         <div className="head-actions">
-          <LanguageSwitcher />
           <CurrencyToggle className="head-currency head-currency-desktop" />
           <Link className="btn btn-amber head-book" href={bookHref}>{copy.nav.book[locale]}</Link>
           <button className="nav-toggle" type="button" aria-expanded={open} aria-controls="site-menu" aria-label={open ? copy.nav.close[locale] : copy.nav.open[locale]} onClick={() => open ? requestClose() : setOpen(true)}>
@@ -157,7 +155,6 @@ export function Header() {
             <Link className="btn btn-amber" href={bookHref}>{copy.nav.book[locale]}</Link>
           </nav>
           <div className="nav-drawer-meta">
-            <LanguageSwitcher labelled />
             <CurrencyToggle className="head-currency" />
             <a className="nav-drawer-wa" href={site.whatsapp} target="_blank" rel="noopener noreferrer">
               <WhatsAppIcon />

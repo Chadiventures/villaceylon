@@ -9,6 +9,9 @@ export type BookingParams = {
   guests: number
   roomSummary: string
   note: string
+  payment: "deposit" | "full"
+  dueNights: number
+  balanceNights: number
 }
 
 function formatDate(value: string) {
@@ -25,6 +28,9 @@ function buildMessage(params: BookingParams) {
     `Check in: ${formatDate(params.checkIn) || "-"}`,
     `Check out: ${formatDate(params.checkOut) || "-"}`,
     `Nights: ${params.nights}`,
+    params.payment === "deposit"
+      ? `Payment: ${params.dueNights} nights now, ${params.balanceNights} nights at the hotel`
+      : `Payment: whole stay now (${params.dueNights} nights)`,
     `Rooms: ${params.roomSummary}`,
     `Guests: ${params.guests}`,
     params.note ? `Note: ${params.note}` : null,

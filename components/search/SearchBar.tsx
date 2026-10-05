@@ -11,7 +11,7 @@ import { useLocale } from "../useLocale"
 import { useMediaQuery } from "../useMediaQuery"
 import { GuestsPopover } from "./GuestsPopover"
 import { useSearch } from "./SearchContext"
-import { checkoutStillValid, formatDateLabel, nightsBetweenIso } from "./dateUtils"
+import { MIN_STAY_NIGHTS, checkoutStillValid, formatDateLabel, nightsBetweenIso } from "./dateUtils"
 import type { DateField } from "./DateRangePicker"
 
 const DateRangePicker = dynamic(() => import("./DateRangePicker").then((mod) => ({ default: mod.DateRangePicker })), { ssr: false })
@@ -77,8 +77,8 @@ export function SearchBar({ variant = "page" }: { variant?: "hero" | "page" | "s
   const [guestsChanged, setGuestsChanged] = useState(false)
   const rootRef = useRef<HTMLDivElement>(null)
   const isMobile = useMediaQuery("(max-width: 760px)")
-  const ready = Boolean(checkIn && checkOut)
   const nights = nightsBetweenIso(checkIn, checkOut)
+  const ready = nights >= MIN_STAY_NIGHTS
 
   useEffect(() => {
     if (!panel || isMobile) return

@@ -10,6 +10,8 @@ const MONTH_LABELS_SV = [
   "januari", "februari", "mars", "april", "maj", "juni",
   "juli", "augusti", "september", "oktober", "november", "december",
 ]
+export const MIN_STAY_NIGHTS = 2
+export const DEPOSIT_NIGHTS = 2
 export const MAX_STAY_NIGHTS = 30
 const SHORT_WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 const SHORT_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -74,15 +76,21 @@ export function isCheckoutDisabled(date: Date, checkIn: string, today = startOfD
   if (isPastDate(date, today)) return true
   if (!checkIn) return false
   const start = fromIso(checkIn)
-  if (date <= start) return true
   const nights = Math.round((date.getTime() - start.getTime()) / 86400000)
-  return nights > MAX_STAY_NIGHTS
+  return nights < MIN_STAY_NIGHTS || nights > MAX_STAY_NIGHTS
 }
 
 export function checkoutStillValid(checkIn: string, checkOut: string) {
   if (!checkIn || !checkOut) return false
   const nights = nightsBetweenIso(checkIn, checkOut)
-  return nights >= 1 && nights <= MAX_STAY_NIGHTS
+  return nights >= MIN_STAY_NIGHTS && nights <= MAX_STAY_NIGHTS
+}
+
+export function paymentSplit(nights: number, mode: "deposit" | "full") {
+  const stay = Math.max(0, nights)
+  if (mode === "full") return { due: stay, balance: 0 }
+  const due = Math.min(DEPOSIT_NIGHTS, stay)
+  return { due, balance: stay - due }
 }
 
 export function buildMonthGrid(monthStart: Date) {

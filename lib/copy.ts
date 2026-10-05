@@ -74,10 +74,10 @@ export const copy = {
       "How The Papaya Tree collects, uses and protects your information when you enquire or book a room in Ahangama.",
       "Hur The Papaya Tree samlar in, använder och skyddar dina uppgifter när du frågar eller bokar ett rum i Ahangama.",
     ),
-    termsTitle: tx("Booking Terms | The Papaya Tree", "Bokningsvillkor | The Papaya Tree"),
+    termsTitle: tx("Return Policy and Business Terms | The Papaya Tree", "Returpolicy och affärsvillkor | The Papaya Tree"),
     termsDescription: tx(
-      "Booking terms for The Papaya Tree in Ahangama: rates, check-in, and the cancellation and refund policy.",
-      "Bokningsvillkor för The Papaya Tree i Ahangama: priser, incheckning och avboknings- och återbetalningsvillkor.",
+      "Return policy and business terms for The Papaya Tree: prices shown in USD and charged in LKR, a two-night minimum, and free cancellation up to 5 days before arrival.",
+      "Returpolicy och affärsvillkor för The Papaya Tree: priser visas i USD och debiteras i LKR, minst två nätter, och fri avbokning upp till 5 dagar före ankomst.",
     ),
     cookiesTitle: tx("Cookie Policy | The Papaya Tree", "Cookiepolicy | The Papaya Tree"),
     cookiesDescription: tx(
@@ -490,23 +490,39 @@ export const copy = {
     find: tx("Find us", "Hitta oss"),
   },
   policy: {
-    title: tx("Cancellation and refund policy", "Avbokning och återbetalning"),
-    hint: tx("Free cancellation up to 5 days before check-in. Full refund.", "Fri avbokning upp till 5 dagar före incheckning. Full återbetalning."),
+    title: tx("Return policy and Business Terms & Conditions", "Returpolicy och affärsvillkor"),
+    hint: tx("Free cancellation up to 5 days before arrival. Full refund.", "Fri avbokning upp till 5 dagar före ankomst. Full återbetalning."),
     items: [
-      tx("Free cancellation up to 5 days before check-in: full refund.", "Fri avbokning upp till 5 dagar före incheckning: full återbetalning."),
-      tx("Less than 5 days before check-in: non-refundable.", "Mindre än 5 dagar före incheckning: ingen återbetalning."),
-      tx("No-show: non-refundable.", "Utebliven ankomst: ingen återbetalning."),
       tx(
-        "Shortening your stay less than 5 days before check-in: the removed nights are non-refundable.",
-        "Om du kortar vistelsen mindre än 5 dagar före incheckning är de borttagna nätterna inte återbetalningsbara.",
+        "Prices are displayed in USD, but the transaction is in LKR.",
+        "Priser visas i USD, men transaktionen sker i LKR.",
+      ),
+      tx("Minimum stay is two nights.", "Minsta vistelse är två nätter."),
+      tx(
+        "When you book direct, you can pay for two nights and pay for the additional nights at the hotel on arrival, or pay for the whole stay at once. Either way the same cancellation rules apply.",
+        "Vid direktbokning kan du betala för två nätter och betala resterande nätter på hotellet vid ankomst, eller betala hela vistelsen på en gång. Samma avbokningsregler gäller i båda fallen.",
+      ),
+      tx(
+        "Cancellation is free up to 5 days before arrival, with a full refund.",
+        "Avbokning är kostnadsfri upp till 5 dagar före ankomst, med full återbetalning.",
+      ),
+      tx("Late cancellation or no-show: no refund.", "Sen avbokning eller utebliven ankomst: ingen återbetalning."),
+      tx(
+        "The same cancellation rules apply to airport pickup and transfer.",
+        "Samma avbokningsregler gäller för flygplatsupphämtning och transfer.",
+      ),
+      tx("Check-in from 14:00. Check-out at 11:00.", "Incheckning från 14:00. Utcheckning kl. 11:00."),
+      tx(
+        "Shortening your stay less than 5 days before arrival: the removed nights are non-refundable.",
+        "Om du kortar vistelsen mindre än 5 dagar före ankomst är de borttagna nätterna inte återbetalningsbara.",
       ),
       tx(
         "Approved refunds return to your original payment method within 5 to 10 business days.",
         "Godkända återbetalningar går tillbaka till samma betalningssätt inom 5 till 10 arbetsdagar.",
       ),
       tx(
-        "The same terms apply whether you book here, on Airbnb or on Booking.com.",
-        "Samma villkor gäller oavsett om du bokar här, på Airbnb eller på Booking.com.",
+        "The same cancellation terms apply whether you book here, on Airbnb or on Booking.com.",
+        "Samma avbokningsvillkor gäller oavsett om du bokar här, på Airbnb eller på Booking.com.",
       ),
     ],
   },
@@ -531,6 +547,7 @@ export const copy = {
     nights: tx("nights", "nätter"),
     pickDates: tx("Pick your dates, max", "Välj datum, max"),
     maxNights: tx("nights", "nätter"),
+    minStay: tx("Minimum stay is 2 nights.", "Minsta vistelse är 2 nätter."),
   },
   form: {
     datesMissing: tx("Choose your dates in the search bar above.", "Välj datum i sökfältet ovan."),
@@ -554,6 +571,14 @@ export const copy = {
     notePh: tx("Arrival time, surf plans, anything at all", "Ankomsttid, surfplaner, vad som helst"),
     to: tx("to", "till"),
     taxes: tx("Taxes and fees included.", "Skatter och avgifter ingår."),
+    minStay: tx("Minimum stay is two nights.", "Minsta vistelse är två nätter."),
+    payLegend: tx("How you pay", "Hur du betalar"),
+    payDeposit: tx("Pay 2 nights now", "Betala 2 nätter nu"),
+    payDepositNote: tx("The rest is paid at the hotel on arrival.", "Resten betalas på hotellet vid ankomst."),
+    payFull: tx("Pay the whole stay now", "Betala hela vistelsen nu"),
+    dueNow: tx("Due now", "Att betala nu"),
+    atHotel: tx("Pay at the hotel", "Betalas på hotellet"),
+    stayTotal: tx("Stay total", "Vistelsen totalt"),
     freeCancel: tx("Free cancellation up to 5 days before check-in.", "Fri avbokning upp till 5 dagar före incheckning."),
     live: tx("Live availability. Book and pay securely in one step.", "Tillgänglighet i realtid. Boka och betala säkert i ett steg."),
     book: tx("Book now", "Boka nu"),
@@ -620,50 +645,13 @@ export const copy = {
     privacyTitle: tx("Privacy policy", "Integritetspolicy"),
     privacySeo: tx("Privacy Policy", "Integritetspolicy"),
     termsCrumb: tx("Terms", "Villkor"),
-    termsTitle: tx("Booking terms", "Bokningsvillkor"),
-    termsSeo: tx("Booking Terms", "Bokningsvillkor"),
+    termsTitle: tx("Return policy", "Returpolicy"),
+    termsSeo: tx("Return Policy and Business Terms & Conditions", "Returpolicy och affärsvillkor"),
     cookiesCrumb: tx("Cookies", "Cookies"),
     cookiesTitle: tx("Cookie policy", "Cookiepolicy"),
     cookiesSeo: tx("Cookie Policy", "Cookiepolicy"),
   },
-  privacy: [
-    {
-      h: tx("What we collect", "Vad vi samlar in"),
-      p: tx(
-        "When you use the booking form we collect your name, email, stay dates and any note you add. We use this only to confirm and manage your reservation.",
-        "När du använder bokningsformuläret samlar vi in ditt namn, din e-post, vistelsedatum och eventuell anteckning. Vi använder det bara för att bekräfta och hantera din bokning.",
-      ),
-    },
-    {
-      h: tx("How we use it", "Hur vi använder det"),
-      p: tx(
-        "We use your details to reply by WhatsApp or email and to prepare your room. We do not sell your information.",
-        "Vi använder dina uppgifter för att svara på WhatsApp eller e-post och för att förbereda ditt rum. Vi säljer inte din information.",
-      ),
-    },
-    {
-      h: tx("Payments", "Betalningar"),
-      p: tx(
-        "Booking is handled securely through our booking system. Payment details are processed by our payment provider, not stored on this site.",
-        "Bokningen hanteras säkert i vårt bokningssystem. Betaluppgifter behandlas av vår betalningsleverantör och lagras inte på den här sajten.",
-      ),
-    },
-    {
-      h: tx("How long we keep it", "Hur länge vi sparar det"),
-      p: tx(
-        "We keep booking details for as long as needed for your stay and for our records, then delete them in the normal course of business.",
-        "Vi sparar bokningsuppgifter så länge de behövs för din vistelse och vår bokföring, och raderar dem sedan i den vanliga verksamheten.",
-      ),
-    },
-  ],
   terms: [
-    {
-      h: tx("Rates and payment", "Priser och betalning"),
-      p: tx(
-        "Rates shown here are examples in USD until final prices are set. Availability updates live, and payment is taken securely at the time of booking.",
-        "Priserna som visas är exempel i USD tills de slutliga priserna är satta. Tillgängligheten uppdateras löpande, och betalning tas säkert vid bokningen.",
-      ),
-    },
     {
       h: tx("Changes to a booking", "Ändringar av en bokning"),
       p: tx(
@@ -738,12 +726,6 @@ export function checkTimes(locale: Locale, checkIn: string, checkOut: string) {
   return locale === "sv"
     ? `Incheckning från ${checkIn}. Utcheckning senast ${checkOut}. Skriv på WhatsApp om du behöver komma tidigare eller åka senare, så försöker vi hjälpa till.`
     : `Check-in is from ${checkIn}. Check-out is by ${checkOut}. Message us on WhatsApp if you need to arrive earlier or leave later and we will try to help.`
-}
-
-export function privacyContact(locale: Locale, email: string) {
-  return locale === "sv"
-    ? `Frågor om dina uppgifter: skriv till ${email}.`
-    : `Questions about your data: write to ${email}.`
 }
 
 export function termsContact(locale: Locale, email: string, phone: string) {

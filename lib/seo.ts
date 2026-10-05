@@ -15,12 +15,11 @@ type PageSeo = {
 
 export function languageAlternates(path: string) {
   const en = absoluteUrl(path === "/" ? "/" : path)
-  const sv = absoluteUrl(localizePath(path, "sv"))
-  return { en, sv, "x-default": en }
+  return { en, "x-default": en }
 }
 
-export function pageMetadata({ title, description, path, image = site.ogImage, absoluteTitle = false, locale = "en" }: PageSeo): Metadata {
-  const url = localizePath(path, locale)
+export function pageMetadata({ title, description, path, image = site.ogImage, absoluteTitle = false }: PageSeo): Metadata {
+  const url = localizePath(path, "en")
   const socialTitle = absoluteTitle ? title : `${title} | ${site.name}`
   return {
     title: absoluteTitle ? { absolute: title } : title,
@@ -33,8 +32,7 @@ export function pageMetadata({ title, description, path, image = site.ogImage, a
       title: socialTitle,
       description,
       url,
-      locale: locale === "sv" ? "sv_SE" : "en_US",
-      alternateLocale: locale === "sv" ? ["en_US"] : ["sv_SE"],
+      locale: "en_US",
       images: [{ url: image, width: 1200, height: 630, alt: `${site.name}, Ahangama` }],
     },
     twitter: {

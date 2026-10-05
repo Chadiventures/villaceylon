@@ -70,7 +70,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const initial = readUrlParams()
     setCheckIn(initial.checkIn)
-    setCheckOut(initial.checkOut)
+    setCheckOut(checkoutStillValid(initial.checkIn, initial.checkOut) ? initial.checkOut : "")
     setGuestsState(initial.guests)
     setReady(true)
   }, [])

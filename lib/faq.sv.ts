@@ -16,7 +16,7 @@ const items: FaqItem[] = [
     category: "booking-and-policies",
     question: "Vad är avbokningsvillkoren?",
     answer:
-      "Fri avbokning upp till 5 dagar före incheckning ger full återbetalning. Inom 5 dagar före incheckning är bokningen inte återbetalningsbar, och utebliven ankomst är inte återbetalningsbar. Om du kortar vistelsen mindre än 5 dagar före incheckning är de borttagna nätterna inte återbetalningsbara. Godkända återbetalningar går tillbaka till samma betalningssätt inom 5 till 10 arbetsdagar. Samma villkor gäller oavsett om du bokar här, på Airbnb eller på Booking.com.",
+      "Avbokning är kostnadsfri upp till 5 dagar före ankomst, med full återbetalning. Sen avbokning eller utebliven ankomst ger ingen återbetalning. Om du kortar vistelsen mindre än 5 dagar före ankomst är de borttagna nätterna inte återbetalningsbara. Godkända återbetalningar går tillbaka till samma betalningssätt inom 5 till 10 arbetsdagar. Vid direktbokning kan du betala för två nätter och betala resterande nätter på hotellet vid ankomst, eller betala hela vistelsen på en gång. Samma avbokningsregler gäller i båda fallen, även för flygplatsupphämtning och transfer. Priser visas i USD och transaktionen sker i LKR. Minsta vistelse är två nätter. Samma avbokningsvillkor gäller oavsett om du bokar här, på Airbnb eller på Booking.com.",
   },
   {
     id: "cheaper-direct",
@@ -30,7 +30,7 @@ const items: FaqItem[] = [
     category: "booking-and-policies",
     question: "Vad kostar ett rum?",
     answer:
-      `Rummen börjar från ${exampleRates.double} USD per natt för ett Deluxe Double och ${exampleRates.family} USD per natt för Deluxe Four-Bed. Totalsumman för dina datum visas innan du bokar. Priserna är per rum, och att boka direkt är det bästa priset vi erbjuder. De här siffrorna är exempel tills de slutliga priserna är satta.`,
+      `Rummen börjar från ${exampleRates.double} USD per natt för ett Deluxe Double och ${exampleRates.family} USD per natt för Deluxe Four-Bed. Totalsumman för dina datum visas innan du bokar. Priserna är per rum och visas i USD, men transaktionen sker i LKR. Att boka direkt är det bästa priset vi erbjuder.`,
   },
   {
     id: "check-in-out",

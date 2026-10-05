@@ -8,7 +8,7 @@ import { copy, fitMessage, nightLabel } from "../lib/copy"
 import { guestCap, nightlyTotal, roomCount, staySummary, type RoomId, type RoomQty } from "../lib/rooms"
 import { capacityHelperText, suggestRoomsText } from "../lib/capacity"
 import { useSearch } from "./search/SearchContext"
-import { formatDateLabel, nightsBetweenIso } from "./search/dateUtils"
+import { MIN_STAY_NIGHTS, formatDateLabel, nightsBetweenIso, paymentSplit } from "./search/dateUtils"
 import { site } from "../lib/site"
 import { RoomGuestPicker } from "./RoomGuestPicker"
 import { useLocale } from "./useLocale"
@@ -24,6 +24,7 @@ export function BookingForm() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [note, setNote] = useState("")
+  const [payment, setPayment] = useState<"deposit" | "full">("deposit")
 
   useEffect(() => {
     const room = params.get("room")
@@ -41,8 +42,12 @@ export function BookingForm() {
   const nights = nightsBetweenIso(checkIn, checkOut)
   const nightly = nightlyTotal(roomQty, checkIn || undefined)
   const total = nights * nightly
+  const split = paymentSplit(nights, payment)
+  const dueNow = split.due * nightly
+  const balance = split.balance * nightly
   const cap = Math.max(1, guestCap(roomQty))
-  const ready = nights > 0
+  const tooShort = nights > 0 && nights < MIN_STAY_NIGHTS
+  const ready = nights >= MIN_STAY_NIGHTS
   const canBook = ready && roomCount(roomQty) > 0 && guests <= cap
 
   function changeRooms(id: RoomId, count: number) {
@@ -55,7 +60,7 @@ export function BookingForm() {
 
   function validate() {
     const next: Record<string, string> = {}
-    if (!ready) next.dates = copy.form.datesMissing[locale]
+    if (!ready) next.dates = tooShort ? copy.form.minStay[locale] : copy.form.datesMissing[locale]
     if (guests > cap) next.guests = fitMessage(locale, cap, guests)
     if (!name.trim()) next.name = copy.form.nameMissing[locale]
     if (!email.trim()) next.email = copy.form.emailMissing[locale]
@@ -81,6 +86,9 @@ export function BookingForm() {
       guests,
       roomSummary: staySummary(roomQty, guests, locale),
       note,
+      payment,
+      dueNights: split.due,
+      balanceNights: split.balance,
     })
     setSent(true)
   }
@@ -95,7 +103,7 @@ export function BookingForm() {
         {ready ? (
           <p className="form-hint">{formatDateLabel(checkIn, locale)} {copy.form.to[locale]} {formatDateLabel(checkOut, locale)} · {nights} {nightLabel(locale, nights)}</p>
         ) : (
-          <p className="form-error" role="alert">{copy.form.datesMissing[locale]}</p>
+          <p className="form-error" role="alert">{tooShort ? copy.form.minStay[locale] : copy.form.datesMissing[locale]}</p>
         )}
         <div className="room-field">
           {copy.form.rooms[locale]}
@@ -131,20 +139,33 @@ export function BookingForm() {
           {ready ? (
             <>
               <p>
-                {nights} {nightLabel(locale, nights)} × {formatPrice(nightly, currency)} <span className="price-usd-note">({formatPrice(nightly, "USD")})</span> = <strong>{formatPrice(total, currency)}</strong>
+                {copy.form.stayTotal[locale]}: {nights} {nightLabel(locale, nights)} × {formatPrice(nightly, currency)} <span className="price-usd-note">({formatPrice(nightly, "USD")})</span> = <strong>{formatPrice(total, currency)}</strong>
               </p>
+              <fieldset className="pay-choice">
+                <legend>{copy.form.payLegend[locale]}</legend>
+                <label className="pay-option">
+                  <input type="radio" name="payment" value="deposit" checked={payment === "deposit"} onChange={() => setPayment("deposit")} />
+                  <span>{copy.form.payDeposit[locale]}{nights > 2 ? `. ${copy.form.payDepositNote[locale]}` : ""}</span>
+                </label>
+                <label className="pay-option">
+                  <input type="radio" name="payment" value="full" checked={payment === "full"} onChange={() => setPayment("full")} />
+                  <span>{copy.form.payFull[locale]}</span>
+                </label>
+              </fieldset>
+              <p>{copy.form.dueNow[locale]}: <strong>{formatPrice(dueNow, currency)}</strong> <span className="price-usd-note">({formatPrice(dueNow, "USD")})</span></p>
+              {balance > 0 ? <p>{copy.form.atHotel[locale]}: <strong>{formatPrice(balance, currency)}</strong> <span className="price-usd-note">({formatPrice(balance, "USD")})</span></p> : null}
               <p className="form-hint">{copy.form.taxes[locale]}</p>
               <p className="form-hint">{copy.form.freeCancel[locale]}</p>
             </>
           ) : (
-            <p>{copy.form.addDates[locale]}</p>
+            <p>{tooShort ? copy.form.minStay[locale] : copy.form.addDates[locale]}</p>
           )}
           <p className="form-hint">{copy.form.live[locale]}</p>
         </div>
         <button className="btn btn-solid" type="submit" disabled={!canBook} aria-disabled={!canBook} style={{ width: "100%", justifyContent: "center" }}>
           {canBook ? copy.form.book[locale] : copy.form.availability[locale]}
         </button>
-        {!canBook ? <p className="form-hint">{copy.form.continue[locale]}</p> : null}
+        {!canBook ? <p className="form-hint">{tooShort ? copy.form.minStay[locale] : copy.form.continue[locale]}</p> : null}
         {sent ? (
           <p className="form-success" role="status">{copy.form.thanks[locale]}</p>
         ) : null}

@@ -1,0 +1,20 @@
+{
+  "files.watcherExclude": {
+    "**/.next/**": true,
+    "**/.next-*/**": true,
+    "**/node_modules/**": true,
+    "**/out/**": true,
+    "**/dist/**": true
+  },
+  "search.exclude": {
+    "**/.next/**": true,
+    "**/.next-*/**": true,
+    "**/node_modules/**": true,
+    "**/out/**": true,
+    "**/dist/**": true
+  },
+  "files.exclude": {
+    "**/.next": true,
+    "**/.next-*": true
+  }
+}

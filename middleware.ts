@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
-import { LEGACY_REDIRECTS, LOCALE_COOKIE, isLocale, localizePath, stripLocale } from "./lib/i18n"
+import { LEGACY_REDIRECTS, LOCALE_COOKIE, stripLocale } from "./lib/i18n"
 
 function isAsset(pathname: string) {
   if (pathname.startsWith("/_next") || pathname.startsWith("/api")) return true
@@ -8,6 +8,11 @@ function isAsset(pathname: string) {
   if (pathname === "/opengraph-image" || pathname.startsWith("/opengraph-image")) return true
   if (pathname === "/manifest.webmanifest" || pathname === "/robots.txt" || pathname === "/sitemap.xml" || pathname === "/llms.txt") return true
   return /\.[a-zA-Z0-9]+$/.test(pathname)
+}
+
+function dropLocaleCookie(response: NextResponse) {
+  response.cookies.set(LOCALE_COOKIE, "", { path: "/", maxAge: 0 })
+  return response
 }
 
 export function middleware(request: NextRequest) {
@@ -21,44 +26,30 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  const cookie = request.cookies.get(LOCALE_COOKIE)?.value
-  const preferred = isLocale(cookie) ? cookie : null
   const hasSv = pathname === "/sv" || pathname.startsWith("/sv/")
   const bare = stripLocale(pathname)
   const legacy = LEGACY_REDIRECTS[bare]
   if (legacy) {
-    const locale = preferred === "en" ? "en" : hasSv || preferred === "sv" ? "sv" : "en"
     const url = request.nextUrl.clone()
-    url.pathname = localizePath(legacy, locale)
-    return NextResponse.redirect(url, 308)
+    url.pathname = legacy
+    return dropLocaleCookie(NextResponse.redirect(url, 308))
   }
 
-  if (preferred === "sv" && !hasSv) {
-    const url = request.nextUrl.clone()
-    url.pathname = pathname === "/" ? "/sv" : `/sv${pathname}`
-    return NextResponse.redirect(url)
-  }
-  if (preferred === "en" && hasSv) {
+  if (hasSv) {
     const url = request.nextUrl.clone()
     url.pathname = bare
-    return NextResponse.redirect(url)
+    return dropLocaleCookie(NextResponse.redirect(url, 308))
   }
 
   const headers = new Headers(request.headers)
-  headers.set("x-locale", hasSv ? "sv" : "en")
+  headers.set("x-locale", "en")
   headers.set("x-pathname", pathname)
   headers.set("x-pt-rewrite", "1")
 
-  if (!hasSv) {
-    const url = request.nextUrl.clone()
-    url.pathname = pathname === "/" ? "/en" : `/en${pathname}`
-    return NextResponse.rewrite(url, { request: { headers } })
-  }
-
-  const response = NextResponse.next({ request: { headers } })
-  if (!preferred) {
-    response.cookies.set(LOCALE_COOKIE, "sv", { path: "/", maxAge: 60 * 60 * 24 * 365, sameSite: "lax" })
-  }
+  const url = request.nextUrl.clone()
+  url.pathname = pathname === "/" ? "/en" : `/en${pathname}`
+  const response = NextResponse.rewrite(url, { request: { headers } })
+  if (request.cookies.get(LOCALE_COOKIE)) dropLocaleCookie(response)
   return response
 }
 

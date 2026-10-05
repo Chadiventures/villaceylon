@@ -784,14 +784,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .currency-menu-list button{display:block;width:100%;text-align:left;border:0;background:transparent;font-family:var(--caps);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--forest);min-height:36px}
 .currency-menu-list button.on,.currency-menu-list button[aria-selected="true"]{background:var(--forest);color:var(--cream)}
 .head-currency{flex:none}
-.lang-switch{display:inline-flex;align-items:center;gap:2px}
-.lang-switch button{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:34px;height:34px;padding:0;border-radius:50%;border:1px solid transparent;background:transparent;cursor:pointer;color:inherit}
-.lang-switch button.on{border-color:var(--amber);background:rgba(251,247,238,.2)}
-.head.on-light .lang-switch button.on,.head.head-scrolled .lang-switch button.on{background:rgba(36,63,52,.08)}
-.lang-switch.labelled{gap:8px}
-.lang-switch.labelled button{width:auto;height:auto;min-height:44px;padding:6px 10px;border-radius:100px;color:var(--forest)}
-.lang-switch.labelled button span{font-family:var(--caps);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
-.flag{display:block;width:18px;height:12px;border-radius:1px;box-shadow:0 0 0 1px rgba(0,0,0,.18)}
 .price-usd-note{color:var(--ink-2);font-size:.82em;font-style:italic}
 .rooms-search-sticky{position:sticky;top:80px;z-index:20;margin:18px 0 28px}
 .rooms-search-sticky .search-bar-page{box-shadow:0 14px 36px -16px rgba(36,63,52,.32)}
@@ -882,7 +874,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .legal-copy{max-width:72ch}
 .legal-copy h2{color:var(--forest);font-size:1.3rem;margin:32px 0 10px}
 .legal-copy h2:first-child{margin-top:0}
+.legal-copy h3{color:var(--forest);font-size:1.12rem;margin:22px 0 8px}
+.legal-copy h4{color:var(--forest);font-size:1.02rem;margin:16px 0 8px}
 .legal-copy p{color:var(--ink-2);line-height:1.75;margin:0 0 6px}
+.legal-copy ul{margin:8px 0 14px;padding-left:1.2rem;color:var(--ink-2)}
+.legal-copy li{line-height:1.75;margin:0 0 6px}
 .legal-copy a{color:var(--amber-d);font-weight:600}
 .foot-legal{display:flex;gap:18px;margin-top:10px}
 .foot-legal a{font-size:.85rem;opacity:.85}
@@ -908,6 +904,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .hiw-n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--forest);color:var(--cream);display:inline-flex;align-items:center;justify-content:center;font-family:var(--caps);font-size:.8rem}
 .how-it-works h3{color:var(--forest);font-size:1.02rem;margin:0 0 4px}
 .how-it-works p{color:var(--ink-2);font-size:.88rem;line-height:1.5;margin:0}
+.pay-choice{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.pay-choice legend{font-family:var(--caps);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brown-2);margin-bottom:2px}
+.form .pay-option{display:flex;flex-direction:row;align-items:flex-start;gap:10px;text-transform:none;letter-spacing:0;font-family:var(--body);font-size:.95rem;color:var(--forest);line-height:1.45}
+.form .pay-option input{width:18px;height:18px;margin:2px 0 0;padding:0;flex:none}
 .price-summary{margin:4px 0 2px;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
 .price-summary p{margin:0;color:var(--forest)}
 .price-summary p + p{margin-top:6px}

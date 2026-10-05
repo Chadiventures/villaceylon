@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { copy, nightLabel } from "../../lib/copy"
 import { useLocale } from "../useLocale"
 import {
-  MAX_STAY_NIGHTS,
+  MIN_STAY_NIGHTS,
   addDays,
   addMonths,
   buildMonthGrid,
@@ -48,7 +48,7 @@ export function DateRangePicker({
   const start = checkIn ? fromIso(checkIn) : null
   const end = checkOut ? fromIso(checkOut) : null
   const [focusDate, setFocusDate] = useState<Date>(
-    start ? (selecting === "checkout" ? addDays(start, 1) : start) : today,
+    start ? (selecting === "checkout" ? addDays(start, MIN_STAY_NIGHTS) : start) : today,
   )
   const nights = nightsBetweenIso(checkIn, checkOut)
 
@@ -134,14 +134,14 @@ export function DateRangePicker({
   const footer = (
     <div className="dr-footer">
       <span className="dr-nights" data-testid="dr-nights">
-        {nights > 0 ? `${nights} ${nightLabel(locale, nights)}` : `${copy.search.pickDates[locale]} ${MAX_STAY_NIGHTS} ${copy.search.maxNights[locale]}`}
+        {nights > 0 ? `${nights} ${nightLabel(locale, nights)}` : copy.search.minStay[locale]}
       </span>
       <div className="dr-actions">
         <button type="button" className="dr-clear" onClick={() => { onClear(); onSelectingChange("checkin") }}>{copy.search.clear[locale]}</button>
         <button
           type="button"
           className="btn btn-solid dr-done"
-          disabled={!checkIn || !checkOut}
+          disabled={nights < MIN_STAY_NIGHTS}
           onClick={onClose}
         >
           {copy.search.done[locale]}
