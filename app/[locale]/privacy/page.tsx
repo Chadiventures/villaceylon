@@ -88,7 +88,7 @@ export default async function PrivacyPage() {
   const locale = await getLocale()
   return (
     <>
-      <PageHeader eyebrow={copy.legal.eyebrow[locale]} title={copy.legal.privacyTitle[locale]} seoTitle={copy.legal.privacySeo[locale]} lead={privacyAdopted[locale]} />
+      <PageHeader eyebrow={copy.legal.eyebrow[locale]} title={copy.legal.privacyTitle[locale]} lead={privacyAdopted[locale]} />
       <Section narrow>
         <Breadcrumbs items={[{ name: "Privacy", path: "/privacy" }]} />
         <div className="legal-copy">

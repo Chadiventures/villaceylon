@@ -21,7 +21,7 @@ export default async function CookiesPage() {
   const locale = await getLocale()
   return (
     <>
-      <PageHeader eyebrow={copy.legal.eyebrow[locale]} title={copy.legal.cookiesTitle[locale]} seoTitle={copy.legal.cookiesSeo[locale]} />
+      <PageHeader eyebrow={copy.legal.eyebrow[locale]} title={copy.legal.cookiesTitle[locale]} />
       <Section narrow>
         <Breadcrumbs items={[{ name: "Cookies", path: "/cookies" }]} />
         <div className="legal-copy">

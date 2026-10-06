@@ -22,7 +22,7 @@ export default async function BusinessTermsPage() {
   const locale = await getLocale()
   return (
     <>
-      <PageHeader eyebrow={copy.legal.eyebrow[locale]} title={copy.legal.businessTermsTitle[locale]} seoTitle={copy.legal.businessTermsSeo[locale]} lead={copy.legal.businessTermsUpdated[locale]} />
+      <PageHeader eyebrow={copy.legal.eyebrow[locale]} title={copy.legal.businessTermsTitle[locale]} lead={copy.legal.businessTermsUpdated[locale]} />
       <Section narrow>
         <Breadcrumbs items={[{ name: "Business Terms & Conditions", path: "/business-terms" }]} />
         <div className="legal-copy">

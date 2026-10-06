@@ -23,7 +23,7 @@ export default async function TermsPage() {
   const locale = await getLocale()
   return (
     <>
-      <PageHeader eyebrow={copy.legal.eyebrow[locale]} title={copy.legal.termsTitle[locale]} seoTitle={copy.legal.termsSeo[locale]} />
+      <PageHeader eyebrow={copy.legal.eyebrow[locale]} title={copy.legal.termsTitle[locale]} />
       <Section narrow>
         <Breadcrumbs items={[{ name: "Terms", path: "/terms" }]} />
         <div className="legal-copy">

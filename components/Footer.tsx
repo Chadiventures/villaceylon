@@ -41,15 +41,13 @@ export function Footer() {
       <div className="wrap foot-base">
         <p className="foot-copy">© 2026 The Papaya Tree</p>
         <nav className="foot-legal" aria-label="Legal">
-          <Link href={href("/privacy")}>Privacy</Link>
+          <Link href={href("/privacy")}>Privacy Policy</Link>
           <span className="foot-sep" aria-hidden="true">·</span>
-          <Link href={href("/cookies")}>Cookies</Link>
+          <Link href={href("/cookies")}>Cookie Policy</Link>
           <span className="foot-sep" aria-hidden="true">·</span>
-          <Link href={href("/terms")}>Terms</Link>
+          <Link href={href("/terms")}>Return Policy</Link>
           <span className="foot-sep" aria-hidden="true">·</span>
-          <Link href={href("/business-terms")}>Booking Terms</Link>
-          <span className="foot-sep" aria-hidden="true">·</span>
-          <Link href={href("/terms")}>Cancellation</Link>
+          <Link href={href("/business-terms")}>Business Terms & Conditions</Link>
         </nav>
         <a className="foot-credit" href="https://shorelinetechstudio.se" target="_blank" rel="noopener noreferrer">Designed by Shoreline Tech Studio</a>
       </div>
