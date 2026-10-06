@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import type { ReactNode } from "react"
+import { cookies } from "next/headers"
 import { Cinzel, Cormorant_Garamond, Instrument_Sans } from "next/font/google"
 import { CookieConsent } from "../components/CookieConsent"
 import { CurrencyProvider } from "../components/CurrencyContext"
@@ -12,6 +13,7 @@ import { JsonLd } from "../components/JsonLd"
 import { LazyConcierge } from "../components/LazyConcierge"
 import { Motion } from "../components/Motion"
 import { OverlayProvider } from "../components/OverlayContext"
+import { PreLaunchGate } from "../components/PreLaunchGate"
 import { SearchProvider } from "../components/search/SearchContext"
 import { StickyBookBar } from "../components/StickyBookBar"
 import { WhatsAppFab } from "../components/WhatsAppFab"
@@ -137,33 +139,63 @@ function hotelJsonLd(locale: "en" | "sv") {
   return data
 }
 
+const POLICY_PATHS = ["/privacy", "/cookies", "/terms", "/business-terms"]
+
+function readEnv(name: string) {
+  return process.env[name]
+}
+
+function isPolicyPath(path: string) {
+  const bare = stripLocale(path).replace(/\/+$/, "") || "/"
+  return POLICY_PATHS.includes(bare)
+}
+
+async function prelaunchGated() {
+  if (readEnv("PRELAUNCH_MODE") !== "on") return false
+  if (isPolicyPath(await getRequestPath())) return false
+  const key = readEnv("PREVIEW_KEY")
+  const preview = (await cookies()).get("pt_preview")?.value
+  return !(key && preview === key)
+}
+
+function Frame({ locale, children }: { locale: "en" | "sv"; children: ReactNode }) {
+  return (
+    <>
+      <SkipLink />
+      <CurrencyProvider>
+        <SearchProvider>
+          <OverlayProvider>
+            <Header />
+            <GuideScroll />
+            <main id="main-content">{children}</main>
+            <Footer />
+            <StickyBookBar />
+            <WhatsAppFab />
+            <LazyConcierge />
+            <CookieConsent />
+          </OverlayProvider>
+        </SearchProvider>
+      </CurrencyProvider>
+      <ImagePlaceholderWarning slots={placeholderSlots()} />
+      <Motion />
+      <JsonLd data={hotelJsonLd(locale)} />
+    </>
+  )
+}
+
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const locale = await getLocale()
-  const IMAGES = getResolvedImages()
+  const hero = getResolvedImages().home.hero.src
+  const gated = await prelaunchGated()
+  const frame = <Frame locale={locale}>{children}</Frame>
   return (
-    <html lang={locale} className={`${serif.variable} ${caps.variable} ${sans.variable}`}>
+    <html lang={locale} className={`${serif.variable} ${caps.variable} ${sans.variable}${gated ? " prelaunch-gated" : ""}`}>
       <head>
-        <link rel="preload" as="image" href={IMAGES.home.hero.src} />
+        <link rel="preload" as="image" href={hero} />
       </head>
-      <body>
-        <SkipLink />
-        <CurrencyProvider>
-          <SearchProvider>
-            <OverlayProvider>
-              <Header />
-              <GuideScroll />
-              <main id="main-content">{children}</main>
-              <Footer />
-              <StickyBookBar />
-              <WhatsAppFab />
-              <LazyConcierge />
-              <CookieConsent />
-            </OverlayProvider>
-          </SearchProvider>
-        </CurrencyProvider>
-        <ImagePlaceholderWarning slots={placeholderSlots()} />
-        <Motion />
-        <JsonLd data={hotelJsonLd(locale)} />
+      <body className={gated ? "prelaunch-gated" : undefined}>
+        {gated ? <div className="prelaunch-site" aria-hidden="true" inert>{frame}</div> : frame}
+        {gated ? <PreLaunchGate /> : null}
       </body>
     </html>
   )

@@ -39,13 +39,19 @@ export function Footer() {
         </div>
       </div>
       <div className="wrap foot-base">
-        <p className="foot-copy">© 2026 The Papaya Tree, Ahangama</p>
-        <nav className="foot-legal" aria-label={locale === "sv" ? "Juridiskt" : "Legal"}>
-          <Link href={href("/privacy")}>{copy.footer.privacy[locale]}</Link>
-          <Link href={href("/terms")}>{copy.footer.terms[locale]}</Link>
-          <Link href={href("/cookies")}>{copy.footer.cookies[locale]}</Link>
+        <p className="foot-copy">© 2026 The Papaya Tree</p>
+        <nav className="foot-legal" aria-label="Legal">
+          <Link href={href("/privacy")}>Privacy</Link>
+          <span className="foot-sep" aria-hidden="true">·</span>
+          <Link href={href("/cookies")}>Cookies</Link>
+          <span className="foot-sep" aria-hidden="true">·</span>
+          <Link href={href("/terms")}>Terms</Link>
+          <span className="foot-sep" aria-hidden="true">·</span>
+          <Link href={href("/business-terms")}>Booking Terms</Link>
+          <span className="foot-sep" aria-hidden="true">·</span>
+          <Link href={href("/terms")}>Cancellation</Link>
         </nav>
-        <a className="foot-credit" href="https://shorelinetechstudio.se/" target="_blank" rel="noopener noreferrer">{copy.footer.credit[locale]}</a>
+        <a className="foot-credit" href="https://shorelinetechstudio.se" target="_blank" rel="noopener noreferrer">Designed by Shoreline Tech Studio</a>
       </div>
     </footer>
   )

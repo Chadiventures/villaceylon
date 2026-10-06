@@ -10,7 +10,7 @@ import { useOverlay } from "./OverlayContext"
 import { searchHref, useSearch } from "./search/SearchContext"
 import { useLocale } from "./useLocale"
 
-const barHiddenPaths = ["/book", "/faq", "/privacy", "/terms", "/cookies"]
+const barHiddenPaths = ["/book", "/faq", "/privacy", "/terms", "/business-terms", "/cookies"]
 
 export function StickyBookBar() {
   const path = usePathname()

@@ -15,9 +15,38 @@ function dropLocaleCookie(response: NextResponse) {
   return response
 }
 
+const PREVIEW_COOKIE = "pt_preview"
+const PREVIEW_MAX_AGE = 60 * 60 * 24 * 180
+
+function readEnv(name: string) {
+  return process.env[name]
+}
+
+function previewRedirect(request: NextRequest) {
+  const preview = request.nextUrl.searchParams.get("preview")
+  if (preview == null) return null
+  const url = request.nextUrl.clone()
+  url.searchParams.delete("preview")
+  if (preview === "off") {
+    const response = NextResponse.redirect(url)
+    response.cookies.set(PREVIEW_COOKIE, "", { path: "/", maxAge: 0, sameSite: "lax" })
+    return response
+  }
+  const key = readEnv("PREVIEW_KEY")
+  if (key && preview === key) {
+    const response = NextResponse.redirect(url)
+    response.cookies.set(PREVIEW_COOKIE, key, { path: "/", sameSite: "lax", maxAge: PREVIEW_MAX_AGE })
+    return response
+  }
+  return null
+}
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
   if (isAsset(pathname)) return NextResponse.next()
+
+  const preview = previewRedirect(request)
+  if (preview) return preview
 
   if (pathname === "/en" || pathname.startsWith("/en/")) {
     if (request.headers.get("x-pt-rewrite") === "1") return NextResponse.next()

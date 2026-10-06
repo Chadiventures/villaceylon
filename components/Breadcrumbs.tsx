@@ -8,7 +8,7 @@ import { JsonLd } from "./JsonLd"
 
 type Crumb = { name: string; path: string }
 
-const known: Record<string, keyof typeof copy.nav | "privacy" | "terms" | "cookies"> = {
+const known: Record<string, keyof typeof copy.nav | "privacy" | "terms" | "cookies" | "businessTerms"> = {
   "/rooms": "rooms",
   "/house": "house",
   "/guide": "guide",
@@ -20,11 +20,12 @@ export async function Breadcrumbs({ items }: { items: Crumb[] }) {
   const locale = await getLocale()
   function label(item: Crumb) {
     const key = known[item.path]
-    if (key === "privacy" || key === "terms" || key === "cookies") return copy.footer[key][locale]
+    if (key === "privacy" || key === "terms" || key === "cookies" || key === "businessTerms") return copy.footer[key][locale]
     if (key) return copy.nav[key][locale]
     if (item.path === "/privacy") return copy.footer.privacy[locale]
     if (item.path === "/terms") return copy.footer.terms[locale]
     if (item.path === "/cookies") return copy.footer.cookies[locale]
+    if (item.path === "/business-terms") return copy.footer.businessTerms[locale]
     return item.name
   }
   const crumbs = [{ name: copy.nav.home[locale], path: "/" }, ...items.map((item) => ({ ...item, name: label(item) }))]
