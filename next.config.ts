@@ -32,6 +32,7 @@ const nextConfig: NextConfig = {
       { source: "/guide/day-trips", destination: "/guide", permanent: true },
       { source: "/guide/getting-here", destination: "/guide", permanent: true },
       { source: "/guide/good-things-to-know", destination: "/guide", permanent: true },
+      { source: "/terms", destination: "/return-policy", statusCode: 301 },
     ]
   },
 }

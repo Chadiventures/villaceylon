@@ -48,6 +48,12 @@ export function middleware(request: NextRequest) {
   const preview = previewRedirect(request)
   if (preview) return preview
 
+  if (pathname === "/terms" || pathname === "/terms/" || pathname === "/en/terms" || pathname === "/en/terms/" || pathname === "/sv/terms" || pathname === "/sv/terms/") {
+    const url = request.nextUrl.clone()
+    url.pathname = "/return-policy"
+    return NextResponse.redirect(url, 301)
+  }
+
   if (pathname === "/en" || pathname.startsWith("/en/")) {
     if (request.headers.get("x-pt-rewrite") === "1") return NextResponse.next()
     const url = request.nextUrl.clone()

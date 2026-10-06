@@ -52,7 +52,7 @@ export const routes = [
   { path: "/guide", priority: 0.85 },
   { path: "/faq", priority: 0.7 },
   { path: "/privacy", priority: 0.2 },
-  { path: "/terms", priority: 0.2 },
+  { path: "/return-policy", priority: 0.2 },
   { path: "/business-terms", priority: 0.2 },
   { path: "/cookies", priority: 0.2 },
 ] as const

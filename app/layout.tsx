@@ -139,7 +139,7 @@ function hotelJsonLd(locale: "en" | "sv") {
   return data
 }
 
-const POLICY_PATHS = ["/privacy", "/cookies", "/terms", "/business-terms"]
+const POLICY_PATHS = ["/privacy", "/cookies", "/return-policy", "/business-terms"]
 
 function readEnv(name: string) {
   return process.env[name]

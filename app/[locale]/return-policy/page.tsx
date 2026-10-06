@@ -13,19 +13,19 @@ export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({
     title: copy.meta.termsTitle[locale],
     description: copy.meta.termsDescription[locale],
-    path: "/terms",
+    path: "/return-policy",
     absoluteTitle: true,
     locale,
   })
 }
 
-export default async function TermsPage() {
+export default async function ReturnPolicyPage() {
   const locale = await getLocale()
   return (
     <>
       <PageHeader eyebrow={copy.legal.eyebrow[locale]} title={copy.legal.termsTitle[locale]} />
       <Section narrow>
-        <Breadcrumbs items={[{ name: "Terms", path: "/terms" }]} />
+        <Breadcrumbs items={[{ name: "Return Policy", path: "/return-policy" }]} />
         <div className="legal-copy">
           <PolicyCard />
           <h2>{copy.terms[0].h[locale]}</h2>

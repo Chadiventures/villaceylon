@@ -23,7 +23,7 @@ export async function Breadcrumbs({ items }: { items: Crumb[] }) {
     if (key === "privacy" || key === "terms" || key === "cookies" || key === "businessTerms") return copy.footer[key][locale]
     if (key) return copy.nav[key][locale]
     if (item.path === "/privacy") return copy.footer.privacy[locale]
-    if (item.path === "/terms") return copy.footer.terms[locale]
+    if (item.path === "/return-policy") return copy.footer.terms[locale]
     if (item.path === "/cookies") return copy.footer.cookies[locale]
     if (item.path === "/business-terms") return copy.footer.businessTerms[locale]
     return item.name

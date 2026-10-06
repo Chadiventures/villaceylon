@@ -45,7 +45,7 @@ export function Footer() {
           <span className="foot-sep" aria-hidden="true">·</span>
           <Link href={href("/cookies")}>Cookie Policy</Link>
           <span className="foot-sep" aria-hidden="true">·</span>
-          <Link href={href("/terms")}>Return Policy</Link>
+          <Link href={href("/return-policy")}>Return Policy</Link>
           <span className="foot-sep" aria-hidden="true">·</span>
           <Link href={href("/business-terms")}>Business Terms & Conditions</Link>
         </nav>
